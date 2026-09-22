@@ -33,7 +33,7 @@ export const SectionPalestrantes = ({ data }) => {
           </div>
         ))}
       </div>
-      <div>
+      <div style={{ display: "none" }}>
         <h5>Aguarde a confirmação dos próximos!</h5>
       </div>
        {palestranteSelecionado && (
