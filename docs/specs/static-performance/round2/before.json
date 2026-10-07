@@ -1,0 +1,82 @@
+{
+  "measurement": {
+    "variant": "Current out/ snapshot before the image and JavaScript optimization pipeline",
+    "snapshot": "/tmp/gtap-round2.pW0btX/out",
+    "url": "http://127.0.0.1:4174/",
+    "tool": "Lighthouse 13.0.1",
+    "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "commands": [
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4174/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --output=json --output-path=docs/specs/static-performance/round2/desktop.json --quiet",
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4174/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --output=json --output-path=docs/specs/static-performance/round2/mobile.json --quiet"
+    ],
+    "server": "node scripts/serve-static.mjs <snapshot>/out with PORT=4174; stopped after measurements",
+    "snapshotMethod": "Copied existing out/ with cp -R before any build. No build or package changes were made for this baseline.",
+    "rawReports": [
+      "docs/specs/static-performance/round2/desktop.json",
+      "docs/specs/static-performance/round2/mobile.json"
+    ],
+    "gzip": "Unavailable in Lighthouse network request entries (gzipSize not reported); retained as unavailable for comparability."
+  },
+  "results": {
+    "desktop": {
+      "scores": {
+        "performance": 0.96,
+        "accessibility": 0.95,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "first-contentful-paint": 365.61585,
+        "largest-contentful-paint": 1321.5518249999998,
+        "speed-index": 857.5060017453447,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0.0001923592641843972,
+        "interactive": 1351.6454225
+      },
+      "network": {
+        "requests": 41,
+        "transferBytes": 34466842,
+        "resourceSummary": [
+          { "type": "media", "count": 3, "transferBytes": 30755154 },
+          { "type": "image", "count": 20, "transferBytes": 3002947 },
+          { "type": "script", "count": 8, "transferBytes": 551341 },
+          { "type": "document", "count": 1, "transferBytes": 66794 },
+          { "type": "font", "count": 2, "transferBytes": 53145 },
+          { "type": "stylesheet", "count": 6, "transferBytes": 30296 },
+          { "type": "other", "count": 1, "transferBytes": 7165 },
+          { "type": "third-party", "count": 10, "transferBytes": 33118086 }
+        ]
+      }
+    },
+    "mobile": {
+      "scores": {
+        "performance": 0.76,
+        "accessibility": 0.93,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "first-contentful-paint": 1502.8386,
+        "largest-contentful-paint": 6825.1772,
+        "speed-index": 1699.1134645130687,
+        "total-blocking-time": 4.5,
+        "cumulative-layout-shift": 0.003188996779999084,
+        "interactive": 7309.6772
+      },
+      "network": {
+        "requests": 36,
+        "transferBytes": 3631502,
+        "resourceSummary": [
+          { "type": "image", "count": 18, "transferBytes": 2922761 },
+          { "type": "script", "count": 8, "transferBytes": 551341 },
+          { "type": "document", "count": 1, "transferBytes": 66794 },
+          { "type": "font", "count": 2, "transferBytes": 53145 },
+          { "type": "stylesheet", "count": 6, "transferBytes": 30296 },
+          { "type": "other", "count": 1, "transferBytes": 7165 },
+          { "type": "media", "count": 0, "transferBytes": 0 },
+          { "type": "third-party", "count": 7, "transferBytes": 2362916 }
+        ]
+      }
+    }
+  }
+}

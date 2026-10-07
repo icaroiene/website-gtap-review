@@ -1,5 +1,5 @@
 .container-footer {
-  background-image: url(../../assets/backgroundFooter.webp);
+  background-image: var(--gtap-bg-src-assets-backgroundfooter-webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

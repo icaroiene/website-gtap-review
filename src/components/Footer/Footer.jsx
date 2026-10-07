@@ -2,15 +2,11 @@ import "./Footer.css";
 
 export const Footer = () => {
 
-  const hrefRedirect = (id) => {
-    window.location.href = `/#${id}`;
-  };
-
   return (
     <footer className="container-footer">
       <div className="content-logo">
         <p>Realização</p>
-        <img src="./logoopen.svg" alt="logo-open" loading="lazy" width="600"
+        <img src="/logoopen.svg" alt="logo-open" loading="lazy" width="600"
           height="400" />
         <p className="adress-open">R. Frederico Simões, 125 - SL 401<br />
           Edf. Liz Empresarial  - Caminho das Árvores<br />
@@ -32,28 +28,14 @@ export const Footer = () => {
         </p>
       </div>
       <div className="content-menu-footer">
+        <p><a href="/">X GTAP</a></p>
         <ul>
-          <a href="/">
-            <p>X GTAP</p>
-          </a>
-          <a onClick={() => hrefRedirect("temas")}>
-            <li>Temas</li>
-          </a>
-          <a onClick={() => hrefRedirect("palestrantes")}>
-            <li>Palestrantes</li>
-          </a>
-          <a href="galeria">
-            <li>Galeria</li>
-          </a>
-          <a onClick={() => hrefRedirect("preços")}>
-            <li>Preços</li>
-          </a>
-          <a href="open-solucoes-tributarias">
-            <li>A Open</li>
-          </a>
-          <a onClick={() => hrefRedirect("contato")}>
-            <li>Contato</li>
-          </a>
+          <li><a href="/#temas">Temas</a></li>
+          <li><a href="/#palestrantes">Palestrantes</a></li>
+          <li><a href="/galeria">Galeria</a></li>
+          <li><a href="/#preços">Preços</a></li>
+          <li><a href="/open-solucoes-tributarias">A Open</a></li>
+          <li><a href="/#contato">Contato</a></li>
         </ul>
       </div>
     </footer>

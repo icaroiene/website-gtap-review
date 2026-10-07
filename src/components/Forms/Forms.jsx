@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import "./Forms.css";
 
@@ -8,7 +10,7 @@ const [isSend, isSetSend] = useState(false);
 const handleSubmit = async (e) => {
   console.log('submissão clicada')
 
-  const form = document.getElementById('contactForm');
+  const form = e.currentTarget;
 
   e.preventDefault();
   isSetSend(true); //desativa botao
@@ -65,6 +67,8 @@ const handleSubmit = async (e) => {
           <div className="form-input">
             <label htmlFor="name">Nome *</label>
             <input
+              id="name"
+              autoComplete="name"
               name="name"
               type="text"
               placeholder="Seu nome"
@@ -75,6 +79,8 @@ const handleSubmit = async (e) => {
           <div className="form-input">
             <label htmlFor="email">Email *</label>
             <input
+              id="email"
+              autoComplete="email"
               name="email"
               type="email"
               placeholder="Seu e-mail"
@@ -84,6 +90,8 @@ const handleSubmit = async (e) => {
           <div className="form-input">
             <label htmlFor="tel">WhatsApp *</label>
             <input
+              id="tel"
+              autoComplete="tel"
               name="tel"
               type="tel"
               placeholder="(00) 00000-0000"

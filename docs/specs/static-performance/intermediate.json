@@ -1,0 +1,410 @@
+{
+  "measurement": {
+    "url": "http://127.0.0.1:4173/",
+    "tool": "Lighthouse 13.0.1",
+    "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "commands": [
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4173/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --output=json --output-path=/tmp/gtap-after-desktop.json --quiet",
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4173/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --output=json --output-path=/tmp/gtap-after-mobile.json --quiet"
+    ],
+    "rawReports": [
+      "/tmp/gtap-after-desktop.json",
+      "/tmp/gtap-after-mobile.json"
+    ]
+  },
+  "summary": {
+    "desktopPerformanceDelta": 6,
+    "mobilePerformanceDelta": 7,
+    "interpretation": "Performance score improved from .90 to .96 desktop and .69 to .76 mobile. FCP and Speed Index improved in both. Desktop LCP improved slightly; mobile LCP regressed ~0.58s to 6.89s and remains the dominant user-facing concern. No browser console errors. The top network payload is the externally hosted opening MP4 (~34.7 MB desktop and ~23.1 MB mobile transfer); report shows HTTP 206 and unfinished request, consistent with partial media transfer rather than a 4xx/5xx response."
+  },
+  "results": {
+    "desktop": {
+      "scores": {
+        "performance": 0.96,
+        "accessibility": 0.95,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "value": 366.6490645092522,
+          "display": "0.4 s"
+        },
+        "largest-contentful-paint": {
+          "value": 1324.7572419274609,
+          "display": "1.3 s"
+        },
+        "speed-index": {
+          "value": 887.8389728829561,
+          "display": "0.9 s"
+        },
+        "total-blocking-time": {
+          "value": 0,
+          "display": "0 ms"
+        },
+        "cumulative-layout-shift": {
+          "value": 0.0001923592641843972,
+          "display": "0"
+        },
+        "interactive": {
+          "value": 1354.8680596692818,
+          "display": "1.4 s"
+        }
+      },
+      "comparisonToHeadBaseline": {
+        "first-contentful-paint": {
+          "before": 1028.14135,
+          "after": 366.6490645092522,
+          "delta": -661.49,
+          "changePercent": -64.3
+        },
+        "largest-contentful-paint": {
+          "before": 1428.1413499999999,
+          "after": 1324.7572419274609,
+          "delta": -103.38,
+          "changePercent": -7.2
+        },
+        "speed-index": {
+          "before": 2032.3961761867772,
+          "after": 887.8389728829561,
+          "delta": -1144.56,
+          "changePercent": -56.3
+        },
+        "total-blocking-time": {
+          "before": 0,
+          "after": 0,
+          "delta": 0,
+          "changePercent": null
+        },
+        "cumulative-layout-shift": {
+          "before": 0,
+          "after": 0.0001923592641843972,
+          "delta": 0,
+          "changePercent": null
+        },
+        "interactive": {
+          "before": 1468.1413499999999,
+          "after": 1354.8680596692818,
+          "delta": -113.27,
+          "changePercent": -7.7
+        }
+      },
+      "browserErrors": {
+        "auditScore": 1,
+        "logged": []
+      },
+      "network": {
+        "requestAuditScore": 1,
+        "requests": 47,
+        "failures": [
+          {
+            "url": "https://gtap.com.br/midias/banner-gt-abertura.mp4",
+            "statusCode": 206,
+            "finished": false
+          }
+        ],
+        "resourceSummary": [
+          {
+            "type": "total",
+            "requestCount": 41,
+            "transferBytes": 40775982
+          },
+          {
+            "type": "media",
+            "requestCount": 3,
+            "transferBytes": 34754966
+          },
+          {
+            "type": "image",
+            "requestCount": 21,
+            "transferBytes": 5315219
+          },
+          {
+            "type": "script",
+            "requestCount": 7,
+            "transferBytes": 550494
+          },
+          {
+            "type": "document",
+            "requestCount": 1,
+            "transferBytes": 64977
+          },
+          {
+            "type": "font",
+            "requestCount": 2,
+            "transferBytes": 53145
+          },
+          {
+            "type": "stylesheet",
+            "requestCount": 6,
+            "transferBytes": 30016
+          },
+          {
+            "type": "other",
+            "requestCount": 1,
+            "transferBytes": 7165
+          },
+          {
+            "type": "third-party",
+            "requestCount": 11,
+            "transferBytes": 39430170
+          }
+        ],
+        "topTransferredResources": [
+          {
+            "url": "https://gtap.com.br/midias/banner-gt-abertura.mp4",
+            "totalBytes": 34713783
+          },
+          {
+            "url": "https://gtap.com.br/midias/farolitapua.png",
+            "totalBytes": 2312101
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/paulo-pegas.png",
+            "totalBytes": 635965
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/vanessa.png",
+            "totalBytes": 592486
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/tanaka.png",
+            "totalBytes": 578753
+          }
+        ]
+      },
+      "remainingOpportunities": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "display": "Est savings of 203 KiB"
+        }
+      ],
+      "remainingAccessibilityIssues": [
+        {
+          "id": "unsized-images",
+          "title": "Image elements do not have explicit `width` and `height`",
+          "score": 0.5,
+          "display": null,
+          "affected": 7
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": null,
+          "affected": 6
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": null,
+          "affected": 6
+        }
+      ]
+    },
+    "mobile": {
+      "scores": {
+        "performance": 0.76,
+        "accessibility": 0.89,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "value": 1503.562,
+          "display": "1.5 s"
+        },
+        "largest-contentful-paint": {
+          "value": 6892.0145,
+          "display": "6.9 s"
+        },
+        "speed-index": {
+          "value": 1559.8736760006727,
+          "display": "1.6 s"
+        },
+        "total-blocking-time": {
+          "value": 4.5,
+          "display": "0 ms"
+        },
+        "cumulative-layout-shift": {
+          "value": 0.003188996779999084,
+          "display": "0.003"
+        },
+        "interactive": {
+          "value": 7297.103550000001,
+          "display": "7.3 s"
+        }
+      },
+      "comparisonToHeadBaseline": {
+        "first-contentful-paint": {
+          "before": 3672.42605,
+          "after": 1503.562,
+          "delta": -2168.86,
+          "changePercent": -59.1
+        },
+        "largest-contentful-paint": {
+          "before": 6309.744199999999,
+          "after": 6892.0145,
+          "delta": 582.27,
+          "changePercent": 9.2
+        },
+        "speed-index": {
+          "before": 3865.454539063856,
+          "after": 1559.8736760006727,
+          "delta": -2305.58,
+          "changePercent": -59.6
+        },
+        "total-blocking-time": {
+          "before": 0,
+          "after": 4.5,
+          "delta": 4.5,
+          "changePercent": null
+        },
+        "cumulative-layout-shift": {
+          "before": 0.04615690872522126,
+          "after": 0.003188996779999084,
+          "delta": -0.04,
+          "changePercent": -93.1
+        },
+        "interactive": {
+          "before": 6514.868945,
+          "after": 7297.103550000001,
+          "delta": 782.23,
+          "changePercent": 12
+        }
+      },
+      "browserErrors": {
+        "auditScore": 1,
+        "logged": []
+      },
+      "network": {
+        "requestAuditScore": 1,
+        "requests": 45,
+        "failures": [
+          {
+            "url": "https://gtap.com.br/midias/banner-gt-abertura.mp4",
+            "statusCode": 206,
+            "finished": false
+          }
+        ],
+        "resourceSummary": [
+          {
+            "type": "total",
+            "requestCount": 39,
+            "transferBytes": 29075768
+          },
+          {
+            "type": "media",
+            "requestCount": 3,
+            "transferBytes": 23134916
+          },
+          {
+            "type": "image",
+            "requestCount": 19,
+            "transferBytes": 5235055
+          },
+          {
+            "type": "script",
+            "requestCount": 7,
+            "transferBytes": 550494
+          },
+          {
+            "type": "document",
+            "requestCount": 1,
+            "transferBytes": 64977
+          },
+          {
+            "type": "font",
+            "requestCount": 2,
+            "transferBytes": 53145
+          },
+          {
+            "type": "stylesheet",
+            "requestCount": 6,
+            "transferBytes": 30016
+          },
+          {
+            "type": "other",
+            "requestCount": 1,
+            "transferBytes": 7165
+          },
+          {
+            "type": "third-party",
+            "requestCount": 11,
+            "transferBytes": 27810126
+          }
+        ],
+        "topTransferredResources": [
+          {
+            "url": "https://gtap.com.br/midias/banner-gt-abertura.mp4",
+            "totalBytes": 23062659
+          },
+          {
+            "url": "https://gtap.com.br/midias/farolitapua.png",
+            "totalBytes": 2312118
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/paulo-pegas.png",
+            "totalBytes": 635967
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/vanessa.png",
+            "totalBytes": 592483
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/tanaka.png",
+            "totalBytes": 578751
+          }
+        ]
+      },
+      "remainingOpportunities": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "display": "Est savings of 199 KiB"
+        }
+      ],
+      "remainingAccessibilityIssues": [
+        {
+          "id": "unsized-images",
+          "title": "Image elements do not have explicit `width` and `height`",
+          "score": 0.5,
+          "display": null,
+          "affected": 7
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0,
+          "display": null,
+          "affected": 6
+        },
+        {
+          "id": "heading-order",
+          "title": "Heading elements are not in a sequentially-descending order",
+          "score": 0,
+          "display": null,
+          "affected": 5
+        },
+        {
+          "id": "aria-hidden-focus",
+          "title": "`[aria-hidden=\"true\"]` elements contain focusable descendents",
+          "score": 0,
+          "display": null,
+          "affected": 2
+        },
+        {
+          "id": "landmark-one-main",
+          "title": "Document does not have a main landmark.",
+          "score": 0,
+          "display": null,
+          "affected": 1
+        }
+      ]
+    }
+  }
+}

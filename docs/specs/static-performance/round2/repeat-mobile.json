@@ -1,0 +1,37 @@
+{
+  "measurement": {
+    "purpose": "Repeat mobile gzip run to confirm the final performance score and LCP",
+    "url": "http://127.0.0.1:4175/",
+    "preview": "GTAP_PREVIEW_GZIP=1 PORT=4175 node scripts/serve-static.mjs out",
+    "tool": "Lighthouse 13.0.1",
+    "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "command": "npx --yes lighthouse@13.0.1 http://127.0.0.1:4175/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --output=json --output-path=docs/specs/static-performance/round2/after-repeat-mobile.json --quiet",
+    "report": "docs/specs/static-performance/round2/after-repeat-mobile.json",
+    "gzipVerified": "curl with Accept-Encoding: gzip returned Content-Encoding: gzip and Vary: Accept-Encoding for the HTML document."
+  },
+  "result": {
+    "scores": { "performance": 0.94, "accessibility": 0.93, "best-practices": 1, "seo": 1 },
+    "metrics": {
+      "first-contentful-paint": 1056.7812,
+      "largest-contentful-paint": 3148.5624,
+      "speed-index": 1056.7812,
+      "total-blocking-time": 5,
+      "cumulative-layout-shift": 0.003188996779999084,
+      "interactive": 3186.0624
+    },
+    "network": {
+      "requests": 26,
+      "transferBytes": 5079858,
+      "scriptBytes": 144952,
+      "videoTransferBytes": 4718820,
+      "videoStatusCode": 206,
+      "videoFinished": false,
+      "failedRequests": 0
+    }
+  },
+  "comparisonToAfterGzipMobile": {
+    "performanceScoreDelta": 0,
+    "lcpDeltaMs": 3.109,
+    "transferDeltaBytes": -69404
+  }
+}

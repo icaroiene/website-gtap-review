@@ -51,7 +51,7 @@
 }
 
 .container-forms-right {
-  background-image: url("../../assets/eventogtapforms.webp");
+  background-image: var(--gtap-bg-src-assets-eventogtapforms-webp);
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   background-size: cover;

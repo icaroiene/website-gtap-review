@@ -1,0 +1,72 @@
+{
+  "measurement": {
+    "variant": "First Next integration: optimized responsive images, server component boundaries, Slick removed, and 7.13 MB source video",
+    "url": "http://127.0.0.1:4173/",
+    "tool": "Lighthouse 13.0.1",
+    "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "server": "Existing static server on 127.0.0.1:4173; left running as requested",
+    "commands": [
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4173/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --output=json --output-path=docs/specs/static-performance/round2/variant1-desktop.json --quiet",
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4173/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --output=json --output-path=docs/specs/static-performance/round2/variant1-mobile.json --quiet"
+    ],
+    "rawReports": [
+      "docs/specs/static-performance/round2/variant1-desktop.json",
+      "docs/specs/static-performance/round2/variant1-mobile.json"
+    ],
+    "gzip": "Unavailable in Lighthouse network request entries (gzipSize not reported), consistent with the baseline."
+  },
+  "results": {
+    "desktop": {
+      "scores": { "performance": 0.97, "accessibility": 0.95, "best-practices": 1, "seo": 1 },
+      "metrics": {
+        "first-contentful-paint": 364.944,
+        "largest-contentful-paint": 1203.652,
+        "speed-index": 617.1358764964519,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0.0001923592641843972,
+        "interactive": 1233.7756000000002
+      },
+      "network": {
+        "requests": 28,
+        "transferBytes": 5215184,
+        "scriptBytes": 482468,
+        "mediaBytes": 4001792,
+        "videoRequested": true
+      }
+    },
+    "mobile": {
+      "scores": { "performance": 0.77, "accessibility": 0.93, "best-practices": 1, "seo": 1 },
+      "metrics": {
+        "first-contentful-paint": 1653.4670999999998,
+        "largest-contentful-paint": 6367.9342,
+        "speed-index": 1653.4670999999998,
+        "total-blocking-time": 5.5,
+        "cumulative-layout-shift": 0.003188996779999084,
+        "interactive": 6517.9342
+      },
+      "network": {
+        "requests": 25,
+        "transferBytes": 1148688,
+        "scriptBytes": 482468,
+        "imageBytes": 488471,
+        "mediaBytes": 0,
+        "videoRequested": false
+      }
+    }
+  },
+  "comparisonToBefore": {
+    "baseline": "round2/before.json",
+    "mobile": {
+      "performanceDelta": 0.01,
+      "lcpDeltaMs": -457.243,
+      "transferDeltaBytes": -2482814,
+      "scriptDeltaBytes": -68873
+    },
+    "desktop": {
+      "performanceDelta": 0.01,
+      "lcpDeltaMs": -117.9,
+      "transferDeltaBytes": -29251658,
+      "scriptDeltaBytes": -68873
+    }
+  }
+}

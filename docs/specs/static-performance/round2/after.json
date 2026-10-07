@@ -1,0 +1,129 @@
+{
+  "measurement": {
+    "variant": "Final export: optimized CSS backgrounds and responsive images; mobile autoplay restored after load/idle to match desktop UX, using the local optimized MP4",
+    "tool": "Lighthouse 13.0.1",
+    "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "artifact": "out/ served by scripts/serve-static.mjs",
+    "commands": {
+      "plain": [
+        "GTAP_PREVIEW_GZIP=0 PORT=4177 node scripts/serve-static.mjs out",
+        "npx --yes lighthouse@13.0.1 http://127.0.0.1:4177/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --output=json --output-path=docs/specs/static-performance/round2/after-plain-desktop.json --quiet",
+        "npx --yes lighthouse@13.0.1 http://127.0.0.1:4177/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --output=json --output-path=docs/specs/static-performance/round2/after-plain-mobile.json --quiet"
+      ],
+      "gzip": [
+        "GTAP_PREVIEW_GZIP=1 PORT=4175 node scripts/serve-static.mjs out",
+        "npx --yes lighthouse@13.0.1 http://127.0.0.1:4175/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --output=json --output-path=docs/specs/static-performance/round2/after-gzip-desktop.json --quiet",
+        "npx --yes lighthouse@13.0.1 http://127.0.0.1:4175/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --output=json --output-path=docs/specs/static-performance/round2/after-gzip-mobile.json --quiet"
+      ]
+    },
+    "reports": [
+      "docs/specs/static-performance/round2/after-plain-desktop.json",
+      "docs/specs/static-performance/round2/after-plain-mobile.json",
+      "docs/specs/static-performance/round2/after-gzip-desktop.json",
+      "docs/specs/static-performance/round2/after-gzip-mobile.json"
+    ],
+    "gzipVerification": "Local gzip preview returned Content-Encoding: gzip and Vary: Accept-Encoding for HTML; plain preview returned no Content-Encoding. Lighthouse request entries omit gzipSize, so use transferSize for observed wire bytes.",
+    "gzipHostingerLimit": "Local gzip mode does not confirm Hostinger headers or production performance; verify after deployment.",
+    "autoplayComparisonNote": "Earlier gzip-before and variant1 gzip mobile reports had no video request. This final version restores mobile autoplay after load/idle per the requested UX, so mobile transfer is expected to increase by the MP4 bytes; the gzip comparisons below are separated from plain results."
+  },
+  "results": {
+    "plain": {
+      "desktop": {
+        "scores": { "performance": 0.99, "accessibility": 0.95, "best-practices": 1, "seo": 1 },
+        "metrics": {
+          "first-contentful-paint": 365.3379,
+          "largest-contentful-paint": 1026.6758,
+          "speed-index": 618.5264640014867,
+          "total-blocking-time": 0,
+          "cumulative-layout-shift": 0.0001923592641843972,
+          "interactive": 1042.6758
+        },
+        "network": {
+          "requests": 28,
+          "transferBytes": 5644377,
+          "scriptBytes": 482434,
+          "imageBytes": 192016,
+          "mediaBytes": 4788224,
+          "videoRequested": true,
+          "videoRequest": { "statusCode": 206, "finished": false, "resourceSize": 4194304 },
+          "failedRequests": 0
+        }
+      },
+      "mobile": {
+        "scores": { "performance": 0.79, "accessibility": 0.93, "best-practices": 1, "seo": 1 },
+        "metrics": {
+          "first-contentful-paint": 1654.2995,
+          "largest-contentful-paint": 5617.599,
+          "speed-index": 1654.2995,
+          "total-blocking-time": 4.5,
+          "cumulative-layout-shift": 0.00321590165587167,
+          "interactive": 5662.599
+        },
+        "network": {
+          "requests": 26,
+          "transferBytes": 5733529,
+          "scriptBytes": 482434,
+          "imageBytes": 153964,
+          "mediaBytes": 4915428,
+          "videoRequested": true,
+          "videoRequest": { "statusCode": 206, "finished": false, "resourceSize": 4194304 },
+          "failedRequests": 0
+        }
+      }
+    },
+    "gzip": {
+      "desktop": {
+        "scores": { "performance": 1, "accessibility": 0.95, "best-practices": 1, "seo": 1 },
+        "metrics": {
+          "first-contentful-paint": 288.7531,
+          "largest-contentful-paint": 690.3179250000002,
+          "speed-index": 583.7159791692579,
+          "total-blocking-time": 0,
+          "cumulative-layout-shift": 0.0001923592641843972,
+          "interactive": 700.5367525000003
+        },
+        "network": {
+          "requests": 28,
+          "transferBytes": 5120381,
+          "scriptBytes": 144952,
+          "imageBytes": 170566,
+          "mediaBytes": 4722688,
+          "videoRequested": true,
+          "videoRequest": { "statusCode": 206, "finished": false, "resourceSize": 4194304 },
+          "failedRequests": 0
+        }
+      },
+      "mobile": {
+        "scores": { "performance": 0.94, "accessibility": 0.93, "best-practices": 1, "seo": 1 },
+        "metrics": {
+          "first-contentful-paint": 1055.2267,
+          "largest-contentful-paint": 3145.4534000000003,
+          "speed-index": 1055.2267,
+          "total-blocking-time": 5,
+          "cumulative-layout-shift": 0.003188996779999084,
+          "interactive": 3182.9534000000003
+        },
+        "network": {
+          "requests": 26,
+          "transferBytes": 5149262,
+          "scriptBytes": 144952,
+          "imageBytes": 133911,
+          "mediaBytes": 4788224,
+          "videoRequested": true,
+          "videoRequest": { "statusCode": 206, "finished": false, "resourceSize": 4194304 },
+          "failedRequests": 0
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "plainVsVariant1Plain": {
+      "desktop": { "performanceDelta": 0.02, "lcpDeltaMs": -176.9762, "transferDeltaBytes": 429193, "scriptDeltaBytes": -34 },
+      "mobile": { "performanceDelta": 0.02, "lcpDeltaMs": -750.3352, "transferDeltaBytes": 4584841, "scriptDeltaBytes": -34, "mediaBytesAfter": 4915428 }
+    },
+    "gzipVsVariant1Gzip": {
+      "desktop": { "performanceDelta": 0, "lcpDeltaMs": -5.423, "transferDeltaBytes": 295091, "scriptDeltaBytes": 22 },
+      "mobile": { "performanceDelta": 0.02, "lcpDeltaMs": -224.3852, "transferDeltaBytes": 4454571, "scriptDeltaBytes": 22, "mediaBytesAfter": 4788224 }
+    }
+  }
+}

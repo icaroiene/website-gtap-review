@@ -1,0 +1,132 @@
+.section-publico {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-block: 5%;
+  padding-inline: 12%;
+  background: linear-gradient(to right, #02093a, #000d74);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.section-publico h3 {
+  color: #dda92e;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.section-publico h5 {
+  color: #fff;
+  font-size: 20px;
+  padding-inline: 18%;
+}
+
+.container-publico {
+  min-width: 0;
+  padding-bottom: 10px;
+}
+
+.publico-carousel-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.publico-carousel-controls button {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 50%;
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+}
+
+.publico-carousel-controls button:hover,
+.publico-carousel-controls button:focus-visible {
+  color: #02093a;
+  background: #fff;
+}
+
+.publico-carousel-controls button:focus-visible,
+.publico-carousel:focus-visible {
+  outline: 3px solid #dda92e;
+  outline-offset: 3px;
+}
+
+.publico-carousel-controls span {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.publico-carousel {
+  display: grid;
+  grid-auto-columns: clamp(110px, 14vw, 160px);
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, minmax(100px, auto));
+  gap: 12px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 5px 3px 12px;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: rgb(255 255 255 / 55%) transparent;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card-publico {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  scroll-snap-align: start;
+}
+
+.card-publico img {
+  width: 150px;
+  max-width: 100%;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .section-publico {
+    gap: 10px;
+    padding-inline: 5%;
+  }
+
+  .section-publico h3 {
+    padding-inline: 0;
+    font-size: 22px;
+  }
+
+  .section-publico h5 {
+    padding-inline: 0;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .publico-carousel {
+    grid-auto-columns: 120px;
+    grid-template-rows: repeat(2, minmax(90px, auto));
+    gap: 4px;
+  }
+
+  .card-publico img {
+    width: 120px;
+    height: 100px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .publico-carousel {
+    scroll-behavior: auto;
+  }
+}

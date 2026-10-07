@@ -71,3 +71,9 @@
     gap: 1rem;
   }
 }
+
+.navigation-mobile { display: none; }
+@media (max-width: 768px) {
+  .navigation-desktop { display: none; }
+  .navigation-mobile { display: block; }
+}

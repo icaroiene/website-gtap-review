@@ -1,0 +1,92 @@
+{
+  "measurement": {
+    "scenario": "Local static preview with GTAP_PREVIEW_GZIP=1; this gzip-only comparison is separate from round2/before.json and round2/variant1.json, which are plain-preview results.",
+    "tool": "Lighthouse 13.0.1",
+    "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "preview": {
+      "baseline": {
+        "url": "http://127.0.0.1:4176/",
+        "root": "/tmp/gtap-round2.pW0btX/out",
+        "command": "GTAP_PREVIEW_GZIP=1 PORT=4176 node scripts/serve-static.mjs /tmp/gtap-round2.pW0btX/out"
+      },
+      "variant1": {
+        "url": "http://127.0.0.1:4175/",
+        "root": "out",
+        "command": "GTAP_PREVIEW_GZIP=1 PORT=4175 node scripts/serve-static.mjs out"
+      },
+      "gzipVerified": "Both servers returned Content-Encoding: gzip and Vary: Accept-Encoding for HTML with Accept-Encoding: gzip."
+    },
+    "commands": [
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4176/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --output=json --output-path=docs/specs/static-performance/round2/gzip-before-desktop.json --quiet",
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4176/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --output=json --output-path=docs/specs/static-performance/round2/gzip-before-mobile.json --quiet",
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4175/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --output=json --output-path=docs/specs/static-performance/round2/gzip-variant1-desktop.json --quiet",
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4175/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --output=json --output-path=docs/specs/static-performance/round2/gzip-variant1-mobile.json --quiet"
+    ],
+    "reports": [
+      "docs/specs/static-performance/round2/gzip-before-desktop.json",
+      "docs/specs/static-performance/round2/gzip-before-mobile.json",
+      "docs/specs/static-performance/round2/gzip-variant1-desktop.json",
+      "docs/specs/static-performance/round2/gzip-variant1-mobile.json"
+    ],
+    "gzipSizeField": "Not exposed by Lighthouse network request entries; transferSize reflects the compressed response for compressible static resources."
+  },
+  "results": {
+    "baseline": {
+      "desktop": {
+        "scores": { "performance": 1, "accessibility": 0.95, "best-practices": 1, "seo": 1 },
+        "metrics": {
+          "first-contentful-paint": 289.74445000000003,
+          "largest-contentful-paint": 666.368525,
+          "speed-index": 772.4986371698462,
+          "total-blocking-time": 0,
+          "cumulative-layout-shift": 0.0001923592641843972,
+          "interactive": 674.5309325000001
+        },
+        "network": { "requests": 41, "transferBytes": 33435565, "scriptBytes": 163019, "mediaBytes": 30212241 }
+      },
+      "mobile": {
+        "scores": { "performance": 0.91, "accessibility": 0.93, "best-practices": 1, "seo": 1 },
+        "metrics": {
+          "first-contentful-paint": 1058.8036499999998,
+          "largest-contentful-paint": 3531.2382,
+          "speed-index": 1096.262003538386,
+          "total-blocking-time": 4.5,
+          "cumulative-layout-shift": 0.00321590165587167,
+          "interactive": 3592.2882
+        },
+        "network": { "requests": 36, "transferBytes": 3144566, "scriptBytes": 163019, "mediaBytes": 0 }
+      }
+    },
+    "variant1": {
+      "desktop": {
+        "scores": { "performance": 1, "accessibility": 0.95, "best-practices": 1, "seo": 1 },
+        "metrics": {
+          "first-contentful-paint": 290.7091,
+          "largest-contentful-paint": 695.740925,
+          "speed-index": 572.3106194185851,
+          "total-blocking-time": 0,
+          "cumulative-layout-shift": 0.0001923592641843972,
+          "interactive": 706.0086524999999
+        },
+        "network": { "requests": 28, "transferBytes": 4825290, "scriptBytes": 144930, "mediaBytes": 4067328 }
+      },
+      "mobile": {
+        "scores": { "performance": 0.92, "accessibility": 0.93, "best-practices": 1, "seo": 1 },
+        "metrics": {
+          "first-contentful-paint": 1055.4193,
+          "largest-contentful-paint": 3369.8386,
+          "speed-index": 1055.4193,
+          "total-blocking-time": 4.5,
+          "cumulative-layout-shift": 0.003188996779999084,
+          "interactive": 3444.8386
+        },
+        "network": { "requests": 25, "transferBytes": 694691, "scriptBytes": 144930, "mediaBytes": 0 }
+      }
+    }
+  },
+  "comparisonBaselineToVariant1": {
+    "desktop": { "performanceDelta": 0, "lcpDeltaMs": 29.3724, "transferDeltaBytes": -28610275, "scriptDeltaBytes": -18089, "mediaDeltaBytes": -26144913 },
+    "mobile": { "performanceDelta": 0.01, "lcpDeltaMs": -161.3996, "transferDeltaBytes": -2449875, "scriptDeltaBytes": -18089, "mediaDeltaBytes": 0 }
+  },
+  "limits": "This local gzip preview indicates behavior with the compression option enabled. It does not confirm Hostinger response headers or production performance; verify those after deployment."
+}

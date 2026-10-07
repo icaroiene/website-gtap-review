@@ -82,3 +82,5 @@
     color: #164854;
   }
 }
+
+.menu-toggle { border: 0; background: transparent; color: inherit; font: inherit; }

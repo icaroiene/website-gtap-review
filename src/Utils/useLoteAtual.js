@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 
 // Essa função é um hook que verifica a data atual e retorna como resultado o lote "presente",
 // baseado na lista de lotes (array). Mantive sua estrutura e apenas tratei o caso de cruzar o ano.
@@ -36,8 +36,8 @@ const lotes = [
 ];
 
 // Lógica com suporte a intervalos que cruzam o ano (ex.: OUT/2025 → ABR/2026)
-const getStatusDoLote = (ano, mesInicio, mesFim) => {
-  const hoje = new Date();
+const getStatusDoLote = (ano, mesInicio, mesFim, hoje) => {
+  if (!hoje) return "futuro";
   const anoAtual = hoje.getFullYear();
   const mesAtual = hoje.getMonth() + 1;
 
@@ -72,12 +72,12 @@ const getStatusDoLote = (ano, mesInicio, mesFim) => {
 };
 
 export const useLoteAtual = () => {
-  const lotesComStatus = useMemo(() => {
-    return lotes.map((lote) => ({
-      ...lote,
-      status: getStatusDoLote(lote.ano, lote.mesInicio, lote.mesFim),
-    }));
-  }, []);
+  const [hoje, setHoje] = useState(null);
+  useEffect(() => { setHoje(new Date()); }, []);
+  const lotesComStatus = lotes.map((lote) => ({
+    ...lote,
+    status: getStatusDoLote(lote.ano, lote.mesInicio, lote.mesFim, hoje),
+  }));
 
   const loteAtual = lotesComStatus.find((lote) => lote.status === "presente");
 

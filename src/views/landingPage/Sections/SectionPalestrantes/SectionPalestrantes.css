@@ -1,0 +1,110 @@
+.section-palestrantes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-block: 5%;
+  padding-inline: 12%;
+  background-image: var(--gtap-bg-src-assets-bgsection-webp);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.section-palestrantes h3 {
+  color: #dda92e;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.section-palestrantes h5 {
+  color: #02093a;
+  font-size: 20px;
+  padding-inline: 28%;
+}
+
+/* card dos palestrantes */
+.container-palestrantes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card-palestrantes {
+  position: relative;
+  overflow: hidden;
+  background: #02093a;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  width: 230px;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  border: 2px solid #dda92e;
+  cursor: pointer;
+}
+
+.card-palestrantes .speaker-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-palestrantes h6, .card-palestrantes p { position: relative; z-index: 1; }
+.card-palestrantes:focus-visible { outline: 3px solid #02093a; outline-offset: 4px; }
+
+.card-palestrantes:hover {
+  transform: scale(1.03);
+}
+
+.card-palestrantes h6 {
+  color: #dda92e;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.card-palestrantes p {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  padding-bottom: 5%;
+}
+
+@media (max-width: 768px) {
+  .section-palestrantes {
+    padding-inline: 5%;
+    padding-block: 10%;
+  }
+
+  .section-palestrantes h5 {
+    font-size: 15px;
+    padding: 0;
+  }
+
+  .container-palestrantes {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding-inline: 0;
+  }
+
+  .card-palestrantes {
+    width: calc(50% - 10px); /* duas por linha com gap */
+    max-width: 200px;
+    height: 250px;
+  }
+  .card-palestrantes h6 {
+    font-size: 15px;
+  }
+  .card-palestrantes p {
+    font-size: 12px;
+  }
+}

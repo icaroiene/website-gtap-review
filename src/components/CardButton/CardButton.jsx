@@ -1,3 +1,5 @@
+"use client";
+
 import "./CardButton.css";
 import { useLoteAtual } from "../../Utils/useLoteAtual";
 

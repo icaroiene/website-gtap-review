@@ -1,0 +1,373 @@
+{
+  "measurement": {
+    "variant": "Mobile bgsection preload at high priority; distant SectionLocal images deferred by IntersectionObserver; mobile video remains click-to-play.",
+    "url": "http://127.0.0.1:4173/",
+    "tool": "Lighthouse 13.0.1",
+    "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "commands": [
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4173/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --output=json --output-path=/tmp/gtap-latest-desktop.json --quiet",
+      "npx --yes lighthouse@13.0.1 http://127.0.0.1:4173/ --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --output=json --output-path=/tmp/gtap-latest-mobile.json --quiet"
+    ],
+    "rawReports": [
+      "/tmp/gtap-latest-desktop.json",
+      "/tmp/gtap-latest-mobile.json"
+    ]
+  },
+  "summary": {
+    "desktopPerformance": 0.96,
+    "mobilePerformance": 0.76,
+    "mobileLcpMs": 6825,
+    "previousMobileLcpMs": 6901,
+    "mobileLcpDeltaMs": -76,
+    "mobileTransferredBytes": 3631471,
+    "previousMobileTransferredBytes": 5941431,
+    "mobileTransferredDeltaBytes": -2309960,
+    "mobileTransferredReductionPercent": 38.9,
+    "mobileVideoRequested": false,
+    "mobileBgsectionPreload": {
+      "fetchpriorityHigh": true,
+      "discoverableInitialHtml": true
+    },
+    "interpretation": "The latest mobile run transferred 3,631,471 bytes (~3.63 MB), down 2,309,960 bytes (38.9%) from the immediately previous mobile-opt-in run (5,941,431 bytes, ~5.94 MB). Against the earlier intermediate.json run (29,075,768 bytes, ~29.1 MB), the latest run is down 25,444,297 bytes (87.5%). These are different comparison points: mobile-opt-in already had click-to-play video; intermediate predates SectionLocal lazy loading. Lighthouse confirms the LCP resource is discoverable in initial HTML and high priority. Mobile LCP improved only about 76 ms from mobile-opt-in (6.90s to 6.83s), and performance remains 0.76. Desktop remains 0.96 with its opening video loading. No mobile console errors or failed requests; desktop media returns HTTP 206 with an unfinished partial stream.",
+    "intermediateMobileTransferredBytes": 29075768,
+    "previousMobileTransferredLabel": "mobile-opt-in.json: immediately previous run, poster/manual video but before SectionLocal lazy-loading change",
+    "intermediateMobileTransferredLabel": "intermediate.json: earlier run before image lazy loading; video was already click-to-play"
+  },
+  "results": {
+    "desktop": {
+      "scores": {
+        "performance": 0.96,
+        "accessibility": 0.95,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "value": 365.61585,
+          "display": "0.4 s"
+        },
+        "largest-contentful-paint": {
+          "value": 1321.5518249999998,
+          "display": "1.3 s"
+        },
+        "speed-index": {
+          "value": 857.5060017453447,
+          "display": "0.9 s"
+        },
+        "total-blocking-time": {
+          "value": 0,
+          "display": "0 ms"
+        },
+        "cumulative-layout-shift": {
+          "value": 0.0001923592641843972,
+          "display": "0"
+        },
+        "interactive": {
+          "value": 1351.6454225,
+          "display": "1.4 s"
+        }
+      },
+      "comparisonToPrevious": {
+        "first-contentful-paint": {
+          "previous": 366.94122681725185,
+          "final": 365.61585,
+          "delta": -1.33
+        },
+        "largest-contentful-paint": {
+          "previous": 1323.0980979534604,
+          "final": 1321.5518249999998,
+          "delta": -1.55
+        },
+        "speed-index": {
+          "previous": 905.3636963480792,
+          "final": 857.5060017453447,
+          "delta": -47.86
+        },
+        "total-blocking-time": {
+          "previous": 0,
+          "final": 0,
+          "delta": 0
+        },
+        "cumulative-layout-shift": {
+          "previous": 0.0001923592641843972,
+          "final": 0.0001923592641843972,
+          "delta": 0
+        },
+        "interactive": {
+          "previous": 1353.2137850670813,
+          "final": 1351.6454225,
+          "delta": -1.57
+        }
+      },
+      "network": {
+        "transferBytes": 38168172,
+        "transferDisplay": "Total size was 37,274 KiB",
+        "previousTransferBytes": 39123549,
+        "transferDeltaBytes": -955377,
+        "requests": 47,
+        "resourceSummary": [
+          {
+            "type": "total",
+            "count": 41,
+            "transferBytes": 38168172
+          },
+          {
+            "type": "media",
+            "count": 3,
+            "transferBytes": 34456527
+          },
+          {
+            "type": "image",
+            "count": 20,
+            "transferBytes": 3002904
+          },
+          {
+            "type": "script",
+            "count": 8,
+            "transferBytes": 551341
+          },
+          {
+            "type": "document",
+            "count": 1,
+            "transferBytes": 66794
+          },
+          {
+            "type": "font",
+            "count": 2,
+            "transferBytes": 53145
+          },
+          {
+            "type": "stylesheet",
+            "count": 6,
+            "transferBytes": 30296
+          },
+          {
+            "type": "other",
+            "count": 1,
+            "transferBytes": 7165
+          },
+          {
+            "type": "third-party",
+            "count": 10,
+            "transferBytes": 36819416
+          }
+        ],
+        "topTransferred": [
+          {
+            "url": "https://gtap.com.br/midias/banner-gt-abertura.mp4",
+            "bytes": 34384841
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/paulo-pegas.png",
+            "bytes": 636262
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/vanessa.png",
+            "bytes": 592469
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/tanaka.png",
+            "bytes": 578744
+          },
+          {
+            "url": "http://127.0.0.1:4173/_next/static/chunks/3dmm3v_fq28gc.js",
+            "bytes": 229996
+          },
+          {
+            "url": "http://127.0.0.1:4173/_next/static/chunks/2g6eky4dojsgx.js",
+            "bytes": 185945
+          }
+        ],
+        "failures": [
+          {
+            "url": "https://gtap.com.br/midias/banner-gt-abertura.mp4",
+            "statusCode": 206,
+            "finished": false
+          }
+        ]
+      },
+      "consoleErrors": [],
+      "lcpDiscovery": null,
+      "lcpElement": null,
+      "remainingOpportunities": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "display": "Est savings of 200 KiB"
+        }
+      ]
+    },
+    "mobile": {
+      "scores": {
+        "performance": 0.76,
+        "accessibility": 0.93,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "value": 1502.8386,
+          "display": "1.5 s"
+        },
+        "largest-contentful-paint": {
+          "value": 6825.1772,
+          "display": "6.8 s"
+        },
+        "speed-index": {
+          "value": 1699.1134645130687,
+          "display": "1.7 s"
+        },
+        "total-blocking-time": {
+          "value": 4.5,
+          "display": "0 ms"
+        },
+        "cumulative-layout-shift": {
+          "value": 0.003188996779999084,
+          "display": "0.003"
+        },
+        "interactive": {
+          "value": 7309.6772,
+          "display": "7.3 s"
+        }
+      },
+      "comparisonToPrevious": {
+        "first-contentful-paint": {
+          "previous": 1503.6498,
+          "final": 1502.8386,
+          "delta": -0.81
+        },
+        "largest-contentful-paint": {
+          "previous": 6901.21205,
+          "final": 6825.1772,
+          "delta": -76.03
+        },
+        "speed-index": {
+          "previous": 1679.051694087545,
+          "final": 1699.1134645130687,
+          "delta": 20.06
+        },
+        "total-blocking-time": {
+          "previous": 4,
+          "final": 4.5,
+          "delta": 0.5
+        },
+        "cumulative-layout-shift": {
+          "previous": 0.003188996779999084,
+          "final": 0.003188996779999084,
+          "delta": 0
+        },
+        "interactive": {
+          "previous": 7296.3032950000015,
+          "final": 7309.6772,
+          "delta": 13.37
+        }
+      },
+      "network": {
+        "transferBytes": 3631471,
+        "transferDisplay": "Total size was 3,546 KiB",
+        "previousTransferBytes": 5941431,
+        "transferDeltaBytes": -2309960,
+        "requests": 42,
+        "resourceSummary": [
+          {
+            "type": "total",
+            "count": 36,
+            "transferBytes": 3631471
+          },
+          {
+            "type": "image",
+            "count": 18,
+            "transferBytes": 2922730
+          },
+          {
+            "type": "script",
+            "count": 8,
+            "transferBytes": 551341
+          },
+          {
+            "type": "document",
+            "count": 1,
+            "transferBytes": 66794
+          },
+          {
+            "type": "font",
+            "count": 2,
+            "transferBytes": 53145
+          },
+          {
+            "type": "stylesheet",
+            "count": 6,
+            "transferBytes": 30296
+          },
+          {
+            "type": "other",
+            "count": 1,
+            "transferBytes": 7165
+          },
+          {
+            "type": "media",
+            "count": 0,
+            "transferBytes": 0
+          },
+          {
+            "type": "third-party",
+            "count": 7,
+            "transferBytes": 2362885
+          }
+        ],
+        "topTransferred": [
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/paulo-pegas.png",
+            "bytes": 635975
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/vanessa.png",
+            "bytes": 592474
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/tanaka.png",
+            "bytes": 578744
+          },
+          {
+            "url": "http://127.0.0.1:4173/_next/static/chunks/3dmm3v_fq28gc.js",
+            "bytes": 229996
+          },
+          {
+            "url": "http://127.0.0.1:4173/_next/static/chunks/2g6eky4dojsgx.js",
+            "bytes": 185945
+          },
+          {
+            "url": "https://gtap.com.br/midias/Palestrantes/bernard.png",
+            "bytes": 178933
+          }
+        ],
+        "failures": []
+      },
+      "consoleErrors": [],
+      "lcpDiscovery": {
+        "priorityHinted": {
+          "label": "fetchpriority=high applied",
+          "value": true
+        },
+        "requestDiscoverable": {
+          "label": "Request is discoverable in initial document",
+          "value": true
+        },
+        "eagerlyLoaded": {
+          "label": "lazy load not applied",
+          "value": true
+        }
+      },
+      "lcpElement": "body > section.section-atuacao",
+      "remainingOpportunities": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "display": "Est savings of 200 KiB"
+        }
+      ]
+    }
+  }
+}

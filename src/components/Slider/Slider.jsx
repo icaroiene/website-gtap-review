@@ -1,121 +1,111 @@
-import React, { useState, useEffect, useRef, lazy } from "react";
+"use client";
+
+import { useRef, useState } from "react";
+import ResponsiveImage from "../ResponsiveImage/ResponsiveImage";
+import { Icon } from "../Icon/Icon";
 import "./Slider.css";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
-const PrevArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div className={className} onClick={onClick} style={{ ...style }}>
-      <i className="fa-solid fa-chevron-left" style={{ fontSize: "30px", color: "#fff" }}></i>
-    </div>
-  );
-};
+const AsNavFor = ({ images = [] }) => {
+  const mainRef = useRef(null);
+  const thumbnailsRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-const NextArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div className={className} onClick={onClick} style={{ ...style }}>
-      <i className="fa-solid fa-chevron-right" style={{ fontSize: "30px", color: "#fff" }}></i>
-    </div>
-  );
-};
+  const goToPhoto = (index) => {
+    if (!images.length || !mainRef.current) return;
 
-const AsNavFor = ({ images }) => {
-  const sliderRef1 = useRef(null);
-  const sliderRef2 = useRef(null);
-  const [nav1, setNav1] = useState(null);
-  const [nav2, setNav2] = useState(null);
-
-  useEffect(() => {
-    setNav1(sliderRef1.current);
-    setNav2(sliderRef2.current);
-  }, []);
-
-  const sliderForSettings = {
-    asNavFor: nav2,
-    ref: sliderRef1,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    fade: true,
-    dots: false,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
+    const wrappedIndex = (index + images.length) % images.length;
+    mainRef.current.scrollTo({
+      left: wrappedIndex * mainRef.current.clientWidth,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+    setActiveIndex(wrappedIndex);
+    thumbnailsRef.current?.children[wrappedIndex]?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "nearest",
+      inline: "nearest",
+    });
   };
 
-  const sliderNavSettings = {
-    asNavFor: nav1,
-    ref: sliderRef2,
-    slidesToShow: 4,
-    swipeToSlide: true,
-    focusOnSelect: true,
-    centerMode: true,
-    dots: false,
-    arrows: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
+  const syncActivePhoto = () => {
+    if (!mainRef.current) return;
+    const width = mainRef.current.clientWidth;
+    if (!width) return;
+    const nextIndex = Math.min(images.length - 1, Math.round(mainRef.current.scrollLeft / width));
+    setActiveIndex(nextIndex);
+    thumbnailsRef.current?.children[nextIndex]?.scrollIntoView({
+      behavior: "auto",
+      block: "nearest",
+      inline: "nearest",
+    });
   };
 
   return (
     <div className="slider-container">
-      <div className="slider-for">
-        <Slider {...sliderForSettings}>
+      <div className="slider-for-wrap">
+        {images.length > 1 && (
+          <>
+            <button
+              className="slider-arrow slider-arrow-prev"
+              type="button"
+              aria-label="Ver foto anterior"
+              onClick={() => goToPhoto(activeIndex - 1)}
+            >
+              <Icon name="chevron-left" style={{ fontSize: "30px", color: "#fff" }} />
+            </button>
+            <button
+              className="slider-arrow slider-arrow-next"
+              type="button"
+              aria-label="Ver próxima foto"
+              onClick={() => goToPhoto(activeIndex + 1)}
+            >
+              <Icon name="chevron-right" style={{ fontSize: "30px", color: "#fff" }} />
+            </button>
+          </>
+        )}
+        <div
+          className="slider-for"
+          ref={mainRef}
+          onScroll={syncActivePhoto}
+          role="region"
+          aria-label="Fotos do álbum"
+          tabIndex={0}
+        >
           {images.map((img, index) => (
-            <div key={index}>
-              <img src={img.url} alt={`Imagem ${index}`} loading="lazy"/>
+            <div className="slider-photo" key={img.id ?? img.url ?? index}>
+              <ResponsiveImage
+                image={img.image}
+                src={img.url}
+                alt={`Imagem ${index + 1} do álbum`}
+                loading={index === 0 ? "eager" : "lazy"}
+                sizes="(max-width: 768px) 100vw, 550px"
+              />
             </div>
           ))}
-        </Slider>
+        </div>
       </div>
 
-      <div className="slider-nav">
-        <Slider {...sliderNavSettings}>
+      {images.length > 1 && (
+        <div className="slider-nav" ref={thumbnailsRef} aria-label="Selecionar foto">
           {images.map((img, index) => (
-            <div key={index}>
-              <img src={img.url} alt={`Miniatura ${index}`} loading="lazy" />
-            </div>
+            <button
+              className={`slider-thumbnail${index === activeIndex ? " is-active" : ""}`}
+              key={img.id ?? img.url ?? index}
+              type="button"
+              aria-label={`Selecionar imagem ${index + 1}`}
+              aria-current={index === activeIndex ? "true" : undefined}
+              onClick={() => goToPhoto(index)}
+            >
+              <ResponsiveImage
+                image={img.image}
+                src={img.url}
+                alt=""
+                loading="lazy"
+                sizes="100px"
+              />
+            </button>
           ))}
-        </Slider>
-      </div>
+        </div>
+      )}
     </div>
   );
 };

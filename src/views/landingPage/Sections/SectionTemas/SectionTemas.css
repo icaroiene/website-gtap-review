@@ -1,0 +1,149 @@
+.section-temas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  background: var(--gtap-bg-src-assets-backgroundtemas-webp);
+  /* se houver plano de fundo */
+  background-size: cover;
+  padding: 60px 20px;
+  text-align: center;
+  min-height: 90vh;
+}
+
+.section-temas-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+}
+
+.section-temas-content h3 {
+  color: #dda92e;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section-temas-content h5 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.container-cards-tema {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 50px;
+  justify-content: center;
+}
+
+.card-tema {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  color: #02093a;
+  font-weight: 600;
+  font-size: 21px;
+  text-align: center;
+  width: 250px;
+  height: 265px;
+  /* altura fixa que combine com o SVG */
+  padding: 0px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  white-space: pre-wrap;
+}
+
+.card-tema.bgTemas {
+  background-image: url(../../../../assets/bgtemas.svg);
+}
+
+.card-tema.bgTemas2 {
+  background-image: url(../../../../assets/bgtemas2.svg);
+}
+
+.circle-number {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 4px solid #dda92e;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-number span {
+  color: #02093a;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.sugerir-tema-btn {
+  color: #02093a;
+  font-size: 20px;
+  font-weight: 500;
+  background: linear-gradient(to right, #dda92e, #ffdf92);
+  border: none;
+  border-radius: 10px;
+  padding-inline: 14px;
+  padding-block: 10px;
+  min-width: 15%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.video-sobre-edition {
+  display: flex;
+  padding-inline: 20%;
+  margin-bottom: 2%;
+}
+
+@media (max-width: 768px) {
+
+  .section-temas-content h3 {
+    font-size: 28px;
+  }
+
+  .section-temas-content h5 {
+    font-size: 14px;
+  }
+
+  .card-tema {
+    font-size: 20px;
+  }
+
+  .circle-number {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    top: -15px;
+    left: 50%;
+  }
+
+  .container-cards-tema {
+  row-gap: 20px;
+}
+
+  .card-tema.bgTemas2 {
+    background-image: url(../../../../assets/bgtemas.svg);
+  }
+
+    .video-sobre-edition {
+      padding: 0;
+    }
+}
+

@@ -1,8 +1,11 @@
+"use client";
+
+import { Icon } from "../Icon/Icon";
 import { useEffect, useRef, useState } from "react";
 import "./ModalPalestrante.css";
 
 export const ModalPalestrantes = ({ palestrantes, selecionado, onClose }) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(() => Math.max(0, palestrantes.findIndex((person) => person.id === selecionado.id)));
     const dialogRef = useRef(null);
 
     // Define o índice com base no palestrante clicado
@@ -35,9 +38,9 @@ export const ModalPalestrantes = ({ palestrantes, selecionado, onClose }) => {
     return (
 
         <dialog className="modal-dialog" ref={dialogRef} onClose={fecharModal}>
-            <button className="nav-arrow nav-left" onClick={prev}><i class="fa-solid fa-chevron-left"></i></button>
+            <button className="nav-arrow nav-left" onClick={prev}><Icon name="chevron-left"  /></button>
             <div className="modal-structure">
-                <div className="modal-photo"  style={{ backgroundImage: `url(${current?.mediaUrl})` }}>
+                <div className="modal-photo"  style={{ backgroundImage: `url(${current?.image?.src || current?.mediaUrl})` }}>
 
                 </div>
                 <div className="modal-box">
@@ -53,28 +56,28 @@ export const ModalPalestrantes = ({ palestrantes, selecionado, onClose }) => {
                         {current.instagram && (
                             <a href={current.instagram} target="_blank" rel="noopener noreferrer">
                             <button className="iconbutton-social">
-                                <i class="fa-brands fa-instagram"></i>
+                                <Icon name="instagram"  />
                             </button>                             
                             </a>
                         )}
                         {current.youtube && (
                             <a href={current.youtube} target="_blank" rel="noopener noreferrer">
                             <button className="iconbutton-social">
-                                <i class="fa-brands fa-youtube"></i>
+                                <Icon name="youtube"  />
                             </button>                             
                             </a>
                         )}
                         {current.linkedin && (
                             <a href={current.linkedin} target="_blank" rel="noopener noreferrer">
                             <button className="iconbutton-social">
-                                <i class="fa-brands fa-linkedin-in"></i>
+                                <Icon name="linkedin-in"  />
                             </button>                             
                             </a>
                         )}
                     </div>
                 </div>
             </div>
-            <button className="nav-arrow nav-right" onClick={next}><i class="fa-solid fa-chevron-right"></i></button>
+            <button className="nav-arrow nav-right" onClick={next}><Icon name="chevron-right"  /></button>
         </dialog>
 
     );

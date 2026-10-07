@@ -134,3 +134,10 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Generated optimized media; regenerated before build/dev
+public/optimized/
+public/optimized-video/
+src/data/generated-media.json
+src/data/generated-video.json
+src/styles/generated-media.css
