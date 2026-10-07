@@ -11,42 +11,70 @@
   text-align: center;
 }
 
-/* lado esquerdo */
+/* lado esquerdo: os grupos de fotos ficam empilhados na mesma célula,
+   então a troca (crossfade) nunca muda a altura da seção */
 .section-galeria-left {
+  display: grid;
+}
+
+.section-galeria .galeria-grupo {
+  grid-area: 1 / 1;
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 20px;
   justify-content: center;
 }
 
-/* efeito individual de fade */
-.card-imagens {
+/* grupo que vai entrar: invisível enquanto as imagens decodificam */
+.section-galeria .galeria-grupo.is-preparando {
   opacity: 0;
+  pointer-events: none;
 }
 
-.card-imagens.fade-in {
-  animation: gallery-fade-in 0.8s ease both;
+.section-galeria .galeria-grupo.is-saindo {
+  pointer-events: none;
 }
 
-@keyframes gallery-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.card-imagens.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card-imagens.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* card: máscara arredondada para o zoom da foto */
+.section-galeria .card-imagens {
+  overflow: hidden;
+  border-radius: 5px;
+  transition: transform 500ms var(--ease-out);
 }
 
 .card-imagens img {
   width: 230px;
   border-radius: 5px;
   display: block;
+  transition: transform 1100ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-galeria .card-imagens:hover {
+    transform: translateY(-4px);
+  }
+
+  .section-galeria .card-imagens:hover img {
+    transform: scale(1.06);
+  }
+}
+
+/* crossfade: o grupo novo aparece por cima do atual (só opacidade), em cascata */
+@media (prefers-reduced-motion: no-preference) {
+  .section-galeria .galeria-grupo.is-entrando > .card-imagens {
+    animation: gtap-galeria-troca 700ms var(--ease-out) backwards;
+  }
+
+  .section-galeria .galeria-grupo.is-entrando > :nth-child(2) { animation-delay: 80ms; }
+  .section-galeria .galeria-grupo.is-entrando > :nth-child(3) { animation-delay: 160ms; }
+  .section-galeria .galeria-grupo.is-entrando > :nth-child(4) { animation-delay: 240ms; }
+  .section-galeria .galeria-grupo.is-entrando > :nth-child(5) { animation-delay: 320ms; }
+  .section-galeria .galeria-grupo.is-entrando > :nth-child(6) { animation-delay: 400ms; }
+}
+
+@keyframes gtap-galeria-troca {
+  from { opacity: 0; }
 }
 
 /* lado direito */
@@ -74,7 +102,9 @@
   font-weight: 400;
 }
 
-.section-galeria-right button {
+/* CTA (link com visual do antigo botão) */
+.section-galeria-right .galeria-cta {
+  position: relative;
   color: #02093a;
   font-size: 14px;
   font-weight: 500;
@@ -86,9 +116,63 @@
   width: 40%;
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   gap: 10px;
   justify-content: center;
+  text-align: center;
   cursor: pointer;
+  transition: transform 300ms var(--ease-out);
+}
+
+/* sombra suave do hover: fixa num pseudo-elemento, só a opacidade anima */
+.section-galeria-right .galeria-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 10px 24px -12px rgba(2, 9, 58, 0.45);
+  opacity: 0;
+  transition: opacity 300ms var(--ease-out);
+  pointer-events: none;
+}
+
+.section-galeria-right .galeria-cta svg {
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-galeria-right .galeria-cta:hover {
+    transform: translateY(-2px);
+  }
+
+  .section-galeria-right .galeria-cta:hover::after {
+    opacity: 1;
+  }
+
+  .section-galeria-right .galeria-cta:hover svg {
+    transform: rotate(-10deg) scale(1.12);
+  }
+}
+
+.section-galeria-right .galeria-cta:focus-visible {
+  transform: translateY(-2px);
+}
+
+.section-galeria-right .galeria-cta:focus-visible::after {
+  opacity: 1;
+}
+
+.section-galeria-right .galeria-cta:focus-visible svg {
+  transform: rotate(-10deg) scale(1.12);
+}
+
+.section-galeria-right .galeria-cta:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 120ms;
+}
+
+.section-galeria-right .galeria-cta:active::after {
+  opacity: 0;
 }
 
 @media (max-width: 768px) {
@@ -112,12 +196,12 @@
     padding: 0;
   }
 
-  .section-galeria-right button {
+  .section-galeria-right .galeria-cta {
     width: 80%;
     margin: 0 auto;
   }
 
-  .section-galeria-left {
+  .section-galeria .galeria-grupo {
     justify-content: center;
     gap: 12px;
   }

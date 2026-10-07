@@ -8,7 +8,7 @@ export const SectionAtuacao = ({ localImages = {} }) => {
   return (
     <section className="section-atuacao">
       <div className="left">
-        <h2 className="text-title">
+        <h2 className="text-title" data-reveal>
           O único congresso do país sobre <b>Gestão Tributária</b> voltado
           exclusivamente para a <b>Administração Pública</b> e <b>Sistema S</b>.
           <hr className="mobile-hr-display" />
@@ -25,36 +25,36 @@ export const SectionAtuacao = ({ localImages = {} }) => {
           </div>
         </h2>
         <div>
-          <hr />
+          <hr data-reveal="line" />
         </div>
         <div className="data-section">
-          <h3>
+          <h3 data-reveal>
             <Icon name="calendar"  />08 e 09 de Outubro de 2026
           </h3>
-          <h3>
+          <h3 data-reveal>
             <Icon name="location-dot"  />Salvador/BA
           </h3>
         </div>
       </div>
       <div className="right">
-        <ResponsiveImage image={localImages.image1} sizes="(max-width: 768px) 90vw, 600px" src={image1.src} width={image1.width} height={image1.height} alt="banner evento gtap" loading="lazy" />
+        <ResponsiveImage image={localImages.image1} sizes="(max-width: 768px) 90vw, 600px" src={image1.src} width={image1.width} height={image1.height} alt="banner evento gtap" loading="lazy" data-reveal="scale" />
       </div>
       <div className="bottom">
-        <div className="container-box">
+        <div className="container-box" data-reveal>
           <h3>Confira as áreas de atuação do público-alvo</h3>
           <h4>
             Quem lida com os desafios tributários da administração pública marca
             presença no X GTAP.
           </h4>
-          <div className="container-tags">
-            <span>Recursos Humanos</span>
-            <span>Gestão Orçamentária</span>
-            <span>Licitações e Contratos</span>
-            <span>Gestão Contábil</span>
-            <span>Controle Interno</span>
-            <span>Financeiro</span>
-            <span>Jurídica</span>
-            <span>Fiscal</span>
+          <div className="container-tags" data-reveal-stagger>
+            <span data-reveal="scale">Recursos Humanos</span>
+            <span data-reveal="scale">Gestão Orçamentária</span>
+            <span data-reveal="scale">Licitações e Contratos</span>
+            <span data-reveal="scale">Gestão Contábil</span>
+            <span data-reveal="scale">Controle Interno</span>
+            <span data-reveal="scale">Financeiro</span>
+            <span data-reveal="scale">Jurídica</span>
+            <span data-reveal="scale">Fiscal</span>
           </div>
         </div>
       </div>

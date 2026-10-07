@@ -1,6 +1,8 @@
 # SDD — GTAP estático e performance
 
-Data: 2026-10-07. Solicitação: Ítalo, via usuário. Revisão ativa: 4.
+Data: 2026-10-07. Solicitação: Ítalo, via usuário. Revisão ativa: 5.
+
+Revisão 5: a página interna da Open foi removida. O AC-02 passa a cobrir /, /galeria/ e as nove URLs históricas. `/open-solucoes-tributarias/` responde 301 para https://www.opensolucoestributarias.com.br/ via `.htaccess`, com fallback estático por meta refresh (`noindex`, sem JS) em `public/open-solucoes-tributarias/index.html`. O verificador de export cobre essa regra, o fallback, o sitemap sem a rota e a ausência de links internos para ela.
 
 Revisão 4: o usuário corrigiu a experiência do banner. O vídeo muted deve tentar autoplay em desktop e celular após load/idle; saveData e reduced-motion mantêm o poster. O hero não exibe botão de play. Se o navegador bloquear autoplay, uma interação normal com a página tenta iniciar o vídeo novamente. Esta política substitui as políticas de opt-in mobile das revisões 2 e 3. O comportamento e as medições dessas revisões continuam registrados como histórico superseded; `validation.md` permanece como snapshot anterior, e a verificação da revisão 4 e as novas métricas mobile ainda estão pendentes.
 

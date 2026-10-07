@@ -1,12 +1,39 @@
 "use client";
 
 import { Icon } from "../../../../components/Icon/Icon";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./SectionDepoimentos.css";
 
 export const SectionDepoimentos = ({ data }) => {
   const depoimentos = data.filter((d) => d.type === 3);
   const sliderRef = useRef(null);
+  const [bordas, setBordas] = useState({ inicio: true, fim: false });
+
+  // Início/fim do slider sem ler scrollLeft: observa o primeiro e o último card.
+  useEffect(() => {
+    const slider = sliderRef.current;
+    const primeiro = slider?.firstElementChild;
+    const ultimo = slider?.lastElementChild;
+    if (!primeiro || !("IntersectionObserver" in window)) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setBordas((atual) => {
+          let { inicio, fim } = atual;
+          entries.forEach((entry) => {
+            const inteiro = entry.intersectionRatio >= 0.95;
+            if (entry.target === primeiro) inicio = inteiro;
+            if (entry.target === ultimo) fim = inteiro;
+          });
+          return inicio === atual.inicio && fim === atual.fim ? atual : { inicio, fim };
+        });
+      },
+      { root: slider, threshold: 0.95 },
+    );
+    observer.observe(primeiro);
+    observer.observe(ultimo);
+    return () => observer.disconnect();
+  }, [depoimentos.length]);
 
   const cardWidth = 330;
   const cardsPerSlide = 1;
@@ -20,29 +47,32 @@ export const SectionDepoimentos = ({ data }) => {
     });
   };
 
+  const scrollBehavior = () =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+
   const scrollLeft = () => {
     pauseAllVideos();
-    sliderRef.current?.scrollBy({ left: -slideSize, behavior: "smooth" });
+    sliderRef.current?.scrollBy({ left: -slideSize, behavior: scrollBehavior() });
   };
 
   const scrollRight = () => {
     pauseAllVideos();
-    sliderRef.current?.scrollBy({ left: slideSize, behavior: "smooth" });
+    sliderRef.current?.scrollBy({ left: slideSize, behavior: scrollBehavior() });
   };
 
   return (
     <section className="section-depoimentos">
       <div>
-        <h3>Depoimentos</h3>
-        <h4>
+        <h3 data-reveal>Depoimentos</h3>
+        <h4 data-reveal>
           Veja o que <b>nosso público</b> fala sobre o GTAP
         </h4>
       </div>
 
-      <div className="slider-wrapper">
-        <button type="button" className="testimonial-arrow" onClick={scrollLeft} aria-label="Anterior"><Icon name="chevron-left" /></button>
+      <div className="slider-wrapper" data-reveal>
+        <button type="button" className="testimonial-arrow testimonial-arrow-prev" onClick={scrollLeft} aria-label="Anterior" aria-disabled={bordas.inicio}><Icon name="chevron-left" /></button>
 
-        <div className="slider" ref={sliderRef}>
+        <div className="slider" ref={sliderRef} data-lenis-prevent-horizontal>
           {depoimentos.map((depoimento, index) => (
             <div
               className="depoimento-card"
@@ -77,7 +107,7 @@ export const SectionDepoimentos = ({ data }) => {
           ))}
         </div>
 
-        <button type="button" className="testimonial-arrow" onClick={scrollRight} aria-label="Próximo"><Icon name="chevron-right" /></button>
+        <button type="button" className="testimonial-arrow testimonial-arrow-next" onClick={scrollRight} aria-label="Próximo" aria-disabled={bordas.fim}><Icon name="chevron-right" /></button>
       </div>
     </section>
   );

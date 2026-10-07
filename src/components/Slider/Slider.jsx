@@ -5,37 +5,68 @@ import ResponsiveImage from "../ResponsiveImage/ResponsiveImage";
 import { Icon } from "../Icon/Icon";
 import "./Slider.css";
 
+const scrollBehavior = () =>
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+
 const AsNavFor = ({ images = [] }) => {
   const mainRef = useRef(null);
   const thumbnailsRef = useRef(null);
+  const frameRef = useRef(0);
+  const activeIndexRef = useRef(0);
+  // Foto pedida por seta/miniatura enquanto a rolagem suave ainda está a caminho:
+  // as fotos intermediárias não viram "ativas" no meio do trajeto.
+  const targetIndexRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Rola só a faixa de miniaturas, na horizontal, centralizando a ativa
+  // (scrollIntoView podia rolar a página inteira e brigar com o Lenis).
+  const centerThumbnail = (index) => {
+    const strip = thumbnailsRef.current;
+    const thumbnail = strip?.children[index];
+    if (!thumbnail) return;
+    strip.scrollTo({
+      left: thumbnail.offsetLeft - (strip.clientWidth - thumbnail.offsetWidth) / 2,
+      behavior: scrollBehavior(),
+    });
+  };
+
+  const selectPhoto = (index) => {
+    activeIndexRef.current = index;
+    setActiveIndex(index);
+    centerThumbnail(index);
+  };
 
   const goToPhoto = (index) => {
     if (!images.length || !mainRef.current) return;
 
     const wrappedIndex = (index + images.length) % images.length;
+    targetIndexRef.current = wrappedIndex;
     mainRef.current.scrollTo({
       left: wrappedIndex * mainRef.current.clientWidth,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      behavior: scrollBehavior(),
     });
-    setActiveIndex(wrappedIndex);
-    thumbnailsRef.current?.children[wrappedIndex]?.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-      block: "nearest",
-      inline: "nearest",
-    });
+    selectPhoto(wrappedIndex);
   };
 
+  // Toque, trackpad ou teclado no trilho: o usuário assumiu, esquece o destino pendente.
+  const releaseTarget = () => {
+    targetIndexRef.current = null;
+  };
+
+  // No máximo uma leitura por quadro, e só atualiza quando a foto muda de fato.
   const syncActivePhoto = () => {
-    if (!mainRef.current) return;
-    const width = mainRef.current.clientWidth;
-    if (!width) return;
-    const nextIndex = Math.min(images.length - 1, Math.round(mainRef.current.scrollLeft / width));
-    setActiveIndex(nextIndex);
-    thumbnailsRef.current?.children[nextIndex]?.scrollIntoView({
-      behavior: "auto",
-      block: "nearest",
-      inline: "nearest",
+    if (frameRef.current) return;
+    frameRef.current = requestAnimationFrame(() => {
+      frameRef.current = 0;
+      const track = mainRef.current;
+      const width = track?.clientWidth;
+      if (!width) return;
+      const nextIndex = Math.min(images.length - 1, Math.round(track.scrollLeft / width));
+      if (targetIndexRef.current !== null) {
+        if (nextIndex === targetIndexRef.current) targetIndexRef.current = null;
+        return;
+      }
+      if (nextIndex !== activeIndexRef.current) selectPhoto(nextIndex);
     });
   };
 
@@ -66,9 +97,13 @@ const AsNavFor = ({ images = [] }) => {
           className="slider-for"
           ref={mainRef}
           onScroll={syncActivePhoto}
+          onPointerDown={releaseTarget}
+          onWheel={releaseTarget}
+          onKeyDown={releaseTarget}
           role="region"
           aria-label="Fotos do álbum"
           tabIndex={0}
+          data-lenis-prevent-horizontal
         >
           {images.map((img, index) => (
             <div className="slider-photo" key={img.id ?? img.url ?? index}>
@@ -82,10 +117,25 @@ const AsNavFor = ({ images = [] }) => {
             </div>
           ))}
         </div>
+        {images.length > 1 && (
+          <p className="slider-counter" aria-live="polite" aria-atomic="true">
+            <span className="sr-only">Foto </span>
+            <span className="slider-counter-current" key={activeIndex}>{activeIndex + 1}</span>
+            <span aria-hidden="true"> / </span>
+            <span className="sr-only"> de </span>
+            {images.length}
+          </p>
+        )}
       </div>
 
       {images.length > 1 && (
-        <div className="slider-nav" ref={thumbnailsRef} aria-label="Selecionar foto">
+        <div
+          className="slider-nav"
+          ref={thumbnailsRef}
+          aria-label="Selecionar foto"
+          data-enter
+          data-lenis-prevent-horizontal
+        >
           {images.map((img, index) => (
             <button
               className={`slider-thumbnail${index === activeIndex ? " is-active" : ""}`}

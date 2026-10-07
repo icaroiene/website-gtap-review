@@ -18,6 +18,7 @@
 }
 
 .section-publico h5 {
+  --i: 1;
   color: #fff;
   font-size: 20px;
   padding-inline: 18%;
@@ -29,6 +30,7 @@
 }
 
 .publico-carousel-controls {
+  --i: 2;
   display: flex;
   justify-content: flex-end;
   gap: 8px;
@@ -45,12 +47,46 @@
   color: #fff;
   background: transparent;
   cursor: pointer;
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    opacity var(--dur-ui) var(--ease-out),
+    transform var(--dur-ui) var(--ease-out);
 }
 
-.publico-carousel-controls button:hover,
 .publico-carousel-controls button:focus-visible {
   color: #02093a;
   background: #fff;
+  border-color: #fff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .publico-carousel-controls button:not([aria-disabled="true"]):hover {
+    color: #02093a;
+    background: #fff;
+    border-color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .publico-carousel-controls button:first-child:not([aria-disabled="true"]):hover span {
+    transform: translateX(-2px);
+  }
+
+  .publico-carousel-controls button:last-child:not([aria-disabled="true"]):hover span {
+    transform: translateX(2px);
+  }
+}
+
+.publico-carousel-controls button:not([aria-disabled="true"]):active {
+  transform: scale(0.92);
+  transition-duration: 120ms;
+}
+
+/* Início/fim do carrossel: o botão continua focável, só fica apagado. */
+.publico-carousel-controls button[aria-disabled="true"] {
+  opacity: 0.35;
+  cursor: default;
 }
 
 .publico-carousel-controls button:focus-visible,
@@ -62,6 +98,7 @@
 .publico-carousel-controls span {
   font-size: 28px;
   line-height: 1;
+  transition: transform var(--dur-ui) var(--ease-out);
 }
 
 .publico-carousel {
@@ -79,6 +116,30 @@
   -webkit-overflow-scrolling: touch;
 }
 
+/* Bordas esmaecidas indicam que há mais logos para os lados (estático, sem animação).
+   O lado já no limite (data-inicio / data-fim) fica sem fade. */
+.section-publico .publico-carousel {
+  --i: 3;
+  --fade-inicio: 32px;
+  --fade-fim: 32px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade-inicio), #000 calc(100% - var(--fade-fim)), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 var(--fade-inicio), #000 calc(100% - var(--fade-fim)), transparent);
+}
+
+.section-publico .publico-carousel[data-inicio] {
+  --fade-inicio: 0px;
+}
+
+.section-publico .publico-carousel[data-fim] {
+  --fade-fim: 0px;
+}
+
+/* A máscara cortaria o anel de foco (que fica fora da caixa). */
+.section-publico .publico-carousel:focus-visible {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
 .card-publico {
   display: flex;
   min-width: 0;
@@ -86,6 +147,37 @@
   justify-content: center;
   padding: 5px;
   scroll-snap-align: start;
+}
+
+.section-publico .card-publico {
+  position: relative;
+  isolation: isolate;
+  transition: transform 400ms var(--ease-out);
+}
+
+/* Placa suave atrás do logo: só a opacidade anima. */
+.section-publico .card-publico::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 14px;
+  background: rgb(255 255 255 / 7%);
+  box-shadow: 0 6px 14px -8px rgb(0 0 0 / 45%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-ui) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-publico .card-publico:hover {
+    transform: translateY(-4px);
+  }
+
+  .section-publico .card-publico:hover::after {
+    opacity: 1;
+  }
 }
 
 .card-publico img {

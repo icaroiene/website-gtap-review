@@ -7,8 +7,8 @@ export const SectionTemas = ({ data }) => {
   return (
     <section className="section-temas" id="temas">
       <div className="section-temas-content">
-        <h3>Temas confirmados</h3>
-        <h5>
+        <h3 data-reveal>Temas confirmados</h3>
+        <h5 data-reveal>
           Prepare-se para entender os impactos da Reforma Tributária sobre a
           Administração Pública
           <br />
@@ -22,8 +22,9 @@ export const SectionTemas = ({ data }) => {
               <div
                 key={tema.id}
                 className={`card-tema ${isInvert ? "bgTemas" : "bgTemas2"}`}
+                data-reveal="scale"
               >
-                <div className="circle-number">
+                <div className="circle-number" data-reveal="pop">
                   <span>{Number(tema?.title)}</span>
                 </div>
                 <p>{tema.description}</p>

@@ -11,11 +11,32 @@
   color: #fff;
 }
 
-.navbar-light {
-  background-color: #fff;
-  color: #02093a;
-  border-bottom: 2px solid #e5e5e5;
- 
+/* Header desktop: sempre montado. Esconde ao rolar para baixo só com transform
+   (os 40px extras levam junto a sombra de 30px) e volta ao rolar para cima. */
+.navigation-desktop .navbar {
+  transition: transform 450ms var(--ease-out);
+}
+
+.navigation-desktop .navbar--hidden {
+  transform: translateY(calc(-100% - 40px));
+}
+
+/* Fora do topo o vidro fica mais sólido: camada extra que só muda de opacidade
+   (sem animar background nem box-shadow). z-index -1 = acima do fundo do
+   header, abaixo do conteúdo (o header já é um contexto de empilhamento). */
+.navigation-desktop .navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: rgb(2 9 58 / 0.45);
+  opacity: 0;
+  transition: opacity 360ms var(--ease-out);
+  pointer-events: none;
+}
+
+.navigation-desktop .navbar--scrolled::before {
+  opacity: 1;
 }
 
 .navbar-container {
@@ -35,6 +56,10 @@
   text-decoration: none;
 }
 
+.navbar-logo img {
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+
 .navbar-links {
   list-style: none;
   display: flex;
@@ -44,13 +69,67 @@
 }
 
 .navbar-links a {
+  position: relative;
+  display: inline-block;
   text-decoration: none;
   font-weight: 500;
   cursor: pointer;
+  transition: color var(--dur-ui) var(--ease-out), transform var(--dur-fast) var(--ease-out);
 }
 
-.navbar-links a:hover {
+/* Sublinhado que desliza: entra pela esquerda, sai pela direita. */
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 360ms var(--ease-out);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navbar-links a:hover {
+    color: #83BCE7;
+  }
+
+  .navbar-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  .navbar-logo a:hover img {
+    transform: translateY(-2px);
+  }
+}
+
+.navbar-links a:focus-visible {
   color: #83BCE7;
+}
+
+.navbar-links a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.navbar-logo a:focus-visible img {
+  transform: translateY(-2px);
+}
+
+/* Clique: volta ao repouso rápido. */
+.navbar-links a:active {
+  transform: translateY(1px);
+  transition-duration: 120ms;
+}
+
+.navbar-logo a:active img {
+  transform: scale(0.97);
+  transition-duration: 120ms;
 }
 
 @media (max-width: 768px) {

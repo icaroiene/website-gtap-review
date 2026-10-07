@@ -14,10 +14,77 @@
   color: inherit;
 }
 
+/* Hambúrguer → X: três barras animadas só com transform/opacity. */
+.menu-burger {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 24px;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.menu-burger span {
+  position: absolute;
+  top: 11px;
+  left: 2px;
+  right: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: currentColor;
+  transition:
+    transform var(--dur-ui) var(--ease-out),
+    opacity var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.menu-burger span:nth-child(1) {
+  transform: translateY(-6px);
+}
+
+.menu-burger span:nth-child(3) {
+  transform: translateY(6px);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-burger span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-burger span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0.2);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-burger span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.menu-toggle:active .menu-burger {
+  transform: scale(0.88);
+  transition-duration: 120ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .menu-toggle:hover .menu-burger span {
+    background-color: var(--color-gold-light);
+  }
+}
+
 /* Estilo geral do menu mobile */
 @media (max-width: 768px) {
+  /* Logo e botão ficam acima do véu do menu aberto (o X continua nítido). */
+  .navbar-header {
+    position: relative;
+    z-index: 2;
+  }
+
   .menu-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Área de toque de 44px sem mudar o layout do header. */
+    padding: 10px;
+    margin: -10px;
+    -webkit-tap-highlight-color: transparent;
   }
 
   /* (Antigo) menu inline desativado */
@@ -36,12 +103,21 @@
     align-items: flex-start;
     justify-content: center;
     padding-top: 5.5rem;
-    z-index: 1000;
-    
-    
+    z-index: 1;
+  }
+
+  /* Véu: anima só a opacidade de um pseudo-elemento. Opacidade no próprio
+     .navbar-dialog (ancestral do painel) desligaria o backdrop-filter do painel. */
+  .navbar-dialog::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgb(1 7 24 / 0.35);
+    animation: gtap-navmobile-fade-in 240ms var(--ease-out) backwards;
   }
 
   .navbar-dialog-content {
+    position: relative;
     background-color: #02083ac7;
     backdrop-filter: blur(10px);
     border: 1px solid #fff;
@@ -54,9 +130,11 @@
     flex-direction: column;
     align-items: center;
     text-align: left;
+    animation: gtap-navmobile-panel-in 320ms var(--ease-out) backwards;
   }
 
   .navbar-dialog-content li {
+    position: relative;
     display: flex;
     flex-direction: row;
     margin: 0.55rem 0;
@@ -65,7 +143,18 @@
     border-radius: 8px;
     padding-inline: 10px;
     width: 90%;
+    transition:
+      background-color var(--dur-fast) var(--ease-out),
+      transform var(--dur-ui) var(--ease-out);
+    animation: gtap-navmobile-item-in 360ms var(--ease-out) backwards;
+    animation-delay: calc(60ms + var(--i, 0) * 40ms);
   }
+
+  .navbar-dialog-content li:nth-child(2) { --i: 1; }
+  .navbar-dialog-content li:nth-child(3) { --i: 2; }
+  .navbar-dialog-content li:nth-child(4) { --i: 3; }
+  .navbar-dialog-content li:nth-child(5) { --i: 4; }
+  .navbar-dialog-content li:nth-child(n + 6) { --i: 5; }
 
   .navbar-dialog-content a {
     color: #fff;
@@ -74,13 +163,104 @@
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    transition: background-color 0.2s ease;
+    transition: color var(--dur-fast) var(--ease-out);
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .navbar-dialog-content a:hover {
-    background-color: #f1f1f1;
-    color: #164854;
+  /* A linha inteira é clicável: o ::after do link cobre o <li>. */
+  .navbar-dialog-content a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
   }
+
+  /* Anel de foco na linha inteira (no ::after, sem depender de :has). */
+  .navbar-dialog-content a:focus-visible {
+    outline: none;
+  }
+
+  .navbar-dialog-content a:focus-visible::after {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  .navbar-dialog-content li:has(a:focus-visible) {
+    background-color: rgb(255 255 255 / 0.14);
+    transform: translateX(4px);
+  }
+
+  .navbar-dialog-content li:has(a:focus-visible) a {
+    color: var(--color-gold-light);
+  }
+
+  /* Toque: a linha "afunda" e volta ao repouso rápido. */
+  .navbar-dialog-content li:active {
+    background-color: rgb(255 255 255 / 0.2);
+    transform: scale(0.98);
+    transition-duration: 120ms;
+  }
+
+  /* Saída (≤ 200ms) antes de desmontar. */
+  .navbar-dialog--closing {
+    pointer-events: none;
+  }
+
+  .navbar-dialog--closing::before {
+    animation: gtap-navmobile-fade-out 180ms var(--ease-in-out) forwards;
+  }
+
+  .navbar-dialog--closing .navbar-dialog-content {
+    animation: gtap-navmobile-panel-out 180ms var(--ease-in-out) forwards;
+  }
+
+  .navbar-dialog--closing .navbar-dialog-content li {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) and (hover: hover) and (pointer: fine) {
+  .navbar-dialog-content li:hover {
+    background-color: rgb(255 255 255 / 0.14);
+    transform: translateX(4px);
+  }
+
+  .navbar-dialog-content li:hover a {
+    color: var(--color-gold-light);
+  }
+
+  .navbar-dialog-content li:hover:active {
+    background-color: rgb(255 255 255 / 0.2);
+    transform: translateX(4px) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-dialog::before,
+  .navbar-dialog-content,
+  .navbar-dialog-content li {
+    animation: none;
+  }
+}
+
+@keyframes gtap-navmobile-fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes gtap-navmobile-fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes gtap-navmobile-panel-in {
+  from { opacity: 0; translate: 0 10px; }
+}
+
+@keyframes gtap-navmobile-panel-out {
+  to { opacity: 0; translate: 0 -6px; }
+}
+
+@keyframes gtap-navmobile-item-in {
+  from { opacity: 0; translate: 0 8px; }
 }
 
 .menu-toggle { border: 0; background: transparent; color: inherit; font: inherit; }

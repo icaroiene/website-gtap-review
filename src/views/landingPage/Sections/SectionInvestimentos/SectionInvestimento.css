@@ -28,9 +28,64 @@
   gap: 20px;
   text-align: center;
 }
-.container-lotes :hover {
-  transform: scale(1.02);
+
+/* Wrapper do card: recebe a entrada, o hover e o anel (o .card-lote tem overflow hidden). */
+.investimento-container .card-lote-wrap {
+  position: relative;
+  isolation: isolate;
+  border-radius: 16px;
+  transition: transform 400ms var(--ease-out);
 }
+
+/* Sombra extra do hover: só a opacidade anima. */
+.investimento-container .card-lote-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 16px;
+  box-shadow: 0 22px 40px -14px rgb(0 0 0 / 55%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .investimento-container .card-lote-wrap:not(.passado):hover {
+    transform: translateY(-6px);
+  }
+
+  .investimento-container .card-lote-wrap:not(.passado):hover::after {
+    opacity: 1;
+  }
+}
+
+/* Lote atual: anel dourado estático. Se o card entrou por scroll, o anel
+   aparece uma única vez logo depois dele (só opacidade, animação finita). */
+.investimento-container .card-lote-wrap.presente::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  z-index: -1;
+  border: 2px solid var(--color-gold);
+  border-radius: 22px;
+  box-shadow: 0 0 24px rgb(221 169 46 / 35%);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .investimento-container .card-lote-wrap.presente[data-reveal-state="in"]::before,
+  .investimento-container .card-lote-wrap.presente[data-reveal-state="done"]::before {
+    animation: gtap-investimento-anel 900ms var(--ease-out) 600ms backwards;
+  }
+}
+
+@keyframes gtap-investimento-anel {
+  from {
+    opacity: 0;
+  }
+}
+
 .card-lote {
   width: 250px;
   height: 250px;
@@ -119,6 +174,58 @@
   padding-block: 8px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.investimento-container .container-button-investimento button {
+  position: relative;
+  transition:
+    transform 300ms var(--ease-out),
+    background-color var(--dur-ui) var(--ease-out);
+}
+
+/* Sombra suave do botão: só a opacidade anima. */
+.investimento-container .container-button-investimento button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 12px 24px -10px rgb(0 0 0 / 55%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms var(--ease-out);
+}
+
+.investimento-container .container-button-investimento svg {
+  transition: transform 300ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .investimento-container .container-button-investimento a:hover button {
+    background-color: var(--color-gold-light);
+    transform: translateY(-2px);
+  }
+
+  .investimento-container .container-button-investimento a:hover button::after {
+    opacity: 1;
+  }
+
+  .investimento-container .container-button-investimento a:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+.investimento-container .container-button-investimento a:focus-visible button {
+  background-color: var(--color-gold-light);
+  transform: translateY(-2px);
+}
+
+.investimento-container .container-button-investimento a:focus-visible button::after {
+  opacity: 1;
+}
+
+.investimento-container .container-button-investimento a:active button {
+  transform: scale(0.97);
+  transition-duration: 120ms;
 }
 @media (max-width: 768px) {
   .investimento-title {

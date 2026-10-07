@@ -1,0 +1,4061 @@
+{
+  "label": "round3 AFTER (animations + microinteractions + Lenis + scroll lock + view transitions + root scroller fix + Open page removal)",
+  "generatedAt": "2026-10-07T23:22:49.848Z",
+  "sourceCommit": "16e4f94 + uncommitted working tree of branch claude/site-animations-microinteractions-717e9d",
+  "artifact": "/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/out",
+  "lighthouse": "13.0.1",
+  "runsPerConfig": 3,
+  "execution": "sequential (never parallel)",
+  "server": {
+    "command": "GTAP_PREVIEW_GZIP=1 PORT=4186 node /Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/scripts/serve-static.mjs /Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/out",
+    "gzip": true
+  },
+  "commandTemplate": {
+    "desktop": "npx --yes lighthouse@13.0.1 <url> --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-<page>-desktop-<n>.json --quiet",
+    "mobile": "npx --yes lighthouse@13.0.1 <url> --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-<page>-mobile-<n>.json --quiet"
+  },
+  "commands": [
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-home-desktop-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-home-desktop-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-home-desktop-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-home-mobile-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-home-mobile-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-home-mobile-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-galeria-desktop-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-galeria-desktop-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-galeria-desktop-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-galeria-mobile-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-galeria-mobile-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-galeria-mobile-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-i-desktop-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-i-desktop-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-i-desktop-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-i-mobile-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-i-mobile-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-i-mobile-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-viii-desktop-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-viii-desktop-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-viii-desktop-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-viii-mobile-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-viii-mobile-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-album-viii-mobile-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/404.html '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-404-desktop-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/404.html '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-404-desktop-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/404.html '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-404-desktop-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/404.html '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-404-mobile-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/404.html '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-404-mobile-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4186/404.html '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/after-404-mobile-3.json --quiet"
+  ],
+  "notes": [
+    "LCP element: Lighthouse 13.0.1 has no largest-contentful-paint-element audit; selector taken from audits[\"lcp-breakdown-insight\"] node item.",
+    "Median lcpElement = element of the run whose LCP equals the median LCP; all per-run selectors are kept in runs[].",
+    "scriptTransferSize = audits[\"resource-summary\"] row resourceType=script transferSize (bytes on the wire, gzip enabled).",
+    "initialModuleJs = sum of gzip -9 -c over unique <script src=\"/_next/static/chunks/*.js\" async> in the exported HTML, noModule excluded.",
+    "Scores are 0-100.",
+    "Identical protocol to before.json except port 4186 and artifact = worktree out/ (before used port 4185 and the main checkout out/ at 16e4f94).",
+    "clsCulprits = node rows of audits[\"cls-culprits-insight\"] (Total row excluded) plus node rows of audits[\"layout-shifts\"].",
+    "requestCount = audits[\"resource-summary\"] row resourceType=total requestCount; networkRequestsItemCount = audits[\"network-requests\"].details.items.length.",
+    "lenisChunk.requested = any audits[\"network-requests\"] item URL containing /_next/static/chunks/2j9yyl5qtr4km.js (Lenis lazy chunk).",
+    "lazyChunksRequested = /_next/static/chunks/*.js requested during the run that are not in the page's initial async module script list.",
+    "404 page has no before baseline; included as informational only (no gates).",
+    "Gates: perf >= before median; same median LCP element selector; LCP median <= before median + max(5% of before, 50 ms); CLS median <= 0.005 and no culprit selector absent from all 3 before runs; TBT median <= max(10 ms, before median); non-composited-animations 0 items in every run."
+  ],
+  "initialModuleJs": {
+    "home": {
+      "html": "out/index.html",
+      "chunks": [
+        {
+          "src": "/_next/static/chunks/0fjo9lz5w15u3.js",
+          "rawBytes": 180900,
+          "gzip9Bytes": 48454
+        },
+        {
+          "src": "/_next/static/chunks/3dmm3v_fq28gc.js",
+          "rawBytes": 229820,
+          "gzip9Bytes": 71794
+        },
+        {
+          "src": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "rawBytes": 10030,
+          "gzip9Bytes": 3973
+        },
+        {
+          "src": "/_next/static/chunks/0umf92h1sb77c.js",
+          "rawBytes": 13822,
+          "gzip9Bytes": 3547
+        },
+        {
+          "src": "/_next/static/chunks/0se0hejlw0vhs.js",
+          "rawBytes": 350,
+          "gzip9Bytes": 260
+        },
+        {
+          "src": "/_next/static/chunks/3-5pb2htpwr74.js",
+          "rawBytes": 33313,
+          "gzip9Bytes": 10532
+        },
+        {
+          "src": "/_next/static/chunks/19wg2q9r2_sev.js",
+          "rawBytes": 21767,
+          "gzip9Bytes": 7292
+        }
+      ],
+      "totalRawBytes": 490002,
+      "totalGzip9Bytes": 145852
+    },
+    "galeria": {
+      "html": "out/galeria/index.html",
+      "chunks": [
+        {
+          "src": "/_next/static/chunks/0fjo9lz5w15u3.js",
+          "rawBytes": 180900,
+          "gzip9Bytes": 48454
+        },
+        {
+          "src": "/_next/static/chunks/3dmm3v_fq28gc.js",
+          "rawBytes": 229820,
+          "gzip9Bytes": 71794
+        },
+        {
+          "src": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "rawBytes": 10030,
+          "gzip9Bytes": 3973
+        },
+        {
+          "src": "/_next/static/chunks/0umf92h1sb77c.js",
+          "rawBytes": 13822,
+          "gzip9Bytes": 3547
+        },
+        {
+          "src": "/_next/static/chunks/2f6jaihsidg43.js",
+          "rawBytes": 8218,
+          "gzip9Bytes": 2862
+        },
+        {
+          "src": "/_next/static/chunks/19wg2q9r2_sev.js",
+          "rawBytes": 21767,
+          "gzip9Bytes": 7292
+        }
+      ],
+      "totalRawBytes": 464557,
+      "totalGzip9Bytes": 137922
+    },
+    "album-i": {
+      "html": "out/I GTAP/index.html",
+      "chunks": [
+        {
+          "src": "/_next/static/chunks/0fjo9lz5w15u3.js",
+          "rawBytes": 180900,
+          "gzip9Bytes": 48454
+        },
+        {
+          "src": "/_next/static/chunks/3dmm3v_fq28gc.js",
+          "rawBytes": 229820,
+          "gzip9Bytes": 71794
+        },
+        {
+          "src": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "rawBytes": 10030,
+          "gzip9Bytes": 3973
+        },
+        {
+          "src": "/_next/static/chunks/0umf92h1sb77c.js",
+          "rawBytes": 13822,
+          "gzip9Bytes": 3547
+        },
+        {
+          "src": "/_next/static/chunks/2s6fe-aa4me_y.js",
+          "rawBytes": 12416,
+          "gzip9Bytes": 4375
+        },
+        {
+          "src": "/_next/static/chunks/19wg2q9r2_sev.js",
+          "rawBytes": 21767,
+          "gzip9Bytes": 7292
+        }
+      ],
+      "totalRawBytes": 468755,
+      "totalGzip9Bytes": 139435
+    },
+    "album-viii": {
+      "html": "out/VIII GTAP/index.html",
+      "chunks": [
+        {
+          "src": "/_next/static/chunks/0fjo9lz5w15u3.js",
+          "rawBytes": 180900,
+          "gzip9Bytes": 48454
+        },
+        {
+          "src": "/_next/static/chunks/3dmm3v_fq28gc.js",
+          "rawBytes": 229820,
+          "gzip9Bytes": 71794
+        },
+        {
+          "src": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "rawBytes": 10030,
+          "gzip9Bytes": 3973
+        },
+        {
+          "src": "/_next/static/chunks/0umf92h1sb77c.js",
+          "rawBytes": 13822,
+          "gzip9Bytes": 3547
+        },
+        {
+          "src": "/_next/static/chunks/2s6fe-aa4me_y.js",
+          "rawBytes": 12416,
+          "gzip9Bytes": 4375
+        },
+        {
+          "src": "/_next/static/chunks/19wg2q9r2_sev.js",
+          "rawBytes": 21767,
+          "gzip9Bytes": 7292
+        }
+      ],
+      "totalRawBytes": 468755,
+      "totalGzip9Bytes": 139435
+    },
+    "404": {
+      "html": "out/404.html",
+      "chunks": [
+        {
+          "src": "/_next/static/chunks/0fjo9lz5w15u3.js",
+          "rawBytes": 180900,
+          "gzip9Bytes": 48454
+        },
+        {
+          "src": "/_next/static/chunks/3dmm3v_fq28gc.js",
+          "rawBytes": 229820,
+          "gzip9Bytes": 71794
+        },
+        {
+          "src": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "rawBytes": 10030,
+          "gzip9Bytes": 3973
+        },
+        {
+          "src": "/_next/static/chunks/0umf92h1sb77c.js",
+          "rawBytes": 13822,
+          "gzip9Bytes": 3547
+        },
+        {
+          "src": "/_next/static/chunks/19wg2q9r2_sev.js",
+          "rawBytes": 21767,
+          "gzip9Bytes": 7292
+        }
+      ],
+      "totalRawBytes": 456339,
+      "totalGzip9Bytes": 135060
+    }
+  },
+  "pages": {
+    "home": {
+      "url": "http://127.0.0.1:4186/",
+      "initialModuleJsGzip9Bytes": 145852,
+      "desktop": {
+        "runCount": 3,
+        "medians": {
+          "performance": 100,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 287.6,
+          "lcpMs": 717.0,
+          "lcpElement": {
+            "selector": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+            "nodeLabel": "Condições especiais para grupo",
+            "snippet": "<p>",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 586.6,
+          "totalByteWeight": 5199222,
+          "scriptTransferSize": 153282,
+          "scriptRequestCount": 8,
+          "requestCount": 29,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 145852
+        },
+        "lcpSelectorsAcrossRuns": [
+          "div.card-buttons-container > div.card-button-left > div.button-left-condition > p"
+        ],
+        "clsCulpritSelectorsAcrossRuns": {},
+        "maxCls": 0,
+        "nonCompositedAnimationsItemCountsAcrossRuns": [
+          0,
+          0,
+          0
+        ],
+        "lenisChunkRequestedAcrossRuns": [
+          true,
+          true,
+          true
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/after-home-desktop-1.json",
+            "fetchTime": "2026-10-07T23:16:21.712Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4098,
+            "performance": 98,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 289.5,
+            "lcpMs": 721.3,
+            "lcpElement": {
+              "selector": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+              "nodeLabel": "Condições especiais para grupo",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 4.2,
+              "elementRenderDelay": 658.5
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 105.5,
+            "speedIndexMs": 945.7,
+            "totalByteWeight": 4605530,
+            "scriptTransferSize": 153282,
+            "scriptRequestCount": 8,
+            "requestCount": 29,
+            "stylesheetTransferSize": 12607,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 19647,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.99,
+              "total-blocking-time": 0.96,
+              "cumulative-layout-shift": 1,
+              "speed-index": 0.98
+            },
+            "rawPerformanceScore": 0.98,
+            "observed": {
+              "fcpMs": 663,
+              "lcpMs": 663,
+              "loadMs": 78,
+              "domContentLoadedMs": 47
+            },
+            "networkRequestsItemCount": 35,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 196.6
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-home-desktop-2.json",
+            "fetchTime": "2026-10-07T23:16:33.479Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4140.5,
+            "performance": 100,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 284.4,
+            "lcpMs": 682.8,
+            "lcpElement": {
+              "selector": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+              "nodeLabel": "Condições especiais para grupo",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.6,
+              "elementRenderDelay": 73.8
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 574.8,
+            "totalByteWeight": 5199222,
+            "scriptTransferSize": 153282,
+            "scriptRequestCount": 8,
+            "requestCount": 29,
+            "stylesheetTransferSize": 12607,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 19647,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.99,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 1,
+            "observed": {
+              "fcpMs": 76,
+              "lcpMs": 76,
+              "loadMs": 60,
+              "domContentLoadedMs": 15
+            },
+            "networkRequestsItemCount": 35,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 87.8
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-home-desktop-3.json",
+            "fetchTime": "2026-10-07T23:16:44.639Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4178,
+            "performance": 100,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 287.6,
+            "lcpMs": 717.0,
+            "lcpElement": {
+              "selector": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+              "nodeLabel": "Condições especiais para grupo",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.7,
+              "elementRenderDelay": 90.9
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 586.6,
+            "totalByteWeight": 5461366,
+            "scriptTransferSize": 153282,
+            "scriptRequestCount": 8,
+            "requestCount": 29,
+            "stylesheetTransferSize": 12607,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 19647,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.99,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 1,
+            "observed": {
+              "fcpMs": 94,
+              "lcpMs": 94,
+              "loadMs": 62,
+              "domContentLoadedMs": 17
+            },
+            "networkRequestsItemCount": 35,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 89.0
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          }
+        ]
+      },
+      "mobile": {
+        "runCount": 3,
+        "medians": {
+          "performance": 93,
+          "accessibility": 97,
+          "bestPractices": 100,
+          "fcpMs": 1057.1,
+          "lcpMs": 3224.7,
+          "lcpElement": {
+            "selector": "body > section.section-atuacao",
+            "nodeLabel": "O único congresso do país sobre Gestão Tributária voltado exclusivamente para a…",
+            "snippet": "<section class=\"section-atuacao\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 7.5,
+          "speedIndexMs": 1057.1,
+          "totalByteWeight": 4894768,
+          "scriptTransferSize": 147627,
+          "scriptRequestCount": 7,
+          "requestCount": 26,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 145852
+        },
+        "lcpSelectorsAcrossRuns": [
+          "body > section.section-atuacao"
+        ],
+        "clsCulpritSelectorsAcrossRuns": {},
+        "maxCls": 0,
+        "nonCompositedAnimationsItemCountsAcrossRuns": [
+          0,
+          0,
+          0
+        ],
+        "lenisChunkRequestedAcrossRuns": [
+          false,
+          false,
+          false
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/after-home-mobile-1.json",
+            "fetchTime": "2026-10-07T23:16:56.166Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4079,
+            "performance": 90,
+            "accessibility": 97,
+            "bestPractices": 100,
+            "fcpMs": 1058.2,
+            "lcpMs": 3224.4,
+            "lcpElement": {
+              "selector": "body > section.section-atuacao",
+              "nodeLabel": "O único congresso do país sobre Gestão Tributária voltado exclusivamente para a…",
+              "snippet": "<section class=\"section-atuacao\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 5.5,
+              "resourceLoadDelay": 3.7,
+              "resourceLoadDuration": 9.0,
+              "elementRenderDelay": 283.2
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 204,
+            "speedIndexMs": 1568.3,
+            "totalByteWeight": 4894768,
+            "scriptTransferSize": 147627,
+            "scriptRequestCount": 7,
+            "requestCount": 26,
+            "stylesheetTransferSize": 12607,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 19647,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.72,
+              "total-blocking-time": 0.89,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.9,
+            "observed": {
+              "fcpMs": 301,
+              "lcpMs": 301,
+              "loadMs": 70,
+              "domContentLoadedMs": 24
+            },
+            "networkRequestsItemCount": 32,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-home-mobile-2.json",
+            "fetchTime": "2026-10-07T23:17:07.718Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4044,
+            "performance": 93,
+            "accessibility": 97,
+            "bestPractices": 100,
+            "fcpMs": 1057.1,
+            "lcpMs": 3227.5,
+            "lcpElement": {
+              "selector": "body > section.section-atuacao",
+              "nodeLabel": "O único congresso do país sobre Gestão Tributária voltado exclusivamente para a…",
+              "snippet": "<section class=\"section-atuacao\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 3.7,
+              "resourceLoadDelay": 3.6,
+              "resourceLoadDuration": 5.5,
+              "elementRenderDelay": 79.3
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 7.5,
+            "speedIndexMs": 1057.1,
+            "totalByteWeight": 5091376,
+            "scriptTransferSize": 147627,
+            "scriptRequestCount": 7,
+            "requestCount": 26,
+            "stylesheetTransferSize": 12607,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 19647,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.72,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.93,
+            "observed": {
+              "fcpMs": 92,
+              "lcpMs": 92,
+              "loadMs": 67,
+              "domContentLoadedMs": 19
+            },
+            "networkRequestsItemCount": 32,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-home-mobile-3.json",
+            "fetchTime": "2026-10-07T23:17:19.074Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4113,
+            "performance": 93,
+            "accessibility": 97,
+            "bestPractices": 100,
+            "fcpMs": 1056.7,
+            "lcpMs": 3224.7,
+            "lcpElement": {
+              "selector": "body > section.section-atuacao",
+              "nodeLabel": "O único congresso do país sobre Gestão Tributária voltado exclusivamente para a…",
+              "snippet": "<section class=\"section-atuacao\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 4.2,
+              "resourceLoadDelay": 3.8,
+              "resourceLoadDuration": 5.2,
+              "elementRenderDelay": 80.6
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 6.5,
+            "speedIndexMs": 1056.7,
+            "totalByteWeight": 4370480,
+            "scriptTransferSize": 147627,
+            "scriptRequestCount": 7,
+            "requestCount": 26,
+            "stylesheetTransferSize": 12607,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 19647,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.72,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.93,
+            "observed": {
+              "fcpMs": 94,
+              "lcpMs": 94,
+              "loadMs": 68,
+              "domContentLoadedMs": 19
+            },
+            "networkRequestsItemCount": 32,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          }
+        ]
+      }
+    },
+    "galeria": {
+      "url": "http://127.0.0.1:4186/galeria/",
+      "initialModuleJsGzip9Bytes": 137922,
+      "desktop": {
+        "runCount": 3,
+        "medians": {
+          "performance": 100,
+          "accessibility": 96,
+          "bestPractices": 100,
+          "fcpMs": 250.3,
+          "lcpMs": 549.8,
+          "lcpElement": {
+            "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+            "nodeLabel": "A melhor edição de todos os tempos",
+            "snippet": "<p data-enter=\"true\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 250.3,
+          "totalByteWeight": 476965,
+          "scriptTransferSize": 145116,
+          "scriptRequestCount": 7,
+          "requestCount": 27,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137922
+        },
+        "lcpSelectorsAcrossRuns": [
+          "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+        ],
+        "clsCulpritSelectorsAcrossRuns": {},
+        "maxCls": 0,
+        "nonCompositedAnimationsItemCountsAcrossRuns": [
+          0,
+          0,
+          0
+        ],
+        "lenisChunkRequestedAcrossRuns": [
+          true,
+          true,
+          true
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/after-galeria-desktop-1.json",
+            "fetchTime": "2026-10-07T23:17:30.263Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/galeria/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4114.5,
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "fcpMs": 250.5,
+            "lcpMs": 549.8,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.2,
+              "elementRenderDelay": 52.2
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 288.2,
+            "totalByteWeight": 476965,
+            "scriptTransferSize": 145116,
+            "scriptRequestCount": 7,
+            "requestCount": 27,
+            "stylesheetTransferSize": 6525,
+            "stylesheetRequestCount": 3,
+            "documentTransferSize": 4379,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 1,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 1,
+            "observed": {
+              "fcpMs": 54,
+              "lcpMs": 54,
+              "loadMs": 1201,
+              "domContentLoadedMs": 13
+            },
+            "networkRequestsItemCount": 27,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 1215.3
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-galeria-desktop-2.json",
+            "fetchTime": "2026-10-07T23:17:41.816Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/galeria/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4162.5,
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "fcpMs": 247.6,
+            "lcpMs": 546.5,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.1,
+              "elementRenderDelay": 74.2
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 247.6,
+            "totalByteWeight": 475085,
+            "scriptTransferSize": 145116,
+            "scriptRequestCount": 7,
+            "requestCount": 27,
+            "stylesheetTransferSize": 6525,
+            "stylesheetRequestCount": 3,
+            "documentTransferSize": 4379,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 1,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 1,
+            "observed": {
+              "fcpMs": 76,
+              "lcpMs": 76,
+              "loadMs": 284,
+              "domContentLoadedMs": 13
+            },
+            "networkRequestsItemCount": 27,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 287.8
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-galeria-desktop-3.json",
+            "fetchTime": "2026-10-07T23:17:52.444Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/galeria/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4059,
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "fcpMs": 250.3,
+            "lcpMs": 551.4,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.4,
+              "elementRenderDelay": 65.1
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 250.3,
+            "totalByteWeight": 476967,
+            "scriptTransferSize": 145116,
+            "scriptRequestCount": 7,
+            "requestCount": 27,
+            "stylesheetTransferSize": 6525,
+            "stylesheetRequestCount": 3,
+            "documentTransferSize": 4379,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 1,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 1,
+            "observed": {
+              "fcpMs": 67,
+              "lcpMs": 67,
+              "loadMs": 272,
+              "domContentLoadedMs": 26
+            },
+            "networkRequestsItemCount": 27,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 277.9
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          }
+        ]
+      },
+      "mobile": {
+        "runCount": 3,
+        "medians": {
+          "performance": 98,
+          "accessibility": 96,
+          "bestPractices": 100,
+          "fcpMs": 908.3,
+          "lcpMs": 2395.5,
+          "lcpElement": {
+            "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+            "nodeLabel": "A melhor edição de todos os tempos",
+            "snippet": "<p data-enter=\"true\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 4,
+          "speedIndexMs": 908.3,
+          "totalByteWeight": 420186,
+          "scriptTransferSize": 139461,
+          "scriptRequestCount": 6,
+          "requestCount": 26,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137922
+        },
+        "lcpSelectorsAcrossRuns": [
+          "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+        ],
+        "clsCulpritSelectorsAcrossRuns": {},
+        "maxCls": 0,
+        "nonCompositedAnimationsItemCountsAcrossRuns": [
+          0,
+          0,
+          0
+        ],
+        "lenisChunkRequestedAcrossRuns": [
+          false,
+          false,
+          false
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/after-galeria-mobile-1.json",
+            "fetchTime": "2026-10-07T23:18:03.105Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/galeria/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4072.5,
+            "performance": 98,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "fcpMs": 908.3,
+            "lcpMs": 2395.5,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.7,
+              "elementRenderDelay": 62.9
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 4,
+            "speedIndexMs": 908.3,
+            "totalByteWeight": 420186,
+            "scriptTransferSize": 139461,
+            "scriptRequestCount": 6,
+            "requestCount": 26,
+            "stylesheetTransferSize": 6525,
+            "stylesheetRequestCount": 3,
+            "documentTransferSize": 4379,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.91,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.98,
+            "observed": {
+              "fcpMs": 65,
+              "lcpMs": 65,
+              "loadMs": 198,
+              "domContentLoadedMs": 14
+            },
+            "networkRequestsItemCount": 26,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-galeria-mobile-2.json",
+            "fetchTime": "2026-10-07T23:18:13.644Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/galeria/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4116.5,
+            "performance": 98,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "fcpMs": 910.4,
+            "lcpMs": 2400.7,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.9,
+              "elementRenderDelay": 64.0
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 5,
+            "speedIndexMs": 910.4,
+            "totalByteWeight": 418326,
+            "scriptTransferSize": 139461,
+            "scriptRequestCount": 6,
+            "requestCount": 26,
+            "stylesheetTransferSize": 6525,
+            "stylesheetRequestCount": 3,
+            "documentTransferSize": 4379,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.91,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.98,
+            "observed": {
+              "fcpMs": 66,
+              "lcpMs": 66,
+              "loadMs": 286,
+              "domContentLoadedMs": 15
+            },
+            "networkRequestsItemCount": 26,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-galeria-mobile-3.json",
+            "fetchTime": "2026-10-07T23:18:24.282Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/galeria/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4068.5,
+            "performance": 98,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "fcpMs": 905.7,
+            "lcpMs": 2390.5,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.6,
+              "elementRenderDelay": 73.3
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 3.5,
+            "speedIndexMs": 905.7,
+            "totalByteWeight": 420187,
+            "scriptTransferSize": 139461,
+            "scriptRequestCount": 6,
+            "requestCount": 26,
+            "stylesheetTransferSize": 6525,
+            "stylesheetRequestCount": 3,
+            "documentTransferSize": 4379,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.92,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.98,
+            "observed": {
+              "fcpMs": 76,
+              "lcpMs": 76,
+              "loadMs": 246,
+              "domContentLoadedMs": 13
+            },
+            "networkRequestsItemCount": 26,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          }
+        ]
+      }
+    },
+    "album-i": {
+      "url": "http://127.0.0.1:4186/I%20GTAP/",
+      "initialModuleJsGzip9Bytes": 139435,
+      "desktop": {
+        "runCount": 3,
+        "medians": {
+          "performance": 85,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 247.0,
+          "lcpMs": 2728.2,
+          "lcpElement": {
+            "selector": "div.slider-for > div.slider-photo > picture > img",
+            "nodeLabel": "Imagem 1 do álbum",
+            "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 250.5,
+          "totalByteWeight": 2767976,
+          "scriptTransferSize": 146656,
+          "scriptRequestCount": 7,
+          "requestCount": 24,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 139435
+        },
+        "lcpSelectorsAcrossRuns": [
+          "div.slider-for > div.slider-photo > picture > img"
+        ],
+        "clsCulpritSelectorsAcrossRuns": {},
+        "maxCls": 0,
+        "nonCompositedAnimationsItemCountsAcrossRuns": [
+          0,
+          0,
+          0
+        ],
+        "lenisChunkRequestedAcrossRuns": [
+          true,
+          true,
+          true
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/after-album-i-desktop-1.json",
+            "fetchTime": "2026-10-07T23:18:35.054Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/I%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4139,
+            "performance": 86,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 247.0,
+            "lcpMs": 2641.3,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.3,
+              "resourceLoadDelay": 2.4,
+              "resourceLoadDuration": 333.3,
+              "elementRenderDelay": 83.7
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 259.6,
+            "totalByteWeight": 2767957,
+            "scriptTransferSize": 146656,
+            "scriptRequestCount": 7,
+            "requestCount": 24,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 7210,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.42,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.86,
+            "observed": {
+              "fcpMs": 55,
+              "lcpMs": 422,
+              "loadMs": 338,
+              "domContentLoadedMs": 13
+            },
+            "networkRequestsItemCount": 24,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 349.2
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-album-i-desktop-2.json",
+            "fetchTime": "2026-10-07T23:18:46.779Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/I%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4108,
+            "performance": 85,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 246.6,
+            "lcpMs": 2728.2,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.0,
+              "resourceLoadDelay": 2.4,
+              "resourceLoadDuration": 365.1,
+              "elementRenderDelay": 87.0
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 246.6,
+            "totalByteWeight": 2767976,
+            "scriptTransferSize": 146656,
+            "scriptRequestCount": 7,
+            "requestCount": 24,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 7210,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.4,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.85,
+            "observed": {
+              "fcpMs": 57,
+              "lcpMs": 457,
+              "loadMs": 379,
+              "domContentLoadedMs": 13
+            },
+            "networkRequestsItemCount": 24,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 384.9
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-album-i-desktop-3.json",
+            "fetchTime": "2026-10-07T23:18:58.470Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/I%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4122.5,
+            "performance": 85,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 250.5,
+            "lcpMs": 2775.9,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.9,
+              "resourceLoadDelay": 2.5,
+              "resourceLoadDuration": 361.4,
+              "elementRenderDelay": 87.0
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 250.5,
+            "totalByteWeight": 2768065,
+            "scriptTransferSize": 146656,
+            "scriptRequestCount": 7,
+            "requestCount": 24,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 7210,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.39,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.85,
+            "observed": {
+              "fcpMs": 69,
+              "lcpMs": 453,
+              "loadMs": 366,
+              "domContentLoadedMs": 13
+            },
+            "networkRequestsItemCount": 24,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 380.6
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          }
+        ]
+      },
+      "mobile": {
+        "runCount": 3,
+        "medians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 908.3,
+          "lcpMs": 16356.2,
+          "lcpElement": {
+            "selector": "div.slider-for > div.slider-photo > picture > img",
+            "nodeLabel": "Imagem 1 do álbum",
+            "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 8,
+          "speedIndexMs": 908.3,
+          "totalByteWeight": 2762375,
+          "scriptTransferSize": 141001,
+          "scriptRequestCount": 6,
+          "requestCount": 23,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 139435
+        },
+        "lcpSelectorsAcrossRuns": [
+          "div.slider-for > div.slider-photo > picture > img"
+        ],
+        "clsCulpritSelectorsAcrossRuns": {},
+        "maxCls": 0,
+        "nonCompositedAnimationsItemCountsAcrossRuns": [
+          0,
+          0,
+          0
+        ],
+        "lenisChunkRequestedAcrossRuns": [
+          false,
+          false,
+          false
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/after-album-i-mobile-1.json",
+            "fetchTime": "2026-10-07T23:19:10.182Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/I%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4101.5,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 908.3,
+            "lcpMs": 16370.3,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.6,
+              "resourceLoadDelay": 3.8,
+              "resourceLoadDuration": 355.5,
+              "elementRenderDelay": 82.3
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 8,
+            "speedIndexMs": 908.3,
+            "totalByteWeight": 2762398,
+            "scriptTransferSize": 141001,
+            "scriptRequestCount": 6,
+            "requestCount": 23,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 7210,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.75,
+            "observed": {
+              "fcpMs": 78,
+              "lcpMs": 444,
+              "loadMs": 363,
+              "domContentLoadedMs": 16
+            },
+            "networkRequestsItemCount": 23,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-album-i-mobile-2.json",
+            "fetchTime": "2026-10-07T23:19:21.953Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/I%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4113.5,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 906.8,
+            "lcpMs": 16059.7,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.9,
+              "resourceLoadDelay": 3.5,
+              "resourceLoadDuration": 408.3,
+              "elementRenderDelay": 90.2
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 5,
+            "speedIndexMs": 906.8,
+            "totalByteWeight": 2762341,
+            "scriptTransferSize": 141001,
+            "scriptRequestCount": 6,
+            "requestCount": 23,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 7210,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.75,
+            "observed": {
+              "fcpMs": 70,
+              "lcpMs": 504,
+              "loadMs": 415,
+              "domContentLoadedMs": 13
+            },
+            "networkRequestsItemCount": 23,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-album-i-mobile-3.json",
+            "fetchTime": "2026-10-07T23:19:33.642Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/I%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4120.5,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 908.8,
+            "lcpMs": 16356.2,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.7,
+              "resourceLoadDelay": 3.7,
+              "resourceLoadDuration": 355.8,
+              "elementRenderDelay": 78.2
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 9,
+            "speedIndexMs": 908.8,
+            "totalByteWeight": 2762375,
+            "scriptTransferSize": 141001,
+            "scriptRequestCount": 6,
+            "requestCount": 23,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 7210,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.75,
+            "observed": {
+              "fcpMs": 57,
+              "lcpMs": 440,
+              "loadMs": 363,
+              "domContentLoadedMs": 16
+            },
+            "networkRequestsItemCount": 23,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          }
+        ]
+      }
+    },
+    "album-viii": {
+      "url": "http://127.0.0.1:4186/VIII%20GTAP/",
+      "initialModuleJsGzip9Bytes": 139435,
+      "desktop": {
+        "runCount": 3,
+        "medians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 247.2,
+          "lcpMs": 9143.8,
+          "lcpElement": {
+            "selector": "div.slider-for > div.slider-photo > picture > img",
+            "nodeLabel": "Imagem 1 do álbum",
+            "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 247.2,
+          "totalByteWeight": 10877806,
+          "scriptTransferSize": 146656,
+          "scriptRequestCount": 7,
+          "requestCount": 24,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 139435
+        },
+        "lcpSelectorsAcrossRuns": [
+          "div.slider-for > div.slider-photo > picture > img"
+        ],
+        "clsCulpritSelectorsAcrossRuns": {
+          "body > section.container-edition-galeria > div.edition-galeria-left": [
+            3
+          ]
+        },
+        "maxCls": 0.002,
+        "nonCompositedAnimationsItemCountsAcrossRuns": [
+          0,
+          0,
+          0
+        ],
+        "lenisChunkRequestedAcrossRuns": [
+          true,
+          true,
+          true
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/after-album-viii-desktop-1.json",
+            "fetchTime": "2026-10-07T23:19:45.392Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/VIII%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4165,
+            "performance": 80,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 248.0,
+            "lcpMs": 3916.7,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.5,
+              "resourceLoadDelay": 2.5,
+              "resourceLoadDuration": 402.8,
+              "elementRenderDelay": 60.7
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 248.0,
+            "totalByteWeight": 10887390,
+            "scriptTransferSize": 146656,
+            "scriptRequestCount": 7,
+            "requestCount": 24,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 8226,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0.18,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.8,
+            "observed": {
+              "fcpMs": 69,
+              "lcpMs": 469,
+              "loadMs": 764,
+              "domContentLoadedMs": 15
+            },
+            "networkRequestsItemCount": 24,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 780.3
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-album-viii-desktop-2.json",
+            "fetchTime": "2026-10-07T23:19:58.746Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/VIII%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4132.5,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 246.6,
+            "lcpMs": 9307.8,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 3.0,
+              "resourceLoadDelay": 2.7,
+              "resourceLoadDuration": 498.6,
+              "elementRenderDelay": 87.0
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 246.6,
+            "totalByteWeight": 10877664,
+            "scriptTransferSize": 146656,
+            "scriptRequestCount": 7,
+            "requestCount": 24,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 8226,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.75,
+            "observed": {
+              "fcpMs": 58,
+              "lcpMs": 591,
+              "loadMs": 515,
+              "domContentLoadedMs": 14
+            },
+            "networkRequestsItemCount": 24,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 518.6
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-album-viii-desktop-3.json",
+            "fetchTime": "2026-10-07T23:20:16.052Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/VIII%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4048,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 247.2,
+            "lcpMs": 9143.8,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.9,
+              "resourceLoadDelay": 2.6,
+              "resourceLoadDuration": 492.4,
+              "elementRenderDelay": 99.7
+            },
+            "cls": 0.002,
+            "clsCulprits": [
+              {
+                "source": "cls-culprits-insight",
+                "selector": "body > section.container-edition-galeria > div.edition-galeria-left",
+                "nodeLabel": "Reviva os melhores momentos do maior congresso de Gestão Tributária na Administ…",
+                "score": 0.00202,
+                "causes": [
+                  "Unsized image element"
+                ]
+              },
+              {
+                "source": "layout-shifts",
+                "selector": "body > section.container-edition-galeria > div.edition-galeria-left",
+                "nodeLabel": "Reviva os melhores momentos do maior congresso de Gestão Tributária na Administ…",
+                "score": 0.00202,
+                "causes": [
+                  "Media element lacking an explicit size"
+                ]
+              }
+            ],
+            "tbtMs": 0,
+            "speedIndexMs": 247.2,
+            "totalByteWeight": 10877806,
+            "scriptTransferSize": 146656,
+            "scriptRequestCount": 7,
+            "requestCount": 24,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 8226,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.75,
+            "observed": {
+              "fcpMs": 64,
+              "lcpMs": 598,
+              "loadMs": 506,
+              "domContentLoadedMs": 24
+            },
+            "networkRequestsItemCount": 24,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": true,
+              "requests": [
+                {
+                  "url": "http://127.0.0.1:4186/_next/static/chunks/2j9yyl5qtr4km.js",
+                  "transferSize": 5655,
+                  "statusCode": 200,
+                  "networkRequestTime": 508.7
+                }
+              ]
+            },
+            "lazyChunksRequested": [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          }
+        ]
+      },
+      "mobile": {
+        "runCount": 3,
+        "medians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 906.4,
+          "lcpMs": 57821.1,
+          "lcpElement": {
+            "selector": "div.slider-for > div.slider-photo > picture > img",
+            "nodeLabel": "Imagem 1 do álbum",
+            "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 8,
+          "speedIndexMs": 906.4,
+          "totalByteWeight": 10872107,
+          "scriptTransferSize": 141001,
+          "scriptRequestCount": 6,
+          "requestCount": 23,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 139435
+        },
+        "lcpSelectorsAcrossRuns": [
+          "div.slider-for > div.slider-photo > picture > img"
+        ],
+        "clsCulpritSelectorsAcrossRuns": {},
+        "maxCls": 0,
+        "nonCompositedAnimationsItemCountsAcrossRuns": [
+          0,
+          0,
+          0
+        ],
+        "lenisChunkRequestedAcrossRuns": [
+          false,
+          false,
+          false
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/after-album-viii-mobile-1.json",
+            "fetchTime": "2026-10-07T23:20:33.208Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/VIII%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 3984,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 906.8,
+            "lcpMs": 57792.4,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.8,
+              "resourceLoadDelay": 3.8,
+              "resourceLoadDuration": 456.4,
+              "elementRenderDelay": 71.7
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 11,
+            "speedIndexMs": 906.8,
+            "totalByteWeight": 10872107,
+            "scriptTransferSize": 141001,
+            "scriptRequestCount": 6,
+            "requestCount": 23,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 8226,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.75,
+            "observed": {
+              "fcpMs": 68,
+              "lcpMs": 535,
+              "loadMs": 472,
+              "domContentLoadedMs": 18
+            },
+            "networkRequestsItemCount": 23,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-album-viii-mobile-2.json",
+            "fetchTime": "2026-10-07T23:20:52.705Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/VIII%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4061.5,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 906.4,
+            "lcpMs": 57834.4,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.6,
+              "resourceLoadDelay": 4.5,
+              "resourceLoadDuration": 491.9,
+              "elementRenderDelay": 61.2
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 5,
+            "speedIndexMs": 906.4,
+            "totalByteWeight": 10872065,
+            "scriptTransferSize": 141001,
+            "scriptRequestCount": 6,
+            "requestCount": 23,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 8226,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.75,
+            "observed": {
+              "fcpMs": 77,
+              "lcpMs": 560,
+              "loadMs": 545,
+              "domContentLoadedMs": 15
+            },
+            "networkRequestsItemCount": 23,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-album-viii-mobile-3.json",
+            "fetchTime": "2026-10-07T23:21:11.001Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/VIII%20GTAP/",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4089,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 905.6,
+            "lcpMs": 57821.1,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 3.0,
+              "resourceLoadDelay": 3.7,
+              "resourceLoadDuration": 639.6,
+              "elementRenderDelay": 59.5
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 8,
+            "speedIndexMs": 905.6,
+            "totalByteWeight": 10872112,
+            "scriptTransferSize": 141001,
+            "scriptRequestCount": 6,
+            "requestCount": 23,
+            "stylesheetTransferSize": 7042,
+            "stylesheetRequestCount": 4,
+            "documentTransferSize": 8226,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 0,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.75,
+            "observed": {
+              "fcpMs": 89,
+              "lcpMs": 706,
+              "loadMs": 652,
+              "domContentLoadedMs": 14
+            },
+            "networkRequestsItemCount": 23,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          }
+        ]
+      }
+    },
+    "404": {
+      "url": "http://127.0.0.1:4186/404.html",
+      "initialModuleJsGzip9Bytes": 135060,
+      "informational": true,
+      "desktop": {
+        "runCount": 3,
+        "medians": {
+          "performance": 100,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "fcpMs": 334.4,
+          "lcpMs": 464.4,
+          "lcpElement": {
+            "selector": "body > main.not-found > h1.not-found-title",
+            "nodeLabel": "Página não encontrada",
+            "snippet": "<h1 class=\"not-found-title\" data-enter=\"true\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 334.4,
+          "totalByteWeight": 196664,
+          "scriptTransferSize": 136419,
+          "scriptRequestCount": 5,
+          "requestCount": 9,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 135060
+        },
+        "lcpSelectorsAcrossRuns": [
+          "body > main.not-found > h1.not-found-title"
+        ],
+        "clsCulpritSelectorsAcrossRuns": {},
+        "maxCls": 0,
+        "nonCompositedAnimationsItemCountsAcrossRuns": [
+          0,
+          0,
+          0
+        ],
+        "lenisChunkRequestedAcrossRuns": [
+          false,
+          false,
+          false
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/after-404-desktop-1.json",
+            "fetchTime": "2026-10-07T23:21:29.189Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/404.html",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 3808.5,
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "fcpMs": 334.1,
+            "lcpMs": 464.4,
+            "lcpElement": {
+              "selector": "body > main.not-found > h1.not-found-title",
+              "nodeLabel": "Página não encontrada",
+              "snippet": "<h1 class=\"not-found-title\" data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.8,
+              "elementRenderDelay": 65.4
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 334.1,
+            "totalByteWeight": 196664,
+            "scriptTransferSize": 136419,
+            "scriptRequestCount": 5,
+            "requestCount": 9,
+            "stylesheetTransferSize": 2954,
+            "stylesheetRequestCount": 1,
+            "documentTransferSize": 2395,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 1,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 1,
+            "observed": {
+              "fcpMs": 68,
+              "lcpMs": 68,
+              "loadMs": 45,
+              "domContentLoadedMs": 10
+            },
+            "networkRequestsItemCount": 9,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-404-desktop-2.json",
+            "fetchTime": "2026-10-07T23:21:39.616Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/404.html",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 3915,
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "fcpMs": 334.4,
+            "lcpMs": 463.6,
+            "lcpElement": {
+              "selector": "body > main.not-found > h1.not-found-title",
+              "nodeLabel": "Página não encontrada",
+              "snippet": "<h1 class=\"not-found-title\" data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.9,
+              "elementRenderDelay": 43.4
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 334.4,
+            "totalByteWeight": 196664,
+            "scriptTransferSize": 136419,
+            "scriptRequestCount": 5,
+            "requestCount": 9,
+            "stylesheetTransferSize": 2954,
+            "stylesheetRequestCount": 1,
+            "documentTransferSize": 2395,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 1,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 1,
+            "observed": {
+              "fcpMs": 45,
+              "lcpMs": 45,
+              "loadMs": 38,
+              "domContentLoadedMs": 18
+            },
+            "networkRequestsItemCount": 9,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-404-desktop-3.json",
+            "fetchTime": "2026-10-07T23:21:50.212Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/404.html",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 3912,
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "fcpMs": 337.7,
+            "lcpMs": 466.8,
+            "lcpElement": {
+              "selector": "body > main.not-found > h1.not-found-title",
+              "nodeLabel": "Página não encontrada",
+              "snippet": "<h1 class=\"not-found-title\" data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 4.5,
+              "elementRenderDelay": 71.1
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 0,
+            "speedIndexMs": 337.7,
+            "totalByteWeight": 196664,
+            "scriptTransferSize": 136419,
+            "scriptRequestCount": 5,
+            "requestCount": 9,
+            "stylesheetTransferSize": 2954,
+            "stylesheetRequestCount": 1,
+            "documentTransferSize": 2395,
+            "metricScores": {
+              "first-contentful-paint": 1,
+              "largest-contentful-paint": 1,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 1,
+            "observed": {
+              "fcpMs": 76,
+              "lcpMs": 76,
+              "loadMs": 49,
+              "domContentLoadedMs": 15
+            },
+            "networkRequestsItemCount": 9,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          }
+        ]
+      },
+      "mobile": {
+        "runCount": 3,
+        "medians": {
+          "performance": 99,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "fcpMs": 1214.5,
+          "lcpMs": 2166.2,
+          "lcpElement": {
+            "selector": "body > main.not-found > h1.not-found-title",
+            "nodeLabel": "Página não encontrada",
+            "snippet": "<h1 class=\"not-found-title\" data-enter=\"true\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 6,
+          "speedIndexMs": 1214.5,
+          "totalByteWeight": 196664,
+          "scriptTransferSize": 136419,
+          "scriptRequestCount": 5,
+          "requestCount": 9,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 135060
+        },
+        "lcpSelectorsAcrossRuns": [
+          "body > main.not-found > h1.not-found-title"
+        ],
+        "clsCulpritSelectorsAcrossRuns": {},
+        "maxCls": 0,
+        "nonCompositedAnimationsItemCountsAcrossRuns": [
+          0,
+          0,
+          0
+        ],
+        "lenisChunkRequestedAcrossRuns": [
+          false,
+          false,
+          false
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/after-404-mobile-1.json",
+            "fetchTime": "2026-10-07T23:22:00.610Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/404.html",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4007,
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "fcpMs": 1214.5,
+            "lcpMs": 2167.7,
+            "lcpElement": {
+              "selector": "body > main.not-found > h1.not-found-title",
+              "nodeLabel": "Página não encontrada",
+              "snippet": "<h1 class=\"not-found-title\" data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.1,
+              "elementRenderDelay": 59.1
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 8,
+            "speedIndexMs": 1214.5,
+            "totalByteWeight": 196664,
+            "scriptTransferSize": 136419,
+            "scriptRequestCount": 5,
+            "requestCount": 9,
+            "stylesheetTransferSize": 2954,
+            "stylesheetRequestCount": 1,
+            "documentTransferSize": 2395,
+            "metricScores": {
+              "first-contentful-paint": 0.99,
+              "largest-contentful-paint": 0.95,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.99,
+            "observed": {
+              "fcpMs": 61,
+              "lcpMs": 61,
+              "loadMs": 47,
+              "domContentLoadedMs": 12
+            },
+            "networkRequestsItemCount": 9,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-404-mobile-2.json",
+            "fetchTime": "2026-10-07T23:22:10.875Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/404.html",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4117.5,
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "fcpMs": 1215.3,
+            "lcpMs": 2166.2,
+            "lcpElement": {
+              "selector": "body > main.not-found > h1.not-found-title",
+              "nodeLabel": "Página não encontrada",
+              "snippet": "<h1 class=\"not-found-title\" data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.8,
+              "elementRenderDelay": 51.8
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 6,
+            "speedIndexMs": 1215.3,
+            "totalByteWeight": 196664,
+            "scriptTransferSize": 136419,
+            "scriptRequestCount": 5,
+            "requestCount": 9,
+            "stylesheetTransferSize": 2954,
+            "stylesheetRequestCount": 1,
+            "documentTransferSize": 2395,
+            "metricScores": {
+              "first-contentful-paint": 0.99,
+              "largest-contentful-paint": 0.95,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.99,
+            "observed": {
+              "fcpMs": 54,
+              "lcpMs": 54,
+              "loadMs": 44,
+              "domContentLoadedMs": 11
+            },
+            "networkRequestsItemCount": 9,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          },
+          {
+            "file": "docs/specs/static-performance/round3/after-404-mobile-3.json",
+            "fetchTime": "2026-10-07T23:22:21.177Z",
+            "finalDisplayedUrl": "http://127.0.0.1:4186/404.html",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4150,
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "fcpMs": 1211.1,
+            "lcpMs": 2163.4,
+            "lcpElement": {
+              "selector": "body > main.not-found > h1.not-found-title",
+              "nodeLabel": "Página não encontrada",
+              "snippet": "<h1 class=\"not-found-title\" data-enter=\"true\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.8,
+              "elementRenderDelay": 65.7
+            },
+            "cls": 0,
+            "clsCulprits": [],
+            "tbtMs": 6,
+            "speedIndexMs": 1211.1,
+            "totalByteWeight": 196664,
+            "scriptTransferSize": 136419,
+            "scriptRequestCount": 5,
+            "requestCount": 9,
+            "stylesheetTransferSize": 2954,
+            "stylesheetRequestCount": 1,
+            "documentTransferSize": 2395,
+            "metricScores": {
+              "first-contentful-paint": 0.99,
+              "largest-contentful-paint": 0.95,
+              "total-blocking-time": 1,
+              "cumulative-layout-shift": 1,
+              "speed-index": 1
+            },
+            "rawPerformanceScore": 0.99,
+            "observed": {
+              "fcpMs": 68,
+              "lcpMs": 68,
+              "loadMs": 37,
+              "domContentLoadedMs": 11
+            },
+            "networkRequestsItemCount": 9,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable",
+              "displayValue": null,
+              "items": []
+            },
+            "lenisChunk": {
+              "requested": false,
+              "requests": []
+            },
+            "lazyChunksRequested": []
+          }
+        ]
+      }
+    }
+  },
+  "environment": {
+    "lighthouseVersion": "13.0.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+  },
+  "comparison": {
+    "home": {
+      "desktop": {
+        "beforeMedians": {
+          "performance": 100,
+          "accessibility": 95,
+          "bestPractices": 100,
+          "fcpMs": 289.1,
+          "lcpMs": 683.9,
+          "cls": 0.0002,
+          "tbtMs": 0,
+          "speedIndexMs": 583.8,
+          "totalByteWeight": 4199009,
+          "scriptTransferSize": 144952,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 143377,
+          "lcpSelector": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+          "requestCount": 28
+        },
+        "afterMedians": {
+          "performance": 100,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 287.6,
+          "lcpMs": 717.0,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 586.6,
+          "totalByteWeight": 5199222,
+          "scriptTransferSize": 153282,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 145852,
+          "lcpSelector": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+          "requestCount": 29
+        },
+        "deltas": {
+          "performance": 0,
+          "accessibility": 3,
+          "bestPractices": 0,
+          "fcpMs": -1.5,
+          "lcpMs": 33.1,
+          "lcpPct": 4.84,
+          "cls": -0.0002,
+          "tbtMs": 0,
+          "speedIndexMs": 2.8,
+          "totalByteWeight": 1000213,
+          "scriptTransferSize": 8330,
+          "requestCount": 1,
+          "initialModuleJsGzip9Bytes": 2475
+        },
+        "lenisChunkRequestedAcrossRuns": [
+          true,
+          true,
+          true
+        ],
+        "supplementary": {
+          "stylesheetTransferSize": {
+            "beforeMedian": 8202,
+            "afterMedian": 12607
+          },
+          "stylesheetRequestCount": {
+            "beforeMedian": 5,
+            "afterMedian": 4
+          },
+          "scriptRequestCount": {
+            "beforeMedian": 6,
+            "afterMedian": 8
+          },
+          "documentTransferSize": {
+            "beforeMedian": 19077,
+            "afterMedian": 19647
+          },
+          "lcpMetricScores": {
+            "before": [
+              0.99,
+              0.99,
+              0.99
+            ],
+            "after": [
+              0.99,
+              0.99,
+              0.99
+            ]
+          },
+          "lazyChunksRequestedAcrossRuns": [
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ],
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ],
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          ]
+        },
+        "gates": {
+          "performance": {
+            "pass": true,
+            "before": 100,
+            "after": 100,
+            "rule": "after median >= before median",
+            "afterRuns": [
+              98,
+              100,
+              100
+            ]
+          },
+          "lcpElement": {
+            "pass": true,
+            "before": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+            "after": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+            "afterSelectorsAcrossRuns": [
+              "div.card-buttons-container > div.card-button-left > div.button-left-condition > p"
+            ],
+            "allRunsSame": true,
+            "rule": "median-run LCP selector identical to before"
+          },
+          "lcp": {
+            "pass": true,
+            "beforeMs": 683.9,
+            "afterMs": 717.0,
+            "limitMs": 733.9,
+            "allowanceMs": 50.0,
+            "afterRunsMs": [
+              721.3,
+              682.8,
+              717.0
+            ],
+            "rule": "after median <= before + max(5%, 50 ms)"
+          },
+          "cls": {
+            "pass": true,
+            "before": 0.0002,
+            "after": 0,
+            "afterMax": 0,
+            "afterRuns": [
+              0,
+              0,
+              0
+            ],
+            "beforeCulprits": {
+              "div.card-button-right > div.button-right-submit > a > button": [
+                1,
+                2,
+                3
+              ]
+            },
+            "afterCulprits": {},
+            "newCulprits": [],
+            "rule": "after median <= 0.005 and no culprit selector absent from before runs"
+          },
+          "tbt": {
+            "pass": true,
+            "beforeMs": 0,
+            "afterMs": 0,
+            "limitMs": 10.0,
+            "afterRunsMs": [
+              105.5,
+              0,
+              0
+            ],
+            "rule": "after median <= max(10 ms, before median)"
+          },
+          "nonCompositedAnimations": {
+            "pass": true,
+            "beforeItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "afterItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "items": [],
+            "rule": "0 items in every after run"
+          }
+        },
+        "allGatesPass": true
+      },
+      "mobile": {
+        "beforeMedians": {
+          "performance": 94,
+          "accessibility": 93,
+          "bestPractices": 100,
+          "fcpMs": 1054.9,
+          "lcpMs": 3143.9,
+          "cls": 0.0032,
+          "tbtMs": 4.5,
+          "speedIndexMs": 1054.9,
+          "totalByteWeight": 4621106,
+          "scriptTransferSize": 144952,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 143377,
+          "lcpSelector": "body > section.section-atuacao",
+          "requestCount": 26
+        },
+        "afterMedians": {
+          "performance": 93,
+          "accessibility": 97,
+          "bestPractices": 100,
+          "fcpMs": 1057.1,
+          "lcpMs": 3224.7,
+          "cls": 0,
+          "tbtMs": 7.5,
+          "speedIndexMs": 1057.1,
+          "totalByteWeight": 4894768,
+          "scriptTransferSize": 147627,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 145852,
+          "lcpSelector": "body > section.section-atuacao",
+          "requestCount": 26
+        },
+        "deltas": {
+          "performance": -1,
+          "accessibility": 4,
+          "bestPractices": 0,
+          "fcpMs": 2.2,
+          "lcpMs": 80.8,
+          "lcpPct": 2.57,
+          "cls": -0.0032,
+          "tbtMs": 3.0,
+          "speedIndexMs": 2.2,
+          "totalByteWeight": 273662,
+          "scriptTransferSize": 2675,
+          "requestCount": 0,
+          "initialModuleJsGzip9Bytes": 2475
+        },
+        "lenisChunkRequestedAcrossRuns": [
+          false,
+          false,
+          false
+        ],
+        "supplementary": {
+          "stylesheetTransferSize": {
+            "beforeMedian": 8202,
+            "afterMedian": 12607
+          },
+          "stylesheetRequestCount": {
+            "beforeMedian": 5,
+            "afterMedian": 4
+          },
+          "scriptRequestCount": {
+            "beforeMedian": 6,
+            "afterMedian": 7
+          },
+          "documentTransferSize": {
+            "beforeMedian": 19077,
+            "afterMedian": 19647
+          },
+          "lcpMetricScores": {
+            "before": [
+              0.74,
+              0.76,
+              0.74
+            ],
+            "after": [
+              0.72,
+              0.72,
+              0.72
+            ]
+          },
+          "lazyChunksRequestedAcrossRuns": [
+            [],
+            [],
+            []
+          ]
+        },
+        "gates": {
+          "performance": {
+            "pass": false,
+            "before": 94,
+            "after": 93,
+            "rule": "after median >= before median",
+            "afterRuns": [
+              90,
+              93,
+              93
+            ]
+          },
+          "lcpElement": {
+            "pass": true,
+            "before": "body > section.section-atuacao",
+            "after": "body > section.section-atuacao",
+            "afterSelectorsAcrossRuns": [
+              "body > section.section-atuacao"
+            ],
+            "allRunsSame": true,
+            "rule": "median-run LCP selector identical to before"
+          },
+          "lcp": {
+            "pass": true,
+            "beforeMs": 3143.9,
+            "afterMs": 3224.7,
+            "limitMs": 3301.1,
+            "allowanceMs": 157.2,
+            "afterRunsMs": [
+              3224.4,
+              3227.5,
+              3224.7
+            ],
+            "rule": "after median <= before + max(5%, 50 ms)"
+          },
+          "cls": {
+            "pass": true,
+            "before": 0.0032,
+            "after": 0,
+            "afterMax": 0,
+            "afterRuns": [
+              0,
+              0,
+              0
+            ],
+            "beforeCulprits": {
+              "body > div.card-buttons-container": [
+                1,
+                2,
+                3
+              ]
+            },
+            "afterCulprits": {},
+            "newCulprits": [],
+            "rule": "after median <= 0.005 and no culprit selector absent from before runs"
+          },
+          "tbt": {
+            "pass": true,
+            "beforeMs": 4.5,
+            "afterMs": 7.5,
+            "limitMs": 10.0,
+            "afterRunsMs": [
+              204,
+              7.5,
+              6.5
+            ],
+            "rule": "after median <= max(10 ms, before median)"
+          },
+          "nonCompositedAnimations": {
+            "pass": true,
+            "beforeItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "afterItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "items": [],
+            "rule": "0 items in every after run"
+          }
+        },
+        "allGatesPass": false
+      }
+    },
+    "galeria": {
+      "desktop": {
+        "beforeMedians": {
+          "performance": 100,
+          "accessibility": 97,
+          "bestPractices": 100,
+          "fcpMs": 247.1,
+          "lcpMs": 544.6,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 247.1,
+          "totalByteWeight": 467290,
+          "scriptTransferSize": 138254,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 136687,
+          "lcpSelector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+          "requestCount": 26
+        },
+        "afterMedians": {
+          "performance": 100,
+          "accessibility": 96,
+          "bestPractices": 100,
+          "fcpMs": 250.3,
+          "lcpMs": 549.8,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 250.3,
+          "totalByteWeight": 476965,
+          "scriptTransferSize": 145116,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137922,
+          "lcpSelector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+          "requestCount": 27
+        },
+        "deltas": {
+          "performance": 0,
+          "accessibility": -1,
+          "bestPractices": 0,
+          "fcpMs": 3.2,
+          "lcpMs": 5.2,
+          "lcpPct": 0.95,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 3.2,
+          "totalByteWeight": 9675,
+          "scriptTransferSize": 6862,
+          "requestCount": 1,
+          "initialModuleJsGzip9Bytes": 1235
+        },
+        "lenisChunkRequestedAcrossRuns": [
+          true,
+          true,
+          true
+        ],
+        "supplementary": {
+          "stylesheetTransferSize": {
+            "beforeMedian": 3864,
+            "afterMedian": 6525
+          },
+          "stylesheetRequestCount": {
+            "beforeMedian": 3,
+            "afterMedian": 3
+          },
+          "scriptRequestCount": {
+            "beforeMedian": 6,
+            "afterMedian": 7
+          },
+          "documentTransferSize": {
+            "beforeMedian": 4215,
+            "afterMedian": 4379
+          },
+          "lcpMetricScores": {
+            "before": [
+              1,
+              1,
+              1
+            ],
+            "after": [
+              1,
+              1,
+              1
+            ]
+          },
+          "lazyChunksRequestedAcrossRuns": [
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ],
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ],
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          ]
+        },
+        "gates": {
+          "performance": {
+            "pass": true,
+            "before": 100,
+            "after": 100,
+            "rule": "after median >= before median",
+            "afterRuns": [
+              100,
+              100,
+              100
+            ]
+          },
+          "lcpElement": {
+            "pass": true,
+            "before": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+            "after": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+            "afterSelectorsAcrossRuns": [
+              "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+            ],
+            "allRunsSame": true,
+            "rule": "median-run LCP selector identical to before"
+          },
+          "lcp": {
+            "pass": true,
+            "beforeMs": 544.6,
+            "afterMs": 549.8,
+            "limitMs": 594.6,
+            "allowanceMs": 50.0,
+            "afterRunsMs": [
+              549.8,
+              546.5,
+              551.4
+            ],
+            "rule": "after median <= before + max(5%, 50 ms)"
+          },
+          "cls": {
+            "pass": true,
+            "before": 0,
+            "after": 0,
+            "afterMax": 0,
+            "afterRuns": [
+              0,
+              0,
+              0
+            ],
+            "beforeCulprits": {},
+            "afterCulprits": {},
+            "newCulprits": [],
+            "rule": "after median <= 0.005 and no culprit selector absent from before runs"
+          },
+          "tbt": {
+            "pass": true,
+            "beforeMs": 0,
+            "afterMs": 0,
+            "limitMs": 10.0,
+            "afterRunsMs": [
+              0,
+              0,
+              0
+            ],
+            "rule": "after median <= max(10 ms, before median)"
+          },
+          "nonCompositedAnimations": {
+            "pass": true,
+            "beforeItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "afterItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "items": [],
+            "rule": "0 items in every after run"
+          }
+        },
+        "allGatesPass": true
+      },
+      "mobile": {
+        "beforeMedians": {
+          "performance": 98,
+          "accessibility": 96,
+          "bestPractices": 100,
+          "fcpMs": 906.4,
+          "lcpMs": 2391.6,
+          "cls": 0,
+          "tbtMs": 3.5,
+          "speedIndexMs": 906.4,
+          "totalByteWeight": 416161,
+          "scriptTransferSize": 138254,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 136687,
+          "lcpSelector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+          "requestCount": 26
+        },
+        "afterMedians": {
+          "performance": 98,
+          "accessibility": 96,
+          "bestPractices": 100,
+          "fcpMs": 908.3,
+          "lcpMs": 2395.5,
+          "cls": 0,
+          "tbtMs": 4,
+          "speedIndexMs": 908.3,
+          "totalByteWeight": 420186,
+          "scriptTransferSize": 139461,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137922,
+          "lcpSelector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+          "requestCount": 26
+        },
+        "deltas": {
+          "performance": 0,
+          "accessibility": 0,
+          "bestPractices": 0,
+          "fcpMs": 1.9,
+          "lcpMs": 3.9,
+          "lcpPct": 0.16,
+          "cls": 0,
+          "tbtMs": 0.5,
+          "speedIndexMs": 1.9,
+          "totalByteWeight": 4025,
+          "scriptTransferSize": 1207,
+          "requestCount": 0,
+          "initialModuleJsGzip9Bytes": 1235
+        },
+        "lenisChunkRequestedAcrossRuns": [
+          false,
+          false,
+          false
+        ],
+        "supplementary": {
+          "stylesheetTransferSize": {
+            "beforeMedian": 3864,
+            "afterMedian": 6525
+          },
+          "stylesheetRequestCount": {
+            "beforeMedian": 3,
+            "afterMedian": 3
+          },
+          "scriptRequestCount": {
+            "beforeMedian": 6,
+            "afterMedian": 6
+          },
+          "documentTransferSize": {
+            "beforeMedian": 4215,
+            "afterMedian": 4379
+          },
+          "lcpMetricScores": {
+            "before": [
+              0.92,
+              0.92,
+              0.92
+            ],
+            "after": [
+              0.91,
+              0.91,
+              0.92
+            ]
+          },
+          "lazyChunksRequestedAcrossRuns": [
+            [],
+            [],
+            []
+          ]
+        },
+        "gates": {
+          "performance": {
+            "pass": true,
+            "before": 98,
+            "after": 98,
+            "rule": "after median >= before median",
+            "afterRuns": [
+              98,
+              98,
+              98
+            ]
+          },
+          "lcpElement": {
+            "pass": true,
+            "before": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+            "after": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+            "afterSelectorsAcrossRuns": [
+              "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+            ],
+            "allRunsSame": true,
+            "rule": "median-run LCP selector identical to before"
+          },
+          "lcp": {
+            "pass": true,
+            "beforeMs": 2391.6,
+            "afterMs": 2395.5,
+            "limitMs": 2511.2,
+            "allowanceMs": 119.6,
+            "afterRunsMs": [
+              2395.5,
+              2400.7,
+              2390.5
+            ],
+            "rule": "after median <= before + max(5%, 50 ms)"
+          },
+          "cls": {
+            "pass": true,
+            "before": 0,
+            "after": 0,
+            "afterMax": 0,
+            "afterRuns": [
+              0,
+              0,
+              0
+            ],
+            "beforeCulprits": {},
+            "afterCulprits": {},
+            "newCulprits": [],
+            "rule": "after median <= 0.005 and no culprit selector absent from before runs"
+          },
+          "tbt": {
+            "pass": true,
+            "beforeMs": 3.5,
+            "afterMs": 4,
+            "limitMs": 10.0,
+            "afterRunsMs": [
+              4,
+              5,
+              3.5
+            ],
+            "rule": "after median <= max(10 ms, before median)"
+          },
+          "nonCompositedAnimations": {
+            "pass": true,
+            "beforeItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "afterItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "items": [],
+            "rule": "0 items in every after run"
+          }
+        },
+        "allGatesPass": true
+      }
+    },
+    "album-i": {
+      "desktop": {
+        "beforeMedians": {
+          "performance": 83,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 249,
+          "lcpMs": 3153.3,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 249.4,
+          "totalByteWeight": 5770232,
+          "scriptTransferSize": 139053,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137477,
+          "lcpSelector": "div.slider-for > div.slider-photo > picture > img",
+          "requestCount": 33
+        },
+        "afterMedians": {
+          "performance": 85,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 247.0,
+          "lcpMs": 2728.2,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 250.5,
+          "totalByteWeight": 2767976,
+          "scriptTransferSize": 146656,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 139435,
+          "lcpSelector": "div.slider-for > div.slider-photo > picture > img",
+          "requestCount": 24
+        },
+        "deltas": {
+          "performance": 2,
+          "accessibility": 0,
+          "bestPractices": 0,
+          "fcpMs": -2.0,
+          "lcpMs": -425.1,
+          "lcpPct": -13.48,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 1.1,
+          "totalByteWeight": -3002256,
+          "scriptTransferSize": 7603,
+          "requestCount": -9,
+          "initialModuleJsGzip9Bytes": 1958
+        },
+        "lenisChunkRequestedAcrossRuns": [
+          true,
+          true,
+          true
+        ],
+        "supplementary": {
+          "stylesheetTransferSize": {
+            "beforeMedian": 4484,
+            "afterMedian": 7042
+          },
+          "stylesheetRequestCount": {
+            "beforeMedian": 4,
+            "afterMedian": 4
+          },
+          "scriptRequestCount": {
+            "beforeMedian": 6,
+            "afterMedian": 7
+          },
+          "documentTransferSize": {
+            "beforeMedian": 6841,
+            "afterMedian": 7210
+          },
+          "lcpMetricScores": {
+            "before": [
+              0.29,
+              0.3,
+              0.3
+            ],
+            "after": [
+              0.42,
+              0.4,
+              0.39
+            ]
+          },
+          "lazyChunksRequestedAcrossRuns": [
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ],
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ],
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          ]
+        },
+        "gates": {
+          "performance": {
+            "pass": true,
+            "before": 83,
+            "after": 85,
+            "rule": "after median >= before median",
+            "afterRuns": [
+              86,
+              85,
+              85
+            ]
+          },
+          "lcpElement": {
+            "pass": true,
+            "before": "div.slider-for > div.slider-photo > picture > img",
+            "after": "div.slider-for > div.slider-photo > picture > img",
+            "afterSelectorsAcrossRuns": [
+              "div.slider-for > div.slider-photo > picture > img"
+            ],
+            "allRunsSame": true,
+            "rule": "median-run LCP selector identical to before"
+          },
+          "lcp": {
+            "pass": true,
+            "beforeMs": 3153.3,
+            "afterMs": 2728.2,
+            "limitMs": 3311.0,
+            "allowanceMs": 157.7,
+            "afterRunsMs": [
+              2641.3,
+              2728.2,
+              2775.9
+            ],
+            "rule": "after median <= before + max(5%, 50 ms)"
+          },
+          "cls": {
+            "pass": true,
+            "before": 0,
+            "after": 0,
+            "afterMax": 0,
+            "afterRuns": [
+              0,
+              0,
+              0
+            ],
+            "beforeCulprits": {
+              "body > section.container-edition-galeria > div.edition-galeria-left": [
+                2
+              ]
+            },
+            "afterCulprits": {},
+            "newCulprits": [],
+            "rule": "after median <= 0.005 and no culprit selector absent from before runs"
+          },
+          "tbt": {
+            "pass": true,
+            "beforeMs": 0,
+            "afterMs": 0,
+            "limitMs": 10.0,
+            "afterRunsMs": [
+              0,
+              0,
+              0
+            ],
+            "rule": "after median <= max(10 ms, before median)"
+          },
+          "nonCompositedAnimations": {
+            "pass": true,
+            "beforeItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "afterItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "items": [],
+            "rule": "0 items in every after run"
+          }
+        },
+        "allGatesPass": true
+      },
+      "mobile": {
+        "beforeMedians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 906.9,
+          "lcpMs": 19405.5,
+          "cls": 0,
+          "tbtMs": 9,
+          "speedIndexMs": 906.9,
+          "totalByteWeight": 8891712,
+          "scriptTransferSize": 139053,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137477,
+          "lcpSelector": "div.slider-for > div.slider-photo > picture > img",
+          "requestCount": 40
+        },
+        "afterMedians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 908.3,
+          "lcpMs": 16356.2,
+          "cls": 0,
+          "tbtMs": 8,
+          "speedIndexMs": 908.3,
+          "totalByteWeight": 2762375,
+          "scriptTransferSize": 141001,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 139435,
+          "lcpSelector": "div.slider-for > div.slider-photo > picture > img",
+          "requestCount": 23
+        },
+        "deltas": {
+          "performance": 0,
+          "accessibility": 0,
+          "bestPractices": 0,
+          "fcpMs": 1.4,
+          "lcpMs": -3049.3,
+          "lcpPct": -15.71,
+          "cls": 0,
+          "tbtMs": -1,
+          "speedIndexMs": 1.4,
+          "totalByteWeight": -6129337,
+          "scriptTransferSize": 1948,
+          "requestCount": -17,
+          "initialModuleJsGzip9Bytes": 1958
+        },
+        "lenisChunkRequestedAcrossRuns": [
+          false,
+          false,
+          false
+        ],
+        "supplementary": {
+          "stylesheetTransferSize": {
+            "beforeMedian": 4484,
+            "afterMedian": 7042
+          },
+          "stylesheetRequestCount": {
+            "beforeMedian": 4,
+            "afterMedian": 4
+          },
+          "scriptRequestCount": {
+            "beforeMedian": 6,
+            "afterMedian": 6
+          },
+          "documentTransferSize": {
+            "beforeMedian": 6841,
+            "afterMedian": 7210
+          },
+          "lcpMetricScores": {
+            "before": [
+              0,
+              0,
+              0
+            ],
+            "after": [
+              0,
+              0,
+              0
+            ]
+          },
+          "lazyChunksRequestedAcrossRuns": [
+            [],
+            [],
+            []
+          ]
+        },
+        "gates": {
+          "performance": {
+            "pass": true,
+            "before": 75,
+            "after": 75,
+            "rule": "after median >= before median",
+            "afterRuns": [
+              75,
+              75,
+              75
+            ]
+          },
+          "lcpElement": {
+            "pass": true,
+            "before": "div.slider-for > div.slider-photo > picture > img",
+            "after": "div.slider-for > div.slider-photo > picture > img",
+            "afterSelectorsAcrossRuns": [
+              "div.slider-for > div.slider-photo > picture > img"
+            ],
+            "allRunsSame": true,
+            "rule": "median-run LCP selector identical to before"
+          },
+          "lcp": {
+            "pass": true,
+            "beforeMs": 19405.5,
+            "afterMs": 16356.2,
+            "limitMs": 20375.8,
+            "allowanceMs": 970.3,
+            "afterRunsMs": [
+              16370.3,
+              16059.7,
+              16356.2
+            ],
+            "rule": "after median <= before + max(5%, 50 ms)"
+          },
+          "cls": {
+            "pass": true,
+            "before": 0,
+            "after": 0,
+            "afterMax": 0,
+            "afterRuns": [
+              0,
+              0,
+              0
+            ],
+            "beforeCulprits": {},
+            "afterCulprits": {},
+            "newCulprits": [],
+            "rule": "after median <= 0.005 and no culprit selector absent from before runs"
+          },
+          "tbt": {
+            "pass": true,
+            "beforeMs": 9,
+            "afterMs": 8,
+            "limitMs": 10.0,
+            "afterRunsMs": [
+              8,
+              5,
+              9
+            ],
+            "rule": "after median <= max(10 ms, before median)"
+          },
+          "nonCompositedAnimations": {
+            "pass": true,
+            "beforeItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "afterItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "items": [],
+            "rule": "0 items in every after run"
+          }
+        },
+        "allGatesPass": true
+      }
+    },
+    "album-viii": {
+      "desktop": {
+        "beforeMedians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 250.5,
+          "lcpMs": 9969.2,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 250.5,
+          "totalByteWeight": 37098259,
+          "scriptTransferSize": 139053,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137477,
+          "lcpSelector": "div.slider-for > div.slider-photo > picture > img",
+          "requestCount": 33
+        },
+        "afterMedians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 247.2,
+          "lcpMs": 9143.8,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 247.2,
+          "totalByteWeight": 10877806,
+          "scriptTransferSize": 146656,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 139435,
+          "lcpSelector": "div.slider-for > div.slider-photo > picture > img",
+          "requestCount": 24
+        },
+        "deltas": {
+          "performance": 0,
+          "accessibility": 0,
+          "bestPractices": 0,
+          "fcpMs": -3.3,
+          "lcpMs": -825.4,
+          "lcpPct": -8.28,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": -3.3,
+          "totalByteWeight": -26220453,
+          "scriptTransferSize": 7603,
+          "requestCount": -9,
+          "initialModuleJsGzip9Bytes": 1958
+        },
+        "lenisChunkRequestedAcrossRuns": [
+          true,
+          true,
+          true
+        ],
+        "supplementary": {
+          "stylesheetTransferSize": {
+            "beforeMedian": 4484,
+            "afterMedian": 7042
+          },
+          "stylesheetRequestCount": {
+            "beforeMedian": 4,
+            "afterMedian": 4
+          },
+          "scriptRequestCount": {
+            "beforeMedian": 6,
+            "afterMedian": 7
+          },
+          "documentTransferSize": {
+            "beforeMedian": 7789,
+            "afterMedian": 8226
+          },
+          "lcpMetricScores": {
+            "before": [
+              0,
+              0,
+              0
+            ],
+            "after": [
+              0.18,
+              0,
+              0
+            ]
+          },
+          "lazyChunksRequestedAcrossRuns": [
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ],
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ],
+            [
+              "/_next/static/chunks/2j9yyl5qtr4km.js"
+            ]
+          ]
+        },
+        "gates": {
+          "performance": {
+            "pass": true,
+            "before": 75,
+            "after": 75,
+            "rule": "after median >= before median",
+            "afterRuns": [
+              80,
+              75,
+              75
+            ]
+          },
+          "lcpElement": {
+            "pass": true,
+            "before": "div.slider-for > div.slider-photo > picture > img",
+            "after": "div.slider-for > div.slider-photo > picture > img",
+            "afterSelectorsAcrossRuns": [
+              "div.slider-for > div.slider-photo > picture > img"
+            ],
+            "allRunsSame": true,
+            "rule": "median-run LCP selector identical to before"
+          },
+          "lcp": {
+            "pass": true,
+            "beforeMs": 9969.2,
+            "afterMs": 9143.8,
+            "limitMs": 10467.7,
+            "allowanceMs": 498.5,
+            "afterRunsMs": [
+              3916.7,
+              9307.8,
+              9143.8
+            ],
+            "rule": "after median <= before + max(5%, 50 ms)"
+          },
+          "cls": {
+            "pass": true,
+            "before": 0,
+            "after": 0,
+            "afterMax": 0.002,
+            "afterRuns": [
+              0,
+              0,
+              0.002
+            ],
+            "beforeCulprits": {
+              "body > section.container-edition-galeria > div.edition-galeria-left": [
+                3
+              ]
+            },
+            "afterCulprits": {
+              "body > section.container-edition-galeria > div.edition-galeria-left": [
+                3
+              ]
+            },
+            "newCulprits": [],
+            "rule": "after median <= 0.005 and no culprit selector absent from before runs"
+          },
+          "tbt": {
+            "pass": true,
+            "beforeMs": 0,
+            "afterMs": 0,
+            "limitMs": 10.0,
+            "afterRunsMs": [
+              0,
+              0,
+              0
+            ],
+            "rule": "after median <= max(10 ms, before median)"
+          },
+          "nonCompositedAnimations": {
+            "pass": true,
+            "beforeItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "afterItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "items": [],
+            "rule": "0 items in every after run"
+          }
+        },
+        "allGatesPass": true
+      },
+      "mobile": {
+        "beforeMedians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 906.3,
+          "lcpMs": 64468.7,
+          "cls": 0,
+          "tbtMs": 9,
+          "speedIndexMs": 906.3,
+          "totalByteWeight": 54316346,
+          "scriptTransferSize": 139053,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137477,
+          "lcpSelector": "div.slider-for > div.slider-photo > picture > img",
+          "requestCount": 40
+        },
+        "afterMedians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 906.4,
+          "lcpMs": 57821.1,
+          "cls": 0,
+          "tbtMs": 8,
+          "speedIndexMs": 906.4,
+          "totalByteWeight": 10872107,
+          "scriptTransferSize": 141001,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 139435,
+          "lcpSelector": "div.slider-for > div.slider-photo > picture > img",
+          "requestCount": 23
+        },
+        "deltas": {
+          "performance": 0,
+          "accessibility": 0,
+          "bestPractices": 0,
+          "fcpMs": 0.1,
+          "lcpMs": -6647.6,
+          "lcpPct": -10.31,
+          "cls": 0,
+          "tbtMs": -1,
+          "speedIndexMs": 0.1,
+          "totalByteWeight": -43444239,
+          "scriptTransferSize": 1948,
+          "requestCount": -17,
+          "initialModuleJsGzip9Bytes": 1958
+        },
+        "lenisChunkRequestedAcrossRuns": [
+          false,
+          false,
+          false
+        ],
+        "supplementary": {
+          "stylesheetTransferSize": {
+            "beforeMedian": 4484,
+            "afterMedian": 7042
+          },
+          "stylesheetRequestCount": {
+            "beforeMedian": 4,
+            "afterMedian": 4
+          },
+          "scriptRequestCount": {
+            "beforeMedian": 6,
+            "afterMedian": 6
+          },
+          "documentTransferSize": {
+            "beforeMedian": 7789,
+            "afterMedian": 8226
+          },
+          "lcpMetricScores": {
+            "before": [
+              0,
+              0,
+              0
+            ],
+            "after": [
+              0,
+              0,
+              0
+            ]
+          },
+          "lazyChunksRequestedAcrossRuns": [
+            [],
+            [],
+            []
+          ]
+        },
+        "gates": {
+          "performance": {
+            "pass": true,
+            "before": 75,
+            "after": 75,
+            "rule": "after median >= before median",
+            "afterRuns": [
+              75,
+              75,
+              75
+            ]
+          },
+          "lcpElement": {
+            "pass": true,
+            "before": "div.slider-for > div.slider-photo > picture > img",
+            "after": "div.slider-for > div.slider-photo > picture > img",
+            "afterSelectorsAcrossRuns": [
+              "div.slider-for > div.slider-photo > picture > img"
+            ],
+            "allRunsSame": true,
+            "rule": "median-run LCP selector identical to before"
+          },
+          "lcp": {
+            "pass": true,
+            "beforeMs": 64468.7,
+            "afterMs": 57821.1,
+            "limitMs": 67692.1,
+            "allowanceMs": 3223.4,
+            "afterRunsMs": [
+              57792.4,
+              57834.4,
+              57821.1
+            ],
+            "rule": "after median <= before + max(5%, 50 ms)"
+          },
+          "cls": {
+            "pass": true,
+            "before": 0,
+            "after": 0,
+            "afterMax": 0,
+            "afterRuns": [
+              0,
+              0,
+              0
+            ],
+            "beforeCulprits": {},
+            "afterCulprits": {},
+            "newCulprits": [],
+            "rule": "after median <= 0.005 and no culprit selector absent from before runs"
+          },
+          "tbt": {
+            "pass": true,
+            "beforeMs": 9,
+            "afterMs": 8,
+            "limitMs": 10.0,
+            "afterRunsMs": [
+              11,
+              5,
+              8
+            ],
+            "rule": "after median <= max(10 ms, before median)"
+          },
+          "nonCompositedAnimations": {
+            "pass": true,
+            "beforeItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "afterItemCounts": [
+              0,
+              0,
+              0
+            ],
+            "items": [],
+            "rule": "0 items in every after run"
+          }
+        },
+        "allGatesPass": true
+      }
+    }
+  }
+}

@@ -42,10 +42,10 @@
   gap: 30px;
   padding-bottom: 8px;
   color: #FFDF92;
-  animation: scroll 5s linear infinite;
+  animation: gtap-cardbutton-marquee 5s linear infinite;
 }
 
-@keyframes scroll {
+@keyframes gtap-cardbutton-marquee {
   from {
     transform: translateX(0%);
   }
@@ -53,6 +53,14 @@
     transform: translateX(-100%);
   }
 }
+
+/* Pausa a faixa de datas enquanto o cursor está sobre o painel (dá para ler). */
+@media (hover: hover) and (pointer: fine) {
+  .card-buttons-container .card-button-left:hover .button-left-data {
+    animation-play-state: paused;
+  }
+}
+
 .card-button-right {
    background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
@@ -70,19 +78,118 @@
   min-width: 50vh;
 }
 
-.card-button-right button {
-  background: linear-gradient(to left, #dda92e, #ffdf92);
-  color: #000000;
-  padding-block: 2%;
+/* Preço e lote só chegam depois da hidratação (useLoteAtual lê a data no
+   cliente). Largura e altura reservadas para o CTA e a barra não se moverem
+   (CLS). Medido em Roboto Condensed: "R$ 4.290,00" 28px/600 ≈ 135px e
+   "LOTE 3 DISPONÍVEL" 16px ≈ 127px; 1ch (16px) ≈ 7,9px → 18ch ≈ 142px. */
+.card-buttons-container .card-button-info {
+  min-width: 18ch;
+}
+
+/* CTA "Garanta a sua vaga": sobe 2px com brilho dourado, faixa de luz
+   atravessa no hover/foco e "aperta" no clique. */
+.card-buttons-container .card-button-cta {
+  position: relative;
+  display: inline-block;
   border-radius: 10px;
-  cursor: pointer;
+  color: #000000;
+  transition: transform 300ms var(--ease-out);
+}
+
+/* Brilho em pseudo-elemento: só a opacidade anima (sem transição de box-shadow). */
+.card-buttons-container .card-button-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 10px 24px -8px rgb(221 169 46 / 55%);
+  opacity: 0;
+  transition: opacity 300ms var(--ease-out);
+  pointer-events: none;
+}
+
+.card-buttons-container .card-button-cta > span {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: linear-gradient(to left, #dda92e, #ffdf92);
+  border-radius: 10px;
   padding-inline: 20px;
   padding-block: 10px;
+  text-align: center;
+}
+
+/* Faixa de luz: fica fora do botão em repouso (volta sem transição). */
+.card-buttons-container .card-button-cta > span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / 55%), transparent);
+  transform: translateX(-130%) skewX(-18deg);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-buttons-container .card-button-cta:hover {
+    transform: translateY(-2px);
+  }
+
+  .card-buttons-container .card-button-cta:hover::before {
+    opacity: 1;
+  }
+
+  .card-buttons-container .card-button-cta:hover > span::after {
+    transform: translateX(330%) skewX(-18deg);
+    transition: transform 800ms var(--ease-out);
+  }
+}
+
+.card-buttons-container .card-button-cta:focus-visible {
+  transform: translateY(-2px);
+}
+
+.card-buttons-container .card-button-cta:focus-visible::before {
+  opacity: 1;
+}
+
+.card-buttons-container .card-button-cta:focus-visible > span::after {
+  transform: translateX(330%) skewX(-18deg);
+  transition: transform 800ms var(--ease-out);
+}
+
+.card-buttons-container .card-button-cta:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 120ms;
+}
+
+.card-buttons-container .card-button-cta:active::before {
+  opacity: 0;
+  transition-duration: 120ms;
 }
 
 .money-card-button {
   font-size: 28px;
   font-weight: 600;
+  /* Linha reservada mesmo vazia (o preço chega depois da hidratação). */
+  line-height: 1.3;
+  min-height: 1.3em;
+}
+
+/* Quando o preço é preenchido, entra com um fade curto (só opacity/translate). */
+@media (prefers-reduced-motion: no-preference) {
+  .card-buttons-container .money-card-button:not(:empty) {
+    animation: gtap-cardbutton-price 420ms var(--ease-out) backwards;
+  }
+}
+
+@keyframes gtap-cardbutton-price {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+  }
 }
 
 .button-right-submit {
@@ -112,15 +219,23 @@
   }
 
   .card-button-right {
-    flex-direction: row;   
+    flex-direction: row;
     gap: 10px;
     min-width: fit-content;
-    
+
   }
 
-  .card-button-right button {
+  /* Preço menor no mobile: "LOTE 3 DISPONÍVEL" (≈127px) define a largura. */
+  .card-buttons-container .card-button-info {
+    min-width: 17ch;
+  }
+
+  .card-buttons-container .card-button-cta {
     width: 100%;
     font-size: 16px;
+  }
+
+  .card-buttons-container .card-button-cta > span {
     padding: 8px 10px;
   }
 
@@ -131,5 +246,11 @@
 
   .button-right-submit {
     font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button-left-data {
+    animation: none;
   }
 }

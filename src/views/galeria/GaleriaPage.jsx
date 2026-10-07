@@ -59,21 +59,22 @@ export const GaleriaPage = () => {
             <section className="container-banner-galeria">
                 <div className="content-text-galeria-banner">
                     <div className="div-text-galeria">
-                        <h5>IX GTAP</h5>
-                        <p>A melhor edição de todos os tempos</p>
+                        <h5 data-enter>IX GTAP</h5>
+                        <p data-enter>A melhor edição de todos os tempos</p>
                     </div>
                     <div className="div-button-galeria-banner">
-                        <a href="/IX%20GTAP"><button>Acessar álbum completo</button></a>
+                        <a className="galeria-banner-cta" href="/IX%20GTAP/" data-enter>Acessar álbum completo</a>
                     </div>
                 </div>
             </section>
             <section className="container-card-gtaps">
-                <h3>Confira as fotos das edições passadas</h3>
+                <h3 data-reveal>Confira as fotos das edições passadas</h3>
                 <div className="content-card-gtaps">
                     {images.slice().reverse().map((image) => (
                         <a
                             className="card-gtap"
-                            href={`/${encodeURIComponent(image.text)}`}
+                            href={`/${encodeURIComponent(image.text)}/`}
+                            data-reveal="scale"
                             key={image.id}
                             style={{backgroundImage: `url(${image.url})`}}
                         >

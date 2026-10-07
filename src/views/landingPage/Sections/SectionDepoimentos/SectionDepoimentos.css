@@ -17,6 +17,7 @@
 }
 
 .section-depoimentos h4 {
+  --i: 1;
   text-align: center;
   color: #000d74;
   font-size: 32px;
@@ -37,7 +38,6 @@
 .slider {
   display: flex;
   overflow-x: auto;
-  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   width: 990px;
   margin: 0 auto;
@@ -82,28 +82,6 @@
   line-height: 1.5;
 }
 
-.nav {
-  font-size: 26px;
-  background: #fff;
-  color: #02093a;
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.nav.left {
-  margin-right: 12px;
-}
-
-.nav.right {
-  margin-left: 12px;
-}
-
-
 @media (max-width: 768px) {
   .depoimento-card {
     width: 100%;
@@ -128,3 +106,114 @@
 }
 
 .testimonial-arrow { border: 0; background: transparent; color: #dda92e; font-size: 30px; cursor: pointer; flex-shrink: 0; }
+
+/* ====================== Movimento ====================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .section-depoimentos .slider {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Folga vertical dentro do slider para o card subir no hover sem ser cortado
+   (o total de 20px por lado do wrapper continua o mesmo). */
+.section-depoimentos .slider-wrapper {
+  --i: 2;
+  padding-block: 12px;
+}
+
+.section-depoimentos .slider {
+  padding-block: 8px;
+}
+
+.section-depoimentos .testimonial-arrow {
+  transition:
+    color var(--dur-ui) var(--ease-out),
+    opacity var(--dur-ui) var(--ease-out),
+    transform var(--dur-ui) var(--ease-out);
+}
+
+.section-depoimentos .testimonial-arrow:focus-visible {
+  color: var(--color-navy);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-depoimentos .testimonial-arrow:not([aria-disabled="true"]):hover {
+    color: var(--color-navy);
+  }
+
+  .section-depoimentos .testimonial-arrow-prev:not([aria-disabled="true"]):hover {
+    transform: translateX(-3px);
+  }
+
+  .section-depoimentos .testimonial-arrow-next:not([aria-disabled="true"]):hover {
+    transform: translateX(3px);
+  }
+}
+
+.section-depoimentos .testimonial-arrow:not([aria-disabled="true"]):active {
+  transform: scale(0.88);
+  transition-duration: 120ms;
+}
+
+/* Início/fim do slider: a seta continua focável, só fica apagada. */
+.section-depoimentos .testimonial-arrow[aria-disabled="true"] {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.section-depoimentos .depoimento-card {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Sombra do vídeo, atrás do texto do card: só opacity/transform animam. */
+.section-depoimentos .depoimento-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  box-shadow: 0 18px 32px -16px rgb(2 9 58 / 55%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 400ms var(--ease-out),
+    transform 400ms var(--ease-out);
+}
+
+.section-depoimentos .video-container {
+  position: relative;
+  transition: transform 400ms var(--ease-out);
+}
+
+/* Borda dourada por cima do vídeo (não bloqueia os controles). */
+.section-depoimentos .video-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 2px var(--color-gold);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-ui) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-depoimentos .depoimento-card:hover::before,
+  .section-depoimentos .depoimento-card:hover .video-container {
+    transform: translateY(-4px);
+  }
+
+  .section-depoimentos .depoimento-card:hover::before,
+  .section-depoimentos .depoimento-card:hover .video-container::after {
+    opacity: 1;
+  }
+}
+
+.section-depoimentos .depoimento-card:focus-within .video-container::after {
+  opacity: 1;
+}

@@ -38,17 +38,19 @@ export const CardButton = () => {
         </div>
       </div>
       <div className="card-button-right">
-        <div>
+        <div className="card-button-info">
           <p className="money-card-button">{precoAtual}</p>
           <p>{textoBotao}</p>
         </div>
         <div className="button-right-submit">
           <a
-            href="https://api.whatsapp.com/send/?phone=5571992084907&text=Quero%20informa%C3%A7%C3%A3o%20sobre%20o%20GTAP&type=phone_number&app_absent=0
-"
-            target="blank"
+            className="card-button-cta"
+            href="https://api.whatsapp.com/send/?phone=5571992084907&text=Quero%20informa%C3%A7%C3%A3o%20sobre%20o%20GTAP&type=phone_number&app_absent=0"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <button>Garanta a sua vaga</button>
+            {/* span (e não <button>): botão dentro de link é HTML inválido e gera dois tabs */}
+            <span>Garanta a sua vaga</span>
           </a>
         </div>
       </div>

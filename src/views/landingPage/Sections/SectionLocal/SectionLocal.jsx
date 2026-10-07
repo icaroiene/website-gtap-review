@@ -19,6 +19,8 @@ export const SectionLocal = ({ data }) => {
 
   useEffect(() => {
     if (!nearViewport || images.length < 2) return undefined;
+    // Com movimento reduzido o fundo fica parado na primeira imagem.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
 
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -27,27 +29,44 @@ export const SectionLocal = ({ data }) => {
     return () => clearInterval(interval);
   }, [images.length, nearViewport]);
 
-  const currentImage = images[index];
+  const fundos = (images.length ? images : [undefined]).map(
+    (image) => image?.image?.src || image?.mediaUrl || imageUndefined.src,
+  );
+  // Só a camada ativa e a próxima existem: a seguinte baixa durante a exibição da atual.
+  // Com movimento reduzido não há rotação, então só a primeira.
+  const [rotates, setRotates] = useState(false);
+  useEffect(() => {
+    setRotates(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+  const proxima = (index + 1) % fundos.length;
 
   return (
-    <section
-      className="section-localizacao"
-      ref={sectionRef}
-      style={{
-        backgroundImage: nearViewport ? `url(${currentImage?.image?.src || currentImage?.mediaUrl || imageUndefined.src})` : undefined,
-      }}
-    >
-      <div className="section-localizacao-left" id="localizacao">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d87966.15711226991!2d-38.45577891634429!3d-12.99795045296838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7161786a7ffff8b%3A0x2fcfe4b59d0dace1!2sHotel%20Deville%20Prime%20Salvador!5e0!3m2!1spt-BR!2sbr!4v1746561724708!5m2!1spt-BR!2sbr"
-          allowFullScreen
-          loading="lazy"
-          title="Localização do Centro de Convenções Deville Prime, Salvador"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+    <section className="section-localizacao" id="localizacao" ref={sectionRef}>
+      {/* Camadas do fundo: a ativa entra por cima (crossfade) e só existem perto da tela. */}
+      {nearViewport && (
+        <div className="section-localizacao-fundo" aria-hidden="true">
+          {fundos.map((src, i) => (i === index || (rotates && i === proxima)) && (
+            <div
+              key={i}
+              className={`section-localizacao-fundo-camada${i === index ? " is-active" : ""}`}
+              style={{ backgroundImage: `url(${src})` }}
+            />
+          ))}
+        </div>
+      )}
+      <div className="section-localizacao-left" data-reveal="scale">
+        <div className="section-localizacao-mapa">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d87966.15711226991!2d-38.45577891634429!3d-12.99795045296838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7161786a7ffff8b%3A0x2fcfe4b59d0dace1!2sHotel%20Deville%20Prime%20Salvador!5e0!3m2!1spt-BR!2sbr!4v1746561724708!5m2!1spt-BR!2sbr"
+            allowFullScreen
+            loading="lazy"
+            title="Localização do Centro de Convenções Deville Prime, Salvador"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </div>
       <div className="section-localizacao-right">
-        <div className="box-text-local">
+        <div className="box-text-local" data-reveal="right">
           <h5>
             Mais uma vez em <br /> <b>Salvador/BA</b>
           </h5>

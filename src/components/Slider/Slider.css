@@ -4,6 +4,8 @@
   max-width: 100%;
 }
 
+/* Entrada no primeiro paint (data-enter) só na faixa de miniaturas, como um bloco.
+   A foto principal (LCP do álbum) não anima. */
 .slider-for-wrap {
   position: relative;
 }
@@ -56,11 +58,38 @@
   background: rgb(0 0 0 / 45%);
   cursor: pointer;
   transform: translateY(-50%);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-ui) var(--ease-out);
 }
 
-.slider-arrow:hover,
+.slider-arrow svg {
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .slider-arrow:hover {
+    background: rgb(0 0 0 / 75%);
+    transform: translateY(-50%) scale(1.06);
+  }
+
+  .slider-arrow-prev:hover svg {
+    transform: translateX(-2px);
+  }
+
+  .slider-arrow-next:hover svg {
+    transform: translateX(2px);
+  }
+}
+
 .slider-arrow:focus-visible {
   background: rgb(0 0 0 / 75%);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.slider-arrow:active {
+  transform: translateY(-50%) scale(0.94);
+  transition-duration: 120ms;
 }
 
 .slider-arrow:focus-visible,
@@ -78,7 +107,10 @@
   right: 8px;
 }
 
+/* position: relative faz da faixa o offsetParent das miniaturas (centralização no JS). */
 .slider-nav {
+  --i: 2;
+  position: relative;
   display: flex;
   gap: 8px;
   width: 100%;
@@ -99,15 +131,27 @@
   cursor: pointer;
   opacity: 0.55;
   scroll-snap-align: center;
+  transition:
+    opacity 200ms var(--ease-out),
+    border-color 200ms var(--ease-out),
+    transform 200ms var(--ease-out);
 }
 
-.slider-thumbnail:hover,
+@media (hover: hover) and (pointer: fine) {
+  .slider-thumbnail:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
 .slider-thumbnail.is-active {
   opacity: 1;
+  border-color: #dda92e;
 }
 
-.slider-thumbnail.is-active {
-  border-color: #dda92e;
+.slider-thumbnail:active {
+  transform: scale(0.96);
+  transition-duration: 120ms;
 }
 
 .slider-thumbnail img {
@@ -116,6 +160,43 @@
   height: 80px;
   object-fit: cover;
   border-radius: 6px;
+}
+
+/* Contador "n / total": sobreposto à foto, não altera o layout. */
+.slider-counter {
+  position: absolute;
+  z-index: 2;
+  bottom: 12px;
+  left: 50%;
+  margin: 0;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 45%);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+/* Remontado a cada troca de foto (key): o número novo entra com um fade curto. */
+.slider-counter-current {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .slider-counter-current {
+    animation: gtap-slider-counter-in var(--dur-ui) var(--ease-out);
+  }
+}
+
+@keyframes gtap-slider-counter-in {
+  from {
+    opacity: 0;
+    translate: 0 4px;
+  }
 }
 
 @media (max-width: 768px) {

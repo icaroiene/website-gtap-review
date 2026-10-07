@@ -1,10 +1,379 @@
+/* ====================== Tokens ====================== */
+
+:root {
+  --color-navy: #02093a;
+  --color-gold: #dda92e;
+  --color-gold-light: #ffdf92;
+
+  /* Movimento (mesmos valores do redesign website-gtap) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-ui: 240ms;
+  --dur-reveal: 700ms;
+  --reveal-stagger: 70ms;
+
+  /* Altura do header fixo: compensa âncoras (/#temas, /#preços...) */
+  --header-h: 84px;
+}
+
+/* No mobile o header cresce com a largura (logo em %): ~79px a 375px, ~105px a 700px. */
+@media (max-width: 768px) {
+  :root {
+    --header-h: max(84px, 15vw + 4px);
+  }
+}
+
+/* ====================== Base ====================== */
+
 html,
 body {
   font-family: var(--font-roboto-condensed), "Roboto Condensed", sans-serif;
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+}
+
+/* A janela é o contêiner de rolagem. overflow-x: clip corta o vazamento
+   horizontal sem criar um novo contêiner de rolagem (ao contrário de hidden). */
+html {
+  overflow-x: clip;
+  scroll-padding-top: var(--header-h);
+}
+
+body {
+  overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Só depois do load (MotionRuntime marca data-motion-ready): ao chegar de outra
+     página em /#contato o navegador pula direto, sem rolar a página inteira. */
+  html[data-motion-ready] {
+    scroll-behavior: smooth;
+  }
+
+  /* Transição nativa entre páginas (MPA, sem JS). */
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 200ms;
+    animation-timing-function: var(--ease-out);
+  }
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+  /* Anel duplo: o halo navy garante contraste do dourado em fundos claros. */
+  box-shadow: 0 0 0 6px var(--color-navy);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ====================== Rolagem suave (Lenis, só desktop) ====================== */
+
+/* Com Lenis ativo ele mesmo anima âncoras e roda; o smooth nativo brigaria com ele. */
+html.lenis {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Trava de rolagem (menu mobile / modal). scrollbar-gutter evita "pulo" lateral. */
+html[data-scroll-locked] {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+/* ====================== Entradas (data-reveal) ======================
+   Visível por padrão. O runtime (src/motion/reveal.js) só marca como
+   "pending" o que está ABAIXO da dobra depois da hidratação; ao entrar na
+   tela vira "in". Sem JS ou com movimento reduzido nada fica escondido.
+   Keyframes só com opacity + propriedades individuais (translate/scale),
+   para não brigar com `transform` existente (centralizações, :hover).
+   Só o "from": o "to" é o estilo do próprio elemento. */
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal-state="pending"] {
+    opacity: 0;
+    translate: 0 24px;
+  }
+
+  [data-reveal-state="pending"][data-reveal="fade"] {
+    translate: none;
+  }
+
+  [data-reveal-state="pending"][data-reveal="scale"] {
+    translate: 0 12px;
+    scale: 0.94;
+  }
+
+  [data-reveal-state="pending"][data-reveal="left"] {
+    translate: -32px 0;
+  }
+
+  [data-reveal-state="pending"][data-reveal="right"] {
+    translate: 32px 0;
+  }
+
+  [data-reveal-state="pending"][data-reveal="pop"] {
+    translate: none;
+    scale: 0.6;
+  }
+
+  [data-reveal-state="pending"][data-reveal="line"] {
+    opacity: 1;
+    translate: none;
+    scale: 0 1;
+    transform-origin: left center;
+  }
+
+  [data-reveal-state="in"] {
+    animation: gtap-reveal-up var(--dur-reveal) var(--ease-out) backwards;
+    animation-delay: calc(min(var(--i, 0), 8) * var(--reveal-stagger));
+  }
+
+  [data-reveal-state="in"][data-reveal="fade"] {
+    animation-name: gtap-reveal-fade;
+  }
+
+  [data-reveal-state="in"][data-reveal="scale"] {
+    animation-name: gtap-reveal-scale;
+  }
+
+  [data-reveal-state="in"][data-reveal="left"] {
+    animation-name: gtap-reveal-left;
+  }
+
+  [data-reveal-state="in"][data-reveal="right"] {
+    animation-name: gtap-reveal-right;
+  }
+
+  [data-reveal-state="in"][data-reveal="pop"] {
+    animation-name: gtap-reveal-pop;
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation-duration: 520ms;
+  }
+
+  [data-reveal-state="in"][data-reveal="line"] {
+    animation-name: gtap-reveal-line;
+    animation-duration: 900ms;
+    transform-origin: left center;
+  }
+
+  /* Stagger sem estilo inline: filhos de [data-reveal-stagger] recebem --i pela posição. */
+  [data-reveal-stagger] > :nth-child(2) { --i: 1; }
+  [data-reveal-stagger] > :nth-child(3) { --i: 2; }
+  [data-reveal-stagger] > :nth-child(4) { --i: 3; }
+  [data-reveal-stagger] > :nth-child(5) { --i: 4; }
+  [data-reveal-stagger] > :nth-child(6) { --i: 5; }
+  [data-reveal-stagger] > :nth-child(7) { --i: 6; }
+  [data-reveal-stagger] > :nth-child(8) { --i: 7; }
+  [data-reveal-stagger] > :nth-child(n + 9) { --i: 8; }
+}
+
+@keyframes gtap-reveal-up {
+  from { opacity: 0; translate: 0 24px; }
+}
+
+@keyframes gtap-reveal-fade {
+  from { opacity: 0; }
+}
+
+@keyframes gtap-reveal-scale {
+  from { opacity: 0; translate: 0 12px; scale: 0.94; }
+}
+
+@keyframes gtap-reveal-left {
+  from { opacity: 0; translate: -32px 0; }
+}
+
+@keyframes gtap-reveal-right {
+  from { opacity: 0; translate: 32px 0; }
+}
+
+@keyframes gtap-reveal-pop {
+  from { opacity: 0; scale: 0.6; }
+}
+
+@keyframes gtap-reveal-line {
+  from { scale: 0 1; }
+}
+
+/* Entrada no primeiro paint (CSS puro, sem JS) para o topo das subpáginas.
+   Nunca parte de opacity 0: o texto pode ser o LCP. */
+@keyframes gtap-enter {
+  from { opacity: 0.6; translate: 0 14px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-enter] {
+    animation: gtap-enter 560ms var(--ease-out) backwards;
+    animation-delay: calc(min(var(--i, 0), 6) * 90ms);
+  }
+
+  [data-enter="line"] {
+    animation-name: gtap-reveal-line;
+    animation-duration: 900ms;
+    transform-origin: left center;
+  }
+}
+
+/* Impressão: tudo visível, sem esperar animação de entrada. */
+@media print {
+  [data-reveal-state] {
+    animation: none !important;
+    opacity: 1 !important;
+    translate: none !important;
+    scale: none !important;
+  }
+}
+
+/* ====================== Movimento reduzido ====================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* ====================== 404 ====================== */
+
+.not-found {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 5rem clamp(1.25rem, 5vw, 5rem);
+  text-align: center;
+  color: var(--color-navy);
+}
+
+.not-found-title {
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+/* Filete dourado que se desenha a partir do centro. */
+.not-found-bar {
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-block: 1.25rem;
+  border-radius: 3px;
+  background: var(--color-gold);
+  transform-origin: center;
+}
+
+.not-found-text {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 2rem;
+}
+
+/* Links: cor + sublinhado dourado que desliza; leve "aperto" no clique. */
+.not-found-link {
+  position: relative;
+  display: inline-block;
+  padding-block: 4px;
+  font-weight: 600;
+  color: var(--color-navy);
+  transition:
+    color var(--dur-ui) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.not-found-link::before,
+.not-found-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+}
+
+.not-found-link::before {
+  background: rgb(2 9 58 / 15%);
+}
+
+.not-found-link::after {
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 360ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .not-found-link:hover {
+    color: #1d2f9e;
+  }
+
+  .not-found-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+.not-found-link:focus-visible {
+  color: #1d2f9e;
+}
+
+.not-found-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.not-found-link:active {
+  transform: scale(0.97);
+  transition-duration: 120ms;
+}
+
+/* Ordem da entrada (data-enter): título, filete + texto, links. */
+.not-found-bar,
+.not-found-text {
+  --i: 1;
+}
+
+.not-found-actions {
+  --i: 2;
 }

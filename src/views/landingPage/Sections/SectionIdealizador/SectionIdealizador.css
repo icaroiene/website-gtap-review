@@ -3,7 +3,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
-  height: 100%;
+  /* Uma tela de altura. Antes vinha de height:100% sobre html/body com
+     height:100% (removido para a janela voltar a ser o contêiner de rolagem). */
+  min-height: 100vh;
+  min-height: 100svh;
   padding-inline: 12%;
   padding-top: 2%;
   display: grid;
@@ -58,6 +61,7 @@
 }
 
 .content-idealizador button {
+  position: relative;
   color: #02093a;
   font-size: 14px;
   font-weight: 500;
@@ -73,6 +77,83 @@
   gap: 8px;
   justify-content: center;
   cursor: pointer;
+}
+
+/* ====== Movimento ======
+   Entrada (data-reveal): o painel de vidro desliza da esquerda (a animação
+   fica no próprio elemento com backdrop-filter, nunca num ancestral), o
+   conteúdo dele sobe em seguida e a foto vem da direita. */
+.section-idealizador .content-idealizador > :nth-child(1) {
+  --i: 1;
+}
+
+.section-idealizador .content-idealizador > :nth-child(2) {
+  --i: 2;
+}
+
+.section-idealizador .content-idealizador > :nth-child(3) {
+  --i: 3;
+}
+
+.section-idealizador .content-image-idealizador {
+  --i: 1;
+}
+
+/* Botões do Instagram: sobem 2px, ícone dá um "toque" e apertam no clique.
+   Só transform anima (a sombra de 200px do botão mobile fica parada). */
+.section-idealizador button {
+  transition: transform 300ms var(--ease-out);
+}
+
+.section-idealizador button svg {
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+
+/* Brilho dourado do botão desktop: pseudo-elemento, só a opacidade anima. */
+.section-idealizador .desktop-button-instagram button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 10px 22px -8px rgb(221 169 46 / 60%);
+  opacity: 0;
+  transition: opacity 300ms var(--ease-out);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-idealizador button:hover {
+    transform: translateY(-2px);
+  }
+
+  .section-idealizador .desktop-button-instagram button:hover::before {
+    opacity: 1;
+  }
+
+  .section-idealizador button:hover svg {
+    transform: rotate(-10deg) scale(1.12);
+  }
+}
+
+/* Foco por teclado igual ao hover (o link e o botão recebem foco). */
+.section-idealizador a:focus-visible button,
+.section-idealizador button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.section-idealizador .desktop-button-instagram a:focus-visible button::before,
+.section-idealizador .desktop-button-instagram button:focus-visible::before {
+  opacity: 1;
+}
+
+.section-idealizador a:focus-visible button svg,
+.section-idealizador button:focus-visible svg {
+  transform: rotate(-10deg) scale(1.12);
+}
+
+.section-idealizador button:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 120ms;
 }
 
 @media (max-width: 768px) {

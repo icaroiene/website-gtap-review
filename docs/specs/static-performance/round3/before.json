@@ -1,0 +1,1245 @@
+{
+  "label": "round3 BEFORE baseline",
+  "generatedAt": "2026-10-07T22:57:33.590Z",
+  "sourceCommit": "16e4f94",
+  "artifact": "/Users/icaroisd/Projects/website-gtap-review/out",
+  "lighthouse": "13.0.1",
+  "runsPerConfig": 3,
+  "execution": "sequential (never parallel)",
+  "server": {
+    "command": "GTAP_PREVIEW_GZIP=1 PORT=4185 node /Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/scripts/serve-static.mjs /Users/icaroisd/Projects/website-gtap-review/out",
+    "gzip": true
+  },
+  "commandTemplate": {
+    "desktop": "npx --yes lighthouse@13.0.1 <url> --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-<page>-desktop-<n>.json --quiet",
+    "mobile": "npx --yes lighthouse@13.0.1 <url> --chrome-path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-<page>-mobile-<n>.json --quiet"
+  },
+  "commands": [
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-home-desktop-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-home-desktop-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-home-desktop-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-home-mobile-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-home-mobile-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-home-mobile-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-galeria-desktop-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-galeria-desktop-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-galeria-desktop-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-galeria-mobile-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-galeria-mobile-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/galeria/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-galeria-mobile-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-i-desktop-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-i-desktop-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-i-desktop-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-i-mobile-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-i-mobile-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/I%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-i-mobile-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-viii-desktop-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-viii-desktop-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --preset=desktop --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-viii-desktop-3.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-viii-mobile-1.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-viii-mobile-2.json --quiet",
+    "npx --yes lighthouse@13.0.1 http://127.0.0.1:4185/VIII%20GTAP/ '--chrome-path=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --only-categories=performance,accessibility,best-practices --output=json --output-path=/Users/icaroisd/Projects/website-gtap-review/.claude/worktrees/site-animations-microinteractions-717e9d/docs/specs/static-performance/round3/before-album-viii-mobile-3.json --quiet"
+  ],
+  "notes": [
+    "LCP element: Lighthouse 13.0.1 has no largest-contentful-paint-element audit; selector taken from audits[\"lcp-breakdown-insight\"] node item.",
+    "Median lcpElement = element of the run whose LCP equals the median LCP; all per-run selectors are kept in runs[].",
+    "scriptTransferSize = audits[\"resource-summary\"] row resourceType=script transferSize (bytes on the wire, gzip enabled).",
+    "initialModuleJs = sum of gzip -9 -c over unique <script src=\"/_next/static/chunks/*.js\" async> in the exported HTML, noModule excluded.",
+    "Scores are 0-100."
+  ],
+  "initialModuleJs": {
+    "home": {
+      "html": "out/index.html",
+      "chunks": [
+        {
+          "src": "/_next/static/chunks/0fjo9lz5w15u3.js",
+          "rawBytes": 180900,
+          "gzip9Bytes": 48454
+        },
+        {
+          "src": "/_next/static/chunks/3dmm3v_fq28gc.js",
+          "rawBytes": 229820,
+          "gzip9Bytes": 71794
+        },
+        {
+          "src": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "rawBytes": 10030,
+          "gzip9Bytes": 3973
+        },
+        {
+          "src": "/_next/static/chunks/0umf92h1sb77c.js",
+          "rawBytes": 13822,
+          "gzip9Bytes": 3547
+        },
+        {
+          "src": "/_next/static/chunks/1vq2anz7fjw39.js",
+          "rawBytes": 25151,
+          "gzip9Bytes": 8317
+        },
+        {
+          "src": "/_next/static/chunks/19wg2q9r2_sev.js",
+          "rawBytes": 21767,
+          "gzip9Bytes": 7292
+        }
+      ],
+      "totalRawBytes": 481490,
+      "totalGzip9Bytes": 143377
+    },
+    "galeria": {
+      "html": "out/galeria/index.html",
+      "chunks": [
+        {
+          "src": "/_next/static/chunks/0fjo9lz5w15u3.js",
+          "rawBytes": 180900,
+          "gzip9Bytes": 48454
+        },
+        {
+          "src": "/_next/static/chunks/3dmm3v_fq28gc.js",
+          "rawBytes": 229820,
+          "gzip9Bytes": 71794
+        },
+        {
+          "src": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "rawBytes": 10030,
+          "gzip9Bytes": 3973
+        },
+        {
+          "src": "/_next/static/chunks/0umf92h1sb77c.js",
+          "rawBytes": 13822,
+          "gzip9Bytes": 3547
+        },
+        {
+          "src": "/_next/static/chunks/3fc82v6-xrsle.js",
+          "rawBytes": 4492,
+          "gzip9Bytes": 1627
+        },
+        {
+          "src": "/_next/static/chunks/19wg2q9r2_sev.js",
+          "rawBytes": 21767,
+          "gzip9Bytes": 7292
+        }
+      ],
+      "totalRawBytes": 460831,
+      "totalGzip9Bytes": 136687
+    },
+    "album-i": {
+      "html": "out/I GTAP/index.html",
+      "chunks": [
+        {
+          "src": "/_next/static/chunks/0fjo9lz5w15u3.js",
+          "rawBytes": 180900,
+          "gzip9Bytes": 48454
+        },
+        {
+          "src": "/_next/static/chunks/3dmm3v_fq28gc.js",
+          "rawBytes": 229820,
+          "gzip9Bytes": 71794
+        },
+        {
+          "src": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "rawBytes": 10030,
+          "gzip9Bytes": 3973
+        },
+        {
+          "src": "/_next/static/chunks/0umf92h1sb77c.js",
+          "rawBytes": 13822,
+          "gzip9Bytes": 3547
+        },
+        {
+          "src": "/_next/static/chunks/0yh4nkd-4ld_b.js",
+          "rawBytes": 7053,
+          "gzip9Bytes": 2417
+        },
+        {
+          "src": "/_next/static/chunks/19wg2q9r2_sev.js",
+          "rawBytes": 21767,
+          "gzip9Bytes": 7292
+        }
+      ],
+      "totalRawBytes": 463392,
+      "totalGzip9Bytes": 137477
+    },
+    "album-viii": {
+      "html": "out/VIII GTAP/index.html",
+      "chunks": [
+        {
+          "src": "/_next/static/chunks/0fjo9lz5w15u3.js",
+          "rawBytes": 180900,
+          "gzip9Bytes": 48454
+        },
+        {
+          "src": "/_next/static/chunks/3dmm3v_fq28gc.js",
+          "rawBytes": 229820,
+          "gzip9Bytes": 71794
+        },
+        {
+          "src": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "rawBytes": 10030,
+          "gzip9Bytes": 3973
+        },
+        {
+          "src": "/_next/static/chunks/0umf92h1sb77c.js",
+          "rawBytes": 13822,
+          "gzip9Bytes": 3547
+        },
+        {
+          "src": "/_next/static/chunks/0yh4nkd-4ld_b.js",
+          "rawBytes": 7053,
+          "gzip9Bytes": 2417
+        },
+        {
+          "src": "/_next/static/chunks/19wg2q9r2_sev.js",
+          "rawBytes": 21767,
+          "gzip9Bytes": 7292
+        }
+      ],
+      "totalRawBytes": 463392,
+      "totalGzip9Bytes": 137477
+    }
+  },
+  "pages": {
+    "home": {
+      "url": "http://127.0.0.1:4185/",
+      "initialModuleJsGzip9Bytes": 143377,
+      "desktop": {
+        "runCount": 3,
+        "medians": {
+          "performance": 100,
+          "accessibility": 95,
+          "bestPractices": 100,
+          "fcpMs": 289.1,
+          "lcpMs": 683.9,
+          "lcpElement": {
+            "selector": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+            "nodeLabel": "Condições especiais para grupo",
+            "snippet": "<p>",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0.0002,
+          "tbtMs": 0,
+          "speedIndexMs": 583.8,
+          "totalByteWeight": 4199009,
+          "scriptTransferSize": 144952,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 143377
+        },
+        "lcpSelectorsAcrossRuns": [
+          "div.card-buttons-container > div.card-button-left > div.button-left-condition > p"
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/before-home-desktop-1.json",
+            "fetchTime": "2026-10-07T22:52:12.587Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4060.5,
+            "performance": 100,
+            "accessibility": 95,
+            "bestPractices": 100,
+            "fcpMs": 289.1,
+            "lcpMs": 670.7,
+            "lcpElement": {
+              "selector": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+              "nodeLabel": "Condições especiais para grupo",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 4.5,
+              "elementRenderDelay": 87.4
+            },
+            "cls": 0.0002,
+            "tbtMs": 0,
+            "speedIndexMs": 583.7,
+            "totalByteWeight": 4199009,
+            "scriptTransferSize": 144952,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-home-desktop-2.json",
+            "fetchTime": "2026-10-07T22:52:23.898Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4114.5,
+            "performance": 100,
+            "accessibility": 95,
+            "bestPractices": 100,
+            "fcpMs": 285.1,
+            "lcpMs": 683.9,
+            "lcpElement": {
+              "selector": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+              "nodeLabel": "Condições especiais para grupo",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.4,
+              "elementRenderDelay": 92.5
+            },
+            "cls": 0.0002,
+            "tbtMs": 0,
+            "speedIndexMs": 583.8,
+            "totalByteWeight": 5247585,
+            "scriptTransferSize": 144952,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-home-desktop-3.json",
+            "fetchTime": "2026-10-07T22:52:35.196Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4044,
+            "performance": 100,
+            "accessibility": 95,
+            "bestPractices": 100,
+            "fcpMs": 289.5,
+            "lcpMs": 693.6,
+            "lcpElement": {
+              "selector": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p",
+              "nodeLabel": "Condições especiais para grupo",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 4.9,
+              "elementRenderDelay": 88.8
+            },
+            "cls": 0.0002,
+            "tbtMs": 0,
+            "speedIndexMs": 586.4,
+            "totalByteWeight": 3609185,
+            "scriptTransferSize": 144952,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          }
+        ]
+      },
+      "mobile": {
+        "runCount": 3,
+        "medians": {
+          "performance": 94,
+          "accessibility": 93,
+          "bestPractices": 100,
+          "fcpMs": 1054.9,
+          "lcpMs": 3143.9,
+          "lcpElement": {
+            "selector": "body > section.section-atuacao",
+            "nodeLabel": "O único congresso do país sobre Gestão Tributária voltado exclusivamente para a…",
+            "snippet": "<section class=\"section-atuacao\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0.0032,
+          "tbtMs": 4.5,
+          "speedIndexMs": 1054.9,
+          "totalByteWeight": 4621106,
+          "scriptTransferSize": 144952,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 143377
+        },
+        "lcpSelectorsAcrossRuns": [
+          "body > section.section-atuacao"
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/before-home-mobile-1.json",
+            "fetchTime": "2026-10-07T22:52:46.372Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4137.5,
+            "performance": 94,
+            "accessibility": 93,
+            "bestPractices": 100,
+            "fcpMs": 1054.9,
+            "lcpMs": 3143.9,
+            "lcpElement": {
+              "selector": "body > section.section-atuacao",
+              "nodeLabel": "O único congresso do país sobre Gestão Tributária voltado exclusivamente para a…",
+              "snippet": "<section class=\"section-atuacao\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.4,
+              "resourceLoadDelay": 3.9,
+              "resourceLoadDuration": 5.4,
+              "elementRenderDelay": 77.3
+            },
+            "cls": 0.0032,
+            "tbtMs": 4.5,
+            "speedIndexMs": 1054.9,
+            "totalByteWeight": 4621106,
+            "scriptTransferSize": 144952,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-home-mobile-2.json",
+            "fetchTime": "2026-10-07T22:52:57.588Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4145.5,
+            "performance": 94,
+            "accessibility": 93,
+            "bestPractices": 100,
+            "fcpMs": 1055.1,
+            "lcpMs": 3070.2,
+            "lcpElement": {
+              "selector": "body > section.section-atuacao",
+              "nodeLabel": "O único congresso do país sobre Gestão Tributária voltado exclusivamente para a…",
+              "snippet": "<section class=\"section-atuacao\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.3,
+              "resourceLoadDelay": 4,
+              "resourceLoadDuration": 5.7,
+              "elementRenderDelay": 81.8
+            },
+            "cls": 0.0032,
+            "tbtMs": 5,
+            "speedIndexMs": 1055.1,
+            "totalByteWeight": 4493902,
+            "scriptTransferSize": 144952,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-home-mobile-3.json",
+            "fetchTime": "2026-10-07T22:53:08.698Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4081.5,
+            "performance": 94,
+            "accessibility": 93,
+            "bestPractices": 100,
+            "fcpMs": 1054.8,
+            "lcpMs": 3144.7,
+            "lcpElement": {
+              "selector": "body > section.section-atuacao",
+              "nodeLabel": "O único congresso do país sobre Gestão Tributária voltado exclusivamente para a…",
+              "snippet": "<section class=\"section-atuacao\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.4,
+              "resourceLoadDelay": 3.6,
+              "resourceLoadDuration": 6.3,
+              "elementRenderDelay": 82.3
+            },
+            "cls": 0.0032,
+            "tbtMs": 4.5,
+            "speedIndexMs": 1054.8,
+            "totalByteWeight": 5149262,
+            "scriptTransferSize": 144952,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          }
+        ]
+      }
+    },
+    "galeria": {
+      "url": "http://127.0.0.1:4185/galeria/",
+      "initialModuleJsGzip9Bytes": 136687,
+      "desktop": {
+        "runCount": 3,
+        "medians": {
+          "performance": 100,
+          "accessibility": 97,
+          "bestPractices": 100,
+          "fcpMs": 247.1,
+          "lcpMs": 544.6,
+          "lcpElement": {
+            "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+            "nodeLabel": "A melhor edição de todos os tempos",
+            "snippet": "<p>",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 247.1,
+          "totalByteWeight": 467290,
+          "scriptTransferSize": 138254,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 136687
+        },
+        "lcpSelectorsAcrossRuns": [
+          "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/before-galeria-desktop-1.json",
+            "fetchTime": "2026-10-07T22:53:19.821Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4127,
+            "performance": 100,
+            "accessibility": 97,
+            "bestPractices": 100,
+            "fcpMs": 247.1,
+            "lcpMs": 544.6,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.1,
+              "elementRenderDelay": 69
+            },
+            "cls": 0,
+            "tbtMs": 0,
+            "speedIndexMs": 247.1,
+            "totalByteWeight": 467290,
+            "scriptTransferSize": 138254,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-galeria-desktop-2.json",
+            "fetchTime": "2026-10-07T22:53:30.694Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4145,
+            "performance": 100,
+            "accessibility": 97,
+            "bestPractices": 100,
+            "fcpMs": 247.4,
+            "lcpMs": 545,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.9,
+              "elementRenderDelay": 68.5
+            },
+            "cls": 0,
+            "tbtMs": 0,
+            "speedIndexMs": 247.4,
+            "totalByteWeight": 467291,
+            "scriptTransferSize": 138254,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-galeria-desktop-3.json",
+            "fetchTime": "2026-10-07T22:53:41.205Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4123,
+            "performance": 100,
+            "accessibility": 97,
+            "bestPractices": 100,
+            "fcpMs": 247,
+            "lcpMs": 544.5,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.3,
+              "elementRenderDelay": 53.9
+            },
+            "cls": 0,
+            "tbtMs": 0,
+            "speedIndexMs": 247,
+            "totalByteWeight": 467283,
+            "scriptTransferSize": 138254,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          }
+        ]
+      },
+      "mobile": {
+        "runCount": 3,
+        "medians": {
+          "performance": 98,
+          "accessibility": 96,
+          "bestPractices": 100,
+          "fcpMs": 906.4,
+          "lcpMs": 2391.6,
+          "lcpElement": {
+            "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+            "nodeLabel": "A melhor edição de todos os tempos",
+            "snippet": "<p>",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 3.5,
+          "speedIndexMs": 906.4,
+          "totalByteWeight": 416161,
+          "scriptTransferSize": 138254,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 136687
+        },
+        "lcpSelectorsAcrossRuns": [
+          "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/before-galeria-mobile-1.json",
+            "fetchTime": "2026-10-07T22:53:51.715Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4152,
+            "performance": 98,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "fcpMs": 907.1,
+            "lcpMs": 2393.7,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.9,
+              "elementRenderDelay": 62.9
+            },
+            "cls": 0,
+            "tbtMs": 4,
+            "speedIndexMs": 907.1,
+            "totalByteWeight": 416161,
+            "scriptTransferSize": 138254,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-galeria-mobile-2.json",
+            "fetchTime": "2026-10-07T22:54:02.147Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4120.5,
+            "performance": 98,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "fcpMs": 906.2,
+            "lcpMs": 2391.2,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.2,
+              "elementRenderDelay": 54.9
+            },
+            "cls": 0,
+            "tbtMs": 3.5,
+            "speedIndexMs": 906.2,
+            "totalByteWeight": 416162,
+            "scriptTransferSize": 138254,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-galeria-mobile-3.json",
+            "fetchTime": "2026-10-07T22:54:12.641Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4131,
+            "performance": 98,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "fcpMs": 906.4,
+            "lcpMs": 2391.6,
+            "lcpElement": {
+              "selector": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p",
+              "nodeLabel": "A melhor edição de todos os tempos",
+              "snippet": "<p>",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.6,
+              "elementRenderDelay": 67.6
+            },
+            "cls": 0,
+            "tbtMs": 3.5,
+            "speedIndexMs": 906.4,
+            "totalByteWeight": 416146,
+            "scriptTransferSize": 138254,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          }
+        ]
+      }
+    },
+    "album-i": {
+      "url": "http://127.0.0.1:4185/I%20GTAP/",
+      "initialModuleJsGzip9Bytes": 137477,
+      "desktop": {
+        "runCount": 3,
+        "medians": {
+          "performance": 83,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 249,
+          "lcpMs": 3153.3,
+          "lcpElement": {
+            "selector": "div.slider-for > div.slider-photo > picture > img",
+            "nodeLabel": "Imagem 1 do álbum",
+            "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 249.4,
+          "totalByteWeight": 5770232,
+          "scriptTransferSize": 139053,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137477
+        },
+        "lcpSelectorsAcrossRuns": [
+          "div.slider-for > div.slider-photo > picture > img"
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/before-album-i-desktop-1.json",
+            "fetchTime": "2026-10-07T22:54:23.171Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4128.5,
+            "performance": 82,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 249,
+            "lcpMs": 3197.9,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.8,
+              "resourceLoadDelay": 2.6,
+              "resourceLoadDuration": 364.5,
+              "elementRenderDelay": 222.7
+            },
+            "cls": 0,
+            "tbtMs": 0,
+            "speedIndexMs": 326.8,
+            "totalByteWeight": 5770232,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-album-i-desktop-2.json",
+            "fetchTime": "2026-10-07T22:54:34.813Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4141.5,
+            "performance": 83,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 247.1,
+            "lcpMs": 3153.3,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.1,
+              "resourceLoadDelay": 2.5,
+              "resourceLoadDuration": 354.3,
+              "elementRenderDelay": 90.2
+            },
+            "cls": 0.0024,
+            "tbtMs": 0,
+            "speedIndexMs": 247.1,
+            "totalByteWeight": 5770344,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-album-i-desktop-3.json",
+            "fetchTime": "2026-10-07T22:54:46.378Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4147.5,
+            "performance": 83,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 249.4,
+            "lcpMs": 3145.6,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.9,
+              "resourceLoadDelay": 2.4,
+              "resourceLoadDuration": 302.6,
+              "elementRenderDelay": 95.5
+            },
+            "cls": 0,
+            "tbtMs": 0,
+            "speedIndexMs": 249.4,
+            "totalByteWeight": 5770167,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          }
+        ]
+      },
+      "mobile": {
+        "runCount": 3,
+        "medians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 906.9,
+          "lcpMs": 19405.5,
+          "lcpElement": {
+            "selector": "div.slider-for > div.slider-photo > picture > img",
+            "nodeLabel": "Imagem 1 do álbum",
+            "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 9,
+          "speedIndexMs": 906.9,
+          "totalByteWeight": 8891712,
+          "scriptTransferSize": 139053,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137477
+        },
+        "lcpSelectorsAcrossRuns": [
+          "div.slider-for > div.slider-photo > picture > img"
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/before-album-i-mobile-1.json",
+            "fetchTime": "2026-10-07T22:54:57.981Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4126,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 906.9,
+            "lcpMs": 19367.6,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.8,
+              "resourceLoadDelay": 3.6,
+              "resourceLoadDuration": 357.8,
+              "elementRenderDelay": 134.9
+            },
+            "cls": 0,
+            "tbtMs": 10,
+            "speedIndexMs": 906.9,
+            "totalByteWeight": 8891712,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-album-i-mobile-2.json",
+            "fetchTime": "2026-10-07T22:55:09.690Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4129.5,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 904.2,
+            "lcpMs": 19405.5,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 1.9,
+              "resourceLoadDelay": 3.6,
+              "resourceLoadDuration": 309.6,
+              "elementRenderDelay": 133.3
+            },
+            "cls": 0,
+            "tbtMs": 9,
+            "speedIndexMs": 904.2,
+            "totalByteWeight": 8891649,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-album-i-mobile-3.json",
+            "fetchTime": "2026-10-07T22:55:21.364Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4108.5,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 907.9,
+            "lcpMs": 19966.8,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/I%20GTAP/1b1ecf_030606216269495e98e134d78d0b01a…\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 3.3,
+              "resourceLoadDelay": 3.8,
+              "resourceLoadDuration": 414.6,
+              "elementRenderDelay": 125.1
+            },
+            "cls": 0,
+            "tbtMs": 9,
+            "speedIndexMs": 907.9,
+            "totalByteWeight": 8891830,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          }
+        ]
+      }
+    },
+    "album-viii": {
+      "url": "http://127.0.0.1:4185/VIII%20GTAP/",
+      "initialModuleJsGzip9Bytes": 137477,
+      "desktop": {
+        "runCount": 3,
+        "medians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 250.5,
+          "lcpMs": 9969.2,
+          "lcpElement": {
+            "selector": "div.slider-for > div.slider-photo > picture > img",
+            "nodeLabel": "Imagem 1 do álbum",
+            "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 250.5,
+          "totalByteWeight": 37098259,
+          "scriptTransferSize": 139053,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137477
+        },
+        "lcpSelectorsAcrossRuns": [
+          "div.slider-for > div.slider-photo > picture > img"
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/before-album-viii-desktop-1.json",
+            "fetchTime": "2026-10-07T22:55:33.245Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4149,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 251,
+            "lcpMs": 9969.2,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.9,
+              "resourceLoadDelay": 2.6,
+              "resourceLoadDuration": 563.3,
+              "elementRenderDelay": 62
+            },
+            "cls": 0,
+            "tbtMs": 0,
+            "speedIndexMs": 251,
+            "totalByteWeight": 37098259,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-album-viii-desktop-2.json",
+            "fetchTime": "2026-10-07T22:55:54.906Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4112.5,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 247,
+            "lcpMs": 9976.7,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 3,
+              "resourceLoadDelay": 2.8,
+              "resourceLoadDuration": 514.7,
+              "elementRenderDelay": 74.6
+            },
+            "cls": 0,
+            "tbtMs": 0,
+            "speedIndexMs": 247,
+            "totalByteWeight": 37098266,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-album-viii-desktop-3.json",
+            "fetchTime": "2026-10-07T22:56:14.893Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4126,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 250.5,
+            "lcpMs": 9948.8,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.7,
+              "resourceLoadDelay": 2.6,
+              "resourceLoadDuration": 461.3,
+              "elementRenderDelay": 84.8
+            },
+            "cls": 0.0019,
+            "tbtMs": 0,
+            "speedIndexMs": 250.5,
+            "totalByteWeight": 37098235,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          }
+        ]
+      },
+      "mobile": {
+        "runCount": 3,
+        "medians": {
+          "performance": 75,
+          "accessibility": 98,
+          "bestPractices": 100,
+          "fcpMs": 906.3,
+          "lcpMs": 64468.7,
+          "lcpElement": {
+            "selector": "div.slider-for > div.slider-photo > picture > img",
+            "nodeLabel": "Imagem 1 do álbum",
+            "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+            "source": "lcp-breakdown-insight"
+          },
+          "cls": 0,
+          "tbtMs": 9,
+          "speedIndexMs": 906.3,
+          "totalByteWeight": 54316346,
+          "scriptTransferSize": 139053,
+          "nonCompositedAnimationsItemCount": 0,
+          "initialModuleJsGzip9Bytes": 137477
+        },
+        "lcpSelectorsAcrossRuns": [
+          "div.slider-for > div.slider-photo > picture > img"
+        ],
+        "runs": [
+          {
+            "file": "docs/specs/static-performance/round3/before-album-viii-mobile-1.json",
+            "fetchTime": "2026-10-07T22:56:33.881Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4116,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 906.2,
+            "lcpMs": 64468.7,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.2,
+              "resourceLoadDelay": 3.7,
+              "resourceLoadDuration": 476.3,
+              "elementRenderDelay": 101
+            },
+            "cls": 0,
+            "tbtMs": 9,
+            "speedIndexMs": 906.2,
+            "totalByteWeight": 54316346,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-album-viii-mobile-2.json",
+            "fetchTime": "2026-10-07T22:56:51.629Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4122.5,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 907.7,
+            "lcpMs": 63852.4,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.6,
+              "resourceLoadDelay": 3.6,
+              "resourceLoadDuration": 493.4,
+              "elementRenderDelay": 97.1
+            },
+            "cls": 0,
+            "tbtMs": 10,
+            "speedIndexMs": 907.7,
+            "totalByteWeight": 54317310,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          },
+          {
+            "file": "docs/specs/static-performance/round3/before-album-viii-mobile-3.json",
+            "fetchTime": "2026-10-07T22:57:09.794Z",
+            "runWarnings": [],
+            "runtimeError": null,
+            "benchmarkIndex": 4131,
+            "performance": 75,
+            "accessibility": 98,
+            "bestPractices": 100,
+            "fcpMs": 906.3,
+            "lcpMs": 68249.8,
+            "lcpElement": {
+              "selector": "div.slider-for > div.slider-photo > picture > img",
+              "nodeLabel": "Imagem 1 do álbum",
+              "snippet": "<img src=\"https://gtap.com.br/midias/VIII%20GTAP/DSC_0008 copy.jpg\" alt=\"Imagem 1 do álbum\" loading=\"eager\" decoding=\"async\">",
+              "source": "lcp-breakdown-insight"
+            },
+            "lcpBreakdownMs": {
+              "timeToFirstByte": 2.9,
+              "resourceLoadDelay": 3.8,
+              "resourceLoadDuration": 556.2,
+              "elementRenderDelay": 80.6
+            },
+            "cls": 0,
+            "tbtMs": 7,
+            "speedIndexMs": 906.3,
+            "totalByteWeight": 54316269,
+            "scriptTransferSize": 139053,
+            "scriptRequestCount": 6,
+            "nonCompositedAnimations": {
+              "itemCount": 0,
+              "scoreDisplayMode": "notApplicable"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "environment": {
+    "lighthouseVersion": "13.0.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+  }
+}

@@ -34,7 +34,6 @@
 
 .card-palestrantes {
   position: relative;
-  overflow: hidden;
   background: #02093a;
   text-align: center;
   display: flex;
@@ -49,6 +48,25 @@
   border-radius: 10px;
   border: 2px solid #dda92e;
   cursor: pointer;
+  transition: transform 400ms var(--ease-out);
+}
+
+/* Máscara da foto (antes era o overflow do card): recorta o zoom sem cortar o brilho. */
+.card-palestrantes-foto {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Degradê no rodapé da foto: só aparece no hover/foco, para o nome seguir legível com o zoom. */
+.card-palestrantes-foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(2, 9, 58, 0.6), rgba(2, 9, 58, 0) 45%);
+  opacity: 0;
+  transition: opacity 400ms var(--ease-out);
 }
 
 .card-palestrantes .speaker-photo {
@@ -57,18 +75,32 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 900ms var(--ease-out);
 }
+
+/* Brilho dourado + sombra: box-shadow fixo num pseudo-elemento; só a opacidade anima. */
+.card-palestrantes::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 1px rgba(221, 169, 46, 0.45),
+    0 16px 36px -14px rgba(221, 169, 46, 0.55),
+    0 26px 40px -26px rgba(2, 9, 58, 0.7);
+  opacity: 0;
+  transition: opacity 400ms var(--ease-out);
+  pointer-events: none;
+}
+
 .card-palestrantes h6, .card-palestrantes p { position: relative; z-index: 1; }
 .card-palestrantes:focus-visible { outline: 3px solid #02093a; outline-offset: 4px; }
-
-.card-palestrantes:hover {
-  transform: scale(1.03);
-}
 
 .card-palestrantes h6 {
   color: #dda92e;
   font-size: 20px;
   font-weight: 500;
+  transition: color var(--dur-ui) var(--ease-out);
 }
 
 .card-palestrantes p {
@@ -76,6 +108,71 @@
   font-size: 13px;
   font-weight: 400;
   padding-bottom: 5%;
+}
+
+/* Hover (só mouse/trackpad) e foco pelo teclado: card sobe, foto aproxima, nome clareia. */
+@media (hover: hover) and (pointer: fine) {
+  .card-palestrantes:hover {
+    transform: translateY(-6px);
+  }
+
+  .card-palestrantes:hover::after,
+  .card-palestrantes:hover .card-palestrantes-foto::after {
+    opacity: 1;
+  }
+
+  .card-palestrantes:hover .speaker-photo {
+    transform: scale(1.06);
+  }
+
+  .card-palestrantes:hover h6 {
+    color: #ffdf92;
+  }
+}
+
+.card-palestrantes:focus-visible {
+  transform: translateY(-6px);
+}
+
+.card-palestrantes:focus-visible::after,
+.card-palestrantes:focus-visible .card-palestrantes-foto::after {
+  opacity: 1;
+}
+
+.card-palestrantes:focus-visible .speaker-photo {
+  transform: scale(1.06);
+}
+
+.card-palestrantes:focus-visible h6 {
+  color: #ffdf92;
+}
+
+/* Clique: volta ao repouso rápido, com leve "aperto". */
+.card-palestrantes:active {
+  transform: scale(0.98);
+  transition-duration: 120ms;
+}
+
+/* Entrada em cascata por coluna (o --i é lido pelo data-reveal="scale"). */
+.container-palestrantes {
+  --reveal-stagger: 90ms;
+}
+
+.container-palestrantes > :nth-child(4n + 2) { --i: 1; }
+.container-palestrantes > :nth-child(4n + 3) { --i: 2; }
+.container-palestrantes > :nth-child(4n + 4) { --i: 3; }
+
+/* Entre ~960px e ~1288px cabem 3 cards por linha. */
+@media (max-width: 1288px) {
+  .container-palestrantes > :nth-child(n) { --i: 0; }
+  .container-palestrantes > :nth-child(3n + 2) { --i: 1; }
+  .container-palestrantes > :nth-child(3n + 3) { --i: 2; }
+}
+
+/* Duas colunas (desktop estreito e mobile). */
+@media (max-width: 959px) {
+  .container-palestrantes > :nth-child(n) { --i: 0; }
+  .container-palestrantes > :nth-child(2n + 2) { --i: 1; }
 }
 
 @media (max-width: 768px) {

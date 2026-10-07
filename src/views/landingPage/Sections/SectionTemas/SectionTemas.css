@@ -31,6 +31,11 @@
   margin-bottom: 40px;
 }
 
+/* Entrada (data-reveal): subtítulo logo depois do título. */
+.section-temas-content > h5 {
+  --i: 1;
+}
+
 .container-cards-tema {
   display: flex;
   flex-direction: row;
@@ -86,6 +91,90 @@
   color: #02093a;
   font-size: 30px;
   font-weight: 700;
+}
+
+/* ====== Movimento ======
+   Cards entram em cascata por linha (--card-i pela posição na linha, via
+   nth-child, sem estilo inline) e o número "estoura" logo depois do card. */
+.section-temas .card-tema {
+  --i: var(--card-i, 0);
+  transition: transform 500ms var(--ease-out);
+}
+
+/* Origem na borda esquerda = centro visual (por causa do translateX(-50%)):
+   assim o scale da entrada e do hover não desloca o círculo para o lado. */
+.section-temas .circle-number {
+  --i: calc(var(--card-i, 0) + 3);
+  transform-origin: 0 50%;
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+
+/* Sombra no "chão" ao levantar o card: pseudo-elemento, só opacity/transform. */
+.section-temas .card-tema::after {
+  content: "";
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  top: calc(100% - 8px);
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(1 4 30 / 60%), transparent);
+  opacity: 0;
+  transition:
+    opacity 500ms var(--ease-out),
+    transform 500ms var(--ease-out);
+  pointer-events: none;
+}
+
+/* 2 por linha */
+@media (min-width: 540px) and (max-width: 789px) {
+  .section-temas .container-cards-tema > .card-tema:nth-child(2n) {
+    --card-i: 1;
+  }
+}
+
+/* 3 por linha */
+@media (min-width: 790px) and (max-width: 1059px) {
+  .section-temas .container-cards-tema > .card-tema:nth-child(3n + 2) {
+    --card-i: 1;
+  }
+
+  .section-temas .container-cards-tema > .card-tema:nth-child(3n) {
+    --card-i: 2;
+  }
+}
+
+/* 4 por linha (largura máxima de 1200px) */
+@media (min-width: 1060px) {
+  .section-temas .container-cards-tema > .card-tema:nth-child(4n + 2) {
+    --card-i: 1;
+  }
+
+  .section-temas .container-cards-tema > .card-tema:nth-child(4n + 3) {
+    --card-i: 2;
+  }
+
+  .section-temas .container-cards-tema > .card-tema:nth-child(4n) {
+    --card-i: 3;
+  }
+}
+
+/* Cards não são links: hover só sobe de leve (cursor padrão). */
+@media (hover: hover) and (pointer: fine) {
+  .section-temas .card-tema:hover {
+    transform: translateY(-6px);
+  }
+
+  /* A sombra fica no lugar enquanto o card sobe. */
+  .section-temas .card-tema:hover::after {
+    opacity: 1;
+    transform: translateY(6px);
+  }
+
+  /* scale antes do translateX(-50%) mantém o círculo centralizado. */
+  .section-temas .card-tema:hover .circle-number {
+    transform: scale(1.08) translateX(-50%);
+  }
 }
 
 .sugerir-tema-btn {

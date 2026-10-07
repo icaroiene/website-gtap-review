@@ -1,5 +1,10 @@
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # A página interna da Open foi removida; a rota antiga aponta para o site oficial.
+  RewriteRule ^open-solucoes-tributarias(?:/.*)?$ https://www.opensolucoestributarias.com.br/ [R=301,L,NC]
+</IfModule>
 
 # Real files/directories and existing PHP endpoints are served directly.
 # No SPA fallback: each route has its own exported index.html.

@@ -10,9 +10,9 @@ export const GaleriaEdition = ({ editionText, images, logo }) => {
             <Navbar />
             <section className="container-edition-galeria">
                 <div className="edition-galeria-left">
-                    <img src={logo} alt={`${editionText} logo`}/>
-                    <hr />
-                    <p>Reviva os <b>melhores momentos</b> do maior congresso de Gestão Tributária na Administração Pública.</p>
+                    <img src={logo} alt={`${editionText} logo`} data-enter />
+                    <hr data-enter="line" />
+                    <p data-enter>Reviva os <b>melhores momentos</b> do maior congresso de Gestão Tributária na Administração Pública.</p>
                 </div>
 
                 <div className="edition-galeria-right">

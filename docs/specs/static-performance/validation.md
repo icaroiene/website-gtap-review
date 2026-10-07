@@ -43,3 +43,21 @@ O baseline plain inicial está em `round2/before.json`; a primeira integração 
 ## Limites
 
 Nenhuma medição foi executada contra produção e nenhuma publicação foi feita. A compressão foi confirmada apenas no servidor estático local. A nota do PageSpeed real dependerá da Hostinger, cache, headers e mídia remota; deve ser medida após deploy. O formulário PHP foi interceptado localmente, sem envio real.
+
+## Revisão 5 — animações, microinterações e remoção da Open (2026-10-07)
+
+Mesmo protocolo (Lighthouse 13.0.1, preview gzip, 3 execuções, mediana). Resumos em `round3/`: `before.json` (commit 16e4f94), `after.json` (variante 1: CSS em arquivos) e `variant2-inline-css.json` (variante 2, final: `experimental.inlineCss`). Os relatórios brutos (~44 MB) não foram versionados.
+
+| Página | Perfil | Perf antes → final | LCP antes → final | Elemento LCP | CLS |
+| --- | --- | ---: | ---: | --- | ---: |
+| Home | Desktop | 100 → 100 | 684 → 669 ms | igual (texto do CardButton) | 0,0002 → 0 |
+| Home | Mobile | 94 → 94 | 3.144 → 3.073 ms | igual (`section.section-atuacao`) | 0,0032 → 0 |
+| Galeria | Desktop | 100 → 100 | 545 → 566 ms | igual | 0 |
+| Galeria | Mobile | 98 → 98 | 2.392 → 2.470 ms | igual | 0 |
+| Álbum I | Desktop / Mobile | 83 / 75 → 83–77 / 75 | 3,15 / 19,4 s → 3,2–3,9 / 14,8–16,2 s | igual (1ª foto) | 0 |
+
+- A variante 1 manteve LCP/CLS/TBT dentro das metas, mas a home mobile caiu de 94 para 93 (+4,4 KB de CSS bloqueante). A variante 2 embute o CSS no HTML e recupera a nota.
+- `non-composited-animations`: 0 itens em todas as execuções. TBT ≤ 10 ms mobile.
+- O chunk do Lenis (~5,5 KB gz) só é baixado no desktop após load/idle; nunca no mobile nem na 404.
+- Álbuns dependem de fotos remotas de `gtap.com.br`; a variação do LCP ali é de rede, não das animações.
+- QA no navegador: sem conteúdo invisível sem JS ou com movimento reduzido, âncoras abaixo do header fixo, trava de rolagem no menu/modal, sem overflow horizontal (320–1920 px), sem erros de console.

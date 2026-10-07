@@ -1,0 +1,142 @@
+{
+ "variant": "2 (final): experimental.inlineCss — CSS embutido no HTML",
+ "tool": "Lighthouse 13.0.1, preview gzip",
+ "runs": {
+  "inline-404-mobile-1": {
+   "perf": 99,
+   "lcpMs": 2166,
+   "fcpMs": 1060,
+   "cls": 0,
+   "tbtMs": 6,
+   "lcpElement": "body > main.not-found > h1.not-found-title"
+  },
+  "inline-album-desktop-1": {
+   "perf": 77,
+   "lcpMs": 3895,
+   "fcpMs": 212,
+   "cls": 0,
+   "tbtMs": 0,
+   "lcpElement": "div.slider-for > div.slider-photo > picture > img"
+  },
+  "inline-album-desktop-2": {
+   "perf": 83,
+   "lcpMs": 3171,
+   "fcpMs": 209,
+   "cls": 0,
+   "tbtMs": 0,
+   "lcpElement": "div.slider-for > div.slider-photo > picture > img"
+  },
+  "inline-album-mobile-1": {
+   "perf": 75,
+   "lcpMs": 14817,
+   "fcpMs": 771,
+   "cls": 0,
+   "tbtMs": 8,
+   "lcpElement": "div.slider-for > div.slider-photo > picture > img"
+  },
+  "inline-album-mobile-2": {
+   "perf": 75,
+   "lcpMs": 16219,
+   "fcpMs": 771,
+   "cls": 0,
+   "tbtMs": 79,
+   "lcpElement": "div.slider-for > div.slider-photo > picture > img"
+  },
+  "inline-galeria-desktop-1": {
+   "perf": 100,
+   "lcpMs": 566,
+   "fcpMs": 171,
+   "cls": 0,
+   "tbtMs": 0,
+   "lcpElement": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+  },
+  "inline-galeria-desktop-2": {
+   "perf": 100,
+   "lcpMs": 568,
+   "fcpMs": 171,
+   "cls": 0,
+   "tbtMs": 0,
+   "lcpElement": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+  },
+  "inline-galeria-desktop-3": {
+   "perf": 100,
+   "lcpMs": 564,
+   "fcpMs": 168,
+   "cls": 0,
+   "tbtMs": 0,
+   "lcpElement": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+  },
+  "inline-galeria-mobile-1": {
+   "perf": 98,
+   "lcpMs": 2471,
+   "fcpMs": 618,
+   "cls": 0,
+   "tbtMs": 4,
+   "lcpElement": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+  },
+  "inline-galeria-mobile-2": {
+   "perf": 98,
+   "lcpMs": 2470,
+   "fcpMs": 620,
+   "cls": 0,
+   "tbtMs": 2,
+   "lcpElement": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+  },
+  "inline-galeria-mobile-3": {
+   "perf": 98,
+   "lcpMs": 2462,
+   "fcpMs": 615,
+   "cls": 0,
+   "tbtMs": 2,
+   "lcpElement": "section.container-banner-galeria > div.content-text-galeria-banner > div.div-text-galeria > p"
+  },
+  "inline-home-desktop-1": {
+   "perf": 100,
+   "lcpMs": 675,
+   "fcpMs": 214,
+   "cls": 0.0013,
+   "tbtMs": 0,
+   "lcpElement": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p"
+  },
+  "inline-home-desktop-2": {
+   "perf": 100,
+   "lcpMs": 668,
+   "fcpMs": 212,
+   "cls": 0,
+   "tbtMs": 0,
+   "lcpElement": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p"
+  },
+  "inline-home-desktop-3": {
+   "perf": 100,
+   "lcpMs": 669,
+   "fcpMs": 289,
+   "cls": 0,
+   "tbtMs": 0,
+   "lcpElement": "div.card-buttons-container > div.card-button-left > div.button-left-condition > p"
+  },
+  "inline-home-mobile-1": {
+   "perf": 94,
+   "lcpMs": 3073,
+   "fcpMs": 819,
+   "cls": 0,
+   "tbtMs": 6,
+   "lcpElement": "body > section.section-atuacao"
+  },
+  "inline-home-mobile-2": {
+   "perf": 94,
+   "lcpMs": 3086,
+   "fcpMs": 1226,
+   "cls": 0,
+   "tbtMs": 3,
+   "lcpElement": "body > section.section-atuacao"
+  },
+  "inline-home-mobile-3": {
+   "perf": 94,
+   "lcpMs": 3071,
+   "fcpMs": 786,
+   "cls": 0,
+   "tbtMs": 6,
+   "lcpElement": "body > section.section-atuacao"
+  }
+ }
+}

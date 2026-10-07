@@ -25,6 +25,15 @@
     width: 300px;
 }
 
+/* Entrada no primeiro paint (data-enter): logo, linha e texto em sequência. */
+.edition-galeria-left > :nth-child(2) {
+    --i: 1;
+}
+
+.edition-galeria-left > :nth-child(3) {
+    --i: 2;
+}
+
 .edition-galeria-left hr {
     width: 100%;
     height: 2px;

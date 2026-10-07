@@ -6,11 +6,11 @@ import ImageAlexandre from "@/assets/alexandre.webp";
 export const SectionIdealizador = ({ localImages = {} }) => {
   return (
     <section className="section-idealizador">
-      <div className="content-idealizador">
-        <div>
+      <div className="content-idealizador" data-reveal="left">
+        <div data-reveal>
           <h3>Idealizador</h3>
         </div>
-        <div>
+        <div data-reveal>
           <p>
             <b>Alexandre Marques Andrade Lemos</b> é um dos maiores
             especialistas em tributação do Brasil, com anos de experiência
@@ -32,7 +32,7 @@ export const SectionIdealizador = ({ localImages = {} }) => {
             profissionais a alcançarem resultados extraordinários.
           </p>
         </div>
-        <div className="desktop-button-instagram">
+        <div className="desktop-button-instagram" data-reveal>
          <a href="https://www.instagram.com/foco.tributario/" target="_blank" rel="noopener noreferrer">
           <button>
             <Icon name="camera"  />Acompanhe pelo instagram
@@ -40,11 +40,11 @@ export const SectionIdealizador = ({ localImages = {} }) => {
           </a>
         </div>
       </div>
-      <div className="content-image-idealizador">
+      <div className="content-image-idealizador" data-reveal="right">
         <ResponsiveImage image={localImages.ImageAlexandre} sizes="(max-width: 768px) 90vw, 600px" src={ImageAlexandre.src} width={ImageAlexandre.width} height={ImageAlexandre.height} alt="alexandre-marques" loading="lazy"/>
         
       </div>
-      <div className="mobile-button-instagram">
+      <div className="mobile-button-instagram" data-reveal>
           <a href="https://www.instagram.com/foco.tributario/" target="_blank" rel="noopener noreferrer">
             <button>
               <Icon name="camera"  />Acompanhe pelo instagram

@@ -34,6 +34,13 @@
   width: 200px;
 }
 
+/* Logo da Open: link externo do tamanho da imagem (não estica na coluna). */
+.container-footer .content-logo-link {
+  display: block;
+  align-self: flex-start;
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+
 .content-text-footer {
   text-align: left;
   font-weight: 300;
@@ -41,6 +48,7 @@
 
 .content-menu-footer {
   display: flex;
+  gap: 1.5rem;
   text-align: left;
   justify-content: center;
 }
@@ -54,6 +62,66 @@
 
 .content-menu-footer li {
   padding-block: 5px;
+}
+
+.container-footer .content-menu-footer a {
+  position: relative;
+  display: inline-block;
+  transition: color var(--dur-ui) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+
+/* Sublinhado que desliza (mesma linguagem do header): entra pela esquerda, sai pela direita. */
+.container-footer .content-menu-footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 360ms var(--ease-out);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .container-footer .content-menu-footer a:hover {
+    color: var(--color-gold-light);
+  }
+
+  .container-footer .content-menu-footer a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  .container-footer .content-logo-link:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.container-footer .content-menu-footer a:focus-visible {
+  color: var(--color-gold-light);
+}
+
+.container-footer .content-menu-footer a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.container-footer .content-logo-link:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* Clique: volta ao repouso rápido. */
+.container-footer .content-menu-footer a:active {
+  transform: translateY(1px);
+  transition-duration: 120ms;
+}
+
+.container-footer .content-logo-link:active {
+  transform: scale(0.98);
+  transition-duration: 120ms;
 }
 
 @media (max-width: 768px) {

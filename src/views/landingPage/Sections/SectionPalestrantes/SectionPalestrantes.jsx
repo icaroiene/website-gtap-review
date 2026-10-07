@@ -16,10 +16,10 @@ export const SectionPalestrantes = ({ data }) => {
   return (
     <section className="section-palestrantes" id="palestrantes">
       <div>
-        <h3>Palestrantes</h3>
+        <h3 data-reveal>Palestrantes</h3>
       </div>
       <div>
-        <h5>
+        <h5 data-reveal>
           Grandes nomes do universo tributário reunidos para debater temas
           cruciais junto a participantes de várias partes do Brasil.
         </h5>
@@ -29,9 +29,13 @@ export const SectionPalestrantes = ({ data }) => {
           <button type="button"
             className="card-palestrantes"
             key={palestrante.id}
+            data-reveal="scale"
             onClick={() => abrirModal(palestrante)}
           >
-            <ResponsiveImage image={palestrante.image} src={palestrante.mediaUrl} alt="" sizes="(max-width: 768px) 45vw, 230px" loading="lazy" className="speaker-photo" />
+            {/* Máscara da foto: o zoom fica recortado aqui e o brilho do card pode sair da borda */}
+            <span className="card-palestrantes-foto">
+              <ResponsiveImage image={palestrante.image} src={palestrante.mediaUrl} alt="" sizes="(max-width: 768px) 45vw, 230px" loading="lazy" className="speaker-photo" />
+            </span>
             <h6>{palestrante.title}</h6>
             <p>{palestrante.description}</p>
           </button>

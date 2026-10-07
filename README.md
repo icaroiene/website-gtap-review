@@ -26,7 +26,11 @@ Os arquivos gerados ficam em `public/optimized/`, `public/optimized-video/`, `sr
 
 As imagens usam formatos modernos e variantes responsivas. Os carrosséis usam rolagem nativa, sem `react-slick`. A home é gerada estaticamente no build e mantém componentes interativos menores no cliente.
 
+As animações de entrada e as microinterações são feitas em CSS (`data-reveal`, `data-enter` e estados de hover/foco/clique). O conteúdo é visível sem JS. Um runtime pequeno (`src/motion/`) só começa depois do load, em tempo ocioso, e anima apenas o que ainda está abaixo da dobra. Hero e CTA não recebem animação de entrada, o que preserva o LCP. A rolagem suave usa Lenis, carregado sob demanda e apenas em desktop com ponteiro fino; toque continua com rolagem nativa. Com `prefers-reduced-motion`, entradas, rolagem suave e animações contínuas ficam desligadas.
+
 A fonte Roboto Condensed e os ícones SVG são locais. O poster do banner tem prioridade; vídeos de depoimentos não fazem preload e o mapa é lazy. Dados em `public/api/*.json` e `public/api/galerias/*.json` são incorporados no build, então atualizações exigem novo build e publicação. As nove URLs históricas (`/I%20GTAP/` até `/IX%20GTAP/`) permanecem disponíveis.
+
+Páginas exportadas: home, `/galeria/` e nove álbuns. A antiga página interna da Open foi removida: `/open-solucoes-tributarias/` responde 301 para https://www.opensolucoestributarias.com.br/ pelo `.htaccess`, e `public/open-solucoes-tributarias/index.html` é um fallback estático sem JS (meta refresh, `noindex`) para o preview local e hosts sem `.htaccess`.
 
 ## Publicação na Hostinger
 
@@ -34,8 +38,9 @@ A fonte Roboto Condensed e os ícones SVG são locais. O poster do banner tem pr
 2. Faça backup dos arquivos atuais de `public_html`, incluindo `.htaccess`.
 3. Publique **o conteúdo** de `out/` em `public_html`, incluindo `out/.htaccess` (arquivo oculto). Não envie a pasta `out` como subdiretório.
 4. Preserve `form-handler.php`, suas dependências/configuração, o diretório `midias`, banco de dados e quaisquer outros endpoints PHP existentes. Eles não são fornecidos pelo export. Não apague `public_html` para publicar.
-5. Substitua o `.htaccess` antigo pelo exportado e concilie regras próprias de HTTPS, domínio e PHP. O arquivo ativa Deflate para tipos textuais e cache longo para arquivos com hash, cache de um dia para mídias e revalidação para HTML/JSON. Cada URL tem seu `index.html`; não deve haver fallback geral para a home. O `.htaccess` da raiz e o de `public/` são iguais; o de `public/` é copiado automaticamente no build.
-6. Confira acesso direto e reload às três páginas principais e nove álbuns, resposta 404, mídias e formulário. Limpe o cache do host/CDN e refaça PageSpeed desktop e mobile em produção.
+5. Substitua o `.htaccess` antigo pelo exportado e concilie regras próprias de HTTPS, domínio e PHP, mantendo a `RewriteRule` que redireciona `/open-solucoes-tributarias/` (301) para o site oficial da Open. O arquivo ativa Deflate para tipos textuais e cache longo para arquivos com hash, cache de um dia para mídias e revalidação para HTML/JSON. Cada URL tem seu `index.html`; não deve haver fallback geral para a home. O `.htaccess` da raiz e o de `public/` são iguais; o de `public/` é copiado automaticamente no build.
+6. A pasta antiga `public_html/open-solucoes-tributarias/` pode ser apagada. Se ela continuar no servidor, o redirecionamento funciona do mesmo jeito.
+7. Confira acesso direto e reload à home, à galeria e aos nove álbuns, o 301 de `/open-solucoes-tributarias/`, a resposta 404, as mídias e o formulário. Limpe o cache do host/CDN e refaça PageSpeed desktop e mobile em produção.
 
 `robots.txt` e `sitemap.xml` são gerados estaticamente. O domínio canônico adotado é `https://gtap.com.br`.
 

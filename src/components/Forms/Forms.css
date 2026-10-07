@@ -75,3 +75,168 @@
   }
 
 }
+
+/* ====================== Microinterações ====================== */
+
+/* Recorta o painel da direita na entrada (desliza) e no zoom do hover. */
+.container-forms {
+  overflow: clip;
+}
+
+.container-forms .container-forms-right {
+  transform-origin: right center;
+  transition: transform 1400ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .container-forms:hover .container-forms-right {
+    transform: scale(1.04);
+  }
+}
+
+/* Campos: borda e anel de foco; o rótulo acompanha o campo ativo. */
+.container-forms .form-input label {
+  transition: color var(--dur-ui) var(--ease-out);
+}
+
+.container-forms .form-input:focus-within label {
+  color: #1d2f9e;
+}
+
+.container-forms .form-input input {
+  transition:
+    border-color 200ms var(--ease-out),
+    box-shadow 200ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .container-forms .form-input input:hover {
+    border-color: #4a4f6e;
+  }
+}
+
+.container-forms .form-input input:focus-visible {
+  outline: 2px solid transparent; /* mantém indicador no modo de alto contraste */
+  border-color: var(--color-navy);
+  box-shadow: 0 0 0 3px rgb(2 9 58 / 22%);
+}
+
+.container-forms .form-input input:user-invalid {
+  border-color: #7f1710;
+}
+
+/* Botão: sobe 2px com sombra suave; volta ao lugar no clique (120ms). */
+.container-forms .form-input button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  transition:
+    transform 300ms var(--ease-out),
+    background-color 300ms var(--ease-out),
+    opacity var(--dur-ui) var(--ease-out);
+}
+
+/* Sombra num pseudo-elemento: só a opacidade anima. */
+.container-forms .form-input button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 10px 24px -12px rgb(2 9 58 / 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .container-forms .form-input button:not(:disabled):hover {
+    transform: translateY(-2px);
+    background-color: #0a1560;
+  }
+
+  .container-forms .form-input button:not(:disabled):hover::after {
+    opacity: 1;
+  }
+}
+
+/* O anel dourado global some no fundo amarelo: no card ele fica azul. */
+.container-forms .form-input button:focus-visible {
+  outline-color: var(--color-navy);
+}
+
+.container-forms .form-input button:not(:disabled):focus-visible {
+  transform: translateY(-2px);
+  background-color: #0a1560;
+}
+
+.container-forms .form-input button:not(:disabled):focus-visible::after {
+  opacity: 1;
+}
+
+.container-forms .form-input button:not(:disabled):active {
+  transform: none;
+  transition-duration: 120ms;
+}
+
+.container-forms .form-input button:not(:disabled):active::after {
+  opacity: 0;
+  transition-duration: 120ms;
+}
+
+.container-forms .form-input button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Indicador de envio ao lado de "ENVIANDO...". */
+.container-forms .form-spinner {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  border: 2px solid rgb(255 255 255 / 35%);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: gtap-forms-spin 700ms linear infinite;
+}
+
+@keyframes gtap-forms-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* Mensagem de retorno: espaço reservado (2 linhas) para não empurrar a página. */
+.container-forms .form-status {
+  min-height: 2.7em;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.container-forms .form-status-message {
+  display: block;
+  animation: gtap-forms-status 360ms var(--ease-out) backwards;
+}
+
+.container-forms .form-status-success {
+  color: #0f4a29;
+}
+
+.container-forms .form-status-error {
+  color: #7f1710;
+}
+
+@keyframes gtap-forms-status {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container-forms .form-spinner {
+    animation: none;
+  }
+}

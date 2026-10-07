@@ -1,13 +1,19 @@
 /* Modal base */
+/* Sem position aqui: o dialog modal precisa do position: fixed do navegador
+   (com relative ele vira absolute no top layer e o showModal() rola a janela ao topo). */
 .modal-dialog {
   display: flex;
   border: none;
   padding: 0;
   background: transparent;
-  position: relative;
   width: 90vw;              /* ou 50vw se quiser mais estreito */         /* Limita a altura visível */
   overflow-x: hidden;           /* Permite rolagem do próprio dialog */
   box-sizing: border-box;
+}
+
+/* O display: flex acima anularia o "fechado" do navegador. */
+.modal-dialog:not([open]) {
+  display: none;
 }
 
 .modal-dialog::backdrop {
@@ -91,6 +97,7 @@
   text-align: left;
 }
 .iconbutton-social {
+  display: inline-block;
   border: 2px solid #c7c7c7;
   padding-block: 7px;
   padding-inline: 10px;
@@ -99,7 +106,20 @@
   text-align: left;
   color: #02093A;
   cursor: pointer;
-  
+  transition:
+    transform var(--dur-ui) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+/* O anel de foco fica no círculo, não no link retangular em volta. */
+.modal-dialog .link-social:focus-visible {
+  outline: none;
+}
+
+.modal-dialog .link-social:focus-visible .iconbutton-social {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
 }
 
 /* Botão de fechar */
@@ -112,13 +132,36 @@
   border: none;
   cursor: pointer;
   z-index: 10;
+  transition:
+    transform var(--dur-ui) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+/* Círculo de hover atrás do ✕ (também aumenta a área de toque). */
+.modal-dialog .close::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  z-index: -1;
+  border-radius: 50%;
+  background: rgba(2, 9, 58, 0.08);
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity var(--dur-ui) var(--ease-out),
+    transform var(--dur-ui) var(--ease-out);
 }
 
 /* Botões de navegação ⟨ ⟩ */
 .nav-arrow {
+  --nav-arrow-y: -50%;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(var(--nav-arrow-y));
   background: white;
   border-radius: 50%;
   border: none;
@@ -129,6 +172,14 @@
   cursor: pointer;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   z-index: 10; /* garante que fique acima do modal */
+  transition:
+    transform var(--dur-ui) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.modal-dialog .nav-arrow svg {
+  transition: transform var(--dur-ui) var(--ease-out);
 }
 
 .nav-left {
@@ -191,9 +242,9 @@
   }
 
   .nav-arrow {
+    --nav-arrow-y: 0px;
     bottom: 10px;
     top: unset;
-    transform: none;
     width: 36px;
     height: 36px;
     font-size: 1.2rem;
@@ -208,3 +259,129 @@
   }
 }
 
+/* ==================== Microinterações ==================== */
+
+@media (hover: hover) and (pointer: fine) {
+  .modal-dialog .nav-arrow:hover {
+    transform: translateY(var(--nav-arrow-y)) scale(1.08);
+    background: #ffdf92;
+    color: #02093a;
+  }
+
+  .modal-dialog .nav-left:hover svg {
+    transform: translateX(-2px);
+  }
+
+  .modal-dialog .nav-right:hover svg {
+    transform: translateX(2px);
+  }
+
+  .modal-dialog .close:hover {
+    transform: rotate(90deg);
+    color: #02093a;
+  }
+
+  .modal-dialog .close:hover::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .modal-dialog .link-social:hover .iconbutton-social {
+    transform: translateY(-2px);
+    border-color: #dda92e;
+    background-color: #ffdf92;
+  }
+}
+
+/* Foco pelo teclado = mesmo retorno visual do hover */
+.modal-dialog .nav-arrow:focus-visible {
+  transform: translateY(var(--nav-arrow-y)) scale(1.08);
+  background: #ffdf92;
+  color: #02093a;
+}
+
+.modal-dialog .close:focus-visible::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-dialog .link-social:focus-visible .iconbutton-social {
+  transform: translateY(-2px);
+  border-color: #dda92e;
+  background-color: #ffdf92;
+}
+
+/* Clique: "aperto" curto */
+.modal-dialog .nav-arrow:active {
+  transform: translateY(var(--nav-arrow-y)) scale(0.94);
+  transition-duration: 120ms;
+}
+
+.modal-dialog .close:active {
+  transform: scale(0.9);
+  transition-duration: 120ms;
+}
+
+.modal-dialog .link-social:active .iconbutton-social {
+  transform: scale(0.94);
+  transition-duration: 120ms;
+}
+
+/* ==================== Abertura, saída e troca ==================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .modal-dialog[open] {
+    animation: gtap-modal-entrada 240ms var(--ease-out);
+  }
+
+  .modal-dialog[open]::backdrop {
+    animation: gtap-modal-fundo 240ms var(--ease-out);
+  }
+
+  .modal-dialog[open].is-fechando {
+    animation: gtap-modal-saida 160ms var(--ease-in-out) forwards;
+  }
+
+  .modal-dialog[open].is-fechando::backdrop {
+    animation: gtap-modal-fundo-saida 160ms var(--ease-in-out) forwards;
+  }
+
+  /* Anterior/próximo: foto e textos remontam (key) e entram do lado certo. */
+  .modal-dialog[data-direcao="proximo"] .modal-photo,
+  .modal-dialog[data-direcao="proximo"] .modal-texto {
+    animation: gtap-modal-troca-proximo 260ms var(--ease-out) backwards;
+  }
+
+  .modal-dialog[data-direcao="anterior"] .modal-photo,
+  .modal-dialog[data-direcao="anterior"] .modal-texto {
+    animation: gtap-modal-troca-anterior 260ms var(--ease-out) backwards;
+  }
+
+  .modal-dialog[data-direcao] .modal-texto + .modal-texto {
+    animation-delay: 40ms;
+  }
+}
+
+@keyframes gtap-modal-entrada {
+  from { opacity: 0; translate: 0 12px; scale: 0.97; }
+}
+
+@keyframes gtap-modal-saida {
+  to { opacity: 0; translate: 0 8px; scale: 0.98; }
+}
+
+@keyframes gtap-modal-fundo {
+  from { opacity: 0; }
+}
+
+@keyframes gtap-modal-fundo-saida {
+  to { opacity: 0; }
+}
+
+@keyframes gtap-modal-troca-proximo {
+  from { opacity: 0; translate: 16px 0; }
+}
+
+@keyframes gtap-modal-troca-anterior {
+  from { opacity: 0; translate: -16px 0; }
+}
