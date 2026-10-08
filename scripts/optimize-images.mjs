@@ -162,7 +162,16 @@ export const GALLERY = {
   sizes: [240, 960],
 };
 const galleryName = (source) => hash(`gallery-v1|${source}`).slice(0, 16);
-const variantFiles = (image) => image.srcSet.split(', ').map((item) => path.basename(item.split(' ')[0]));
+const variantFiles = (image) => [image.srcSet, image.avifSrcSet].filter(Boolean)
+  .flatMap((srcSet) => srcSet.split(', ').map((item) => path.basename(item.split(' ')[0])));
+
+// Remove variantes que nenhum item do manifesto usa mais (só arquivos, não subpastas).
+async function prune(directory, manifest) {
+  const used = new Set(Object.values(manifest).flatMap(variantFiles));
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    if (entry.isFile() && !used.has(entry.name)) await rm(path.join(directory, entry.name));
+  }
+}
 
 export async function buildGallery({ root = ROOT, refresh = false, fetchImpl = fetch } = {}) {
   const start = Date.now();
@@ -190,50 +199,47 @@ export async function buildGallery({ root = ROOT, refresh = false, fetchImpl = f
   if (failures.length) throw new Error(`Gallery images failed (${failures.length}):\n${failures.join('\n')}`);
   const ordered = Object.fromEntries(sources.map((source) => [source, manifest[source]]));
   // Remove variantes de fotos que saíram dos álbuns.
-  const used = new Set(Object.values(ordered).flatMap(variantFiles));
-  for (const file of await readdir(outputDirectory)) if (!used.has(file)) await rm(path.join(outputDirectory, file));
+  await prune(outputDirectory, ordered);
   await writeIfChanged(manifestPath, `${JSON.stringify(ordered, null, 2)}\n`);
   console.log(`Gallery: ${sources.length} photos, ${pending.length} downloaded/converted; ${((Date.now() - start) / 1000).toFixed(1)}s.`);
   return ordered;
 }
 
-export async function buildMedia({ root = ROOT, refresh = false } = {}) {
+// Imagens do site: as variantes ficam versionadas em public/optimized/ com o
+// manifesto e o CSS gerados. Locais são relidas (barato) e só reconvertidas se
+// mudarem; remotas só são baixadas se ainda não tiverem variantes versionadas.
+export async function buildMedia({ root = ROOT, refresh = false, fetchImpl = fetch } = {}) {
   const start = Date.now();
   const sources = await collectSources(root);
   const cache = path.join(root, '.cache/gtap-media');
   const outputDirectory = path.join(root, 'public/optimized');
-  await mkdir(cache, { recursive: true });
+  const target = path.join(root, 'src/data/generated-media.json');
+  const previous = await exists(target) ? JSON.parse(await readFile(target, 'utf8')) : {};
+  await mkdir(outputDirectory, { recursive: true });
   const manifest = {};
-  const failures = [];
-  let originalBytes = 0;
-  let cursor = 0;
-  async function worker() {
-    while (cursor < sources.length) {
-      const source = sources[cursor++];
-      try {
-        let input;
-        if (source.startsWith('https://')) {
-          const cached = path.join(cache, hash(source));
-          input = !refresh && await exists(cached) ? await readFile(cached) : await download(source);
-          if (refresh || !(await exists(cached))) await writeFile(cached, input);
-        } else {
-          input = await readFile(path.join(root, source.startsWith('/') ? `public${source}` : source));
-        }
-        originalBytes += input.length;
-        manifest[source] = await optimizeImage(input, { outputDirectory });
-      } catch (error) {
-        failures.push(`${source}: ${error.message}`);
+  let downloads = 0;
+  const failures = await runPool(sources, async (source) => {
+    const image = previous[source];
+    if (source.startsWith('https://') && image && !refresh) {
+      const files = variantFiles(image);
+      if ((await Promise.all(files.map((file) => exists(path.join(outputDirectory, file))))).every(Boolean)) {
+        manifest[source] = image;
+        return;
       }
     }
-  }
-  await Promise.all(Array.from({ length: 3 }, worker));
+    if (source.startsWith('https://')) {
+      downloads += 1;
+      await mkdir(cache, { recursive: true });
+    }
+    const input = await readSource(source, { root, cache, refresh, fetchImpl });
+    manifest[source] = await optimizeImage(input, { outputDirectory });
+  }, 6);
   if (failures.length) throw new Error(`Required images failed (${failures.length}):\n${failures.join('\n')}`);
   const ordered = Object.fromEntries(sources.map((source) => [source, manifest[source]]));
-  const target = path.join(root, 'src/data/generated-media.json');
-  const serialized = `${JSON.stringify(ordered, null, 2)}\n`;
-  await writeIfChanged(target, serialized);
+  await prune(outputDirectory, ordered);
+  await writeIfChanged(target, `${JSON.stringify(ordered, null, 2)}\n`);
   await writeIfChanged(path.join(root, 'src/styles/generated-media.css'), backgroundStyles(ordered));
-  console.log(`Optimized ${sources.length} images; originals ${(originalBytes / 1024 / 1024).toFixed(2)} MiB; ${((Date.now() - start) / 1000).toFixed(1)}s. Cached downloads reused${refresh ? ' after refresh' : ''}.`);
+  console.log(`Images: ${sources.length} sources, ${downloads} downloaded; ${((Date.now() - start) / 1000).toFixed(1)}s.`);
   return ordered;
 }
 

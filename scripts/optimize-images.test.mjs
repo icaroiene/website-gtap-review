@@ -4,7 +4,7 @@ import { mkdtemp, mkdir, readdir, readFile, stat, rm, writeFile } from 'node:fs/
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import sharp from 'sharp';
-import { backgroundStyles, buildGallery, download, GALLERY, optimizeImage } from './optimize-images.mjs';
+import { backgroundStyles, buildGallery, buildMedia, download, GALLERY, optimizeImage } from './optimize-images.mjs';
 
 test('background tokens select largest formats deterministically and omit remote media', () => {
   const image = { src: '/optimized/hash-640.webp', avifSrcSet: '/optimized/hash-320.avif 320w, /optimized/hash-640.avif 640w' };
@@ -96,6 +96,32 @@ test('gallery reuses versioned photos without network and only fetches new ones'
     const files = await readdir(path.join(root, GALLERY.directory));
     assert.equal(files.length, 2);
     assert.ok(JSON.parse(await readFile(path.join(root, GALLERY.manifest), 'utf8'))[second]);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test('site images reuse versioned variants offline and prune unused files', async () => {
+  const root = await mkdtemp(path.join(tmpdir(), 'gtap-media-'));
+  try {
+    const photo = await sharp({ create: { width: 700, height: 400, channels: 3, background: '#abcdef' } }).webp().toBuffer();
+    const remote = 'https://gtap.com.br/midias/palestrante.webp';
+    await mkdir(path.join(root, 'public/api'), { recursive: true });
+    await mkdir(path.join(root, 'src/assets'), { recursive: true });
+    await writeFile(path.join(root, 'public/api/landing_page.json'), JSON.stringify([{ mediaUrl: remote }]));
+    await writeFile(path.join(root, 'public/api/galeria.json'), '[]');
+    await writeFile(path.join(root, 'src/assets/fundo.webp'), photo);
+    await writeFile(path.join(root, 'public/preloadBanner.webp'), photo);
+    let fetches = 0;
+    const initial = await buildMedia({ root, fetchImpl: async () => { fetches++; return new Response(photo); } });
+    assert.equal(fetches, 1);
+    await writeFile(path.join(root, 'public/optimized/sobra-320.webp'), 'stale');
+
+    await rm(path.join(root, '.cache'), { recursive: true, force: true });
+    const offline = async () => { throw new Error('network not allowed'); };
+    assert.deepEqual(await buildMedia({ root, fetchImpl: offline }), initial);
+    assert.ok(!(await readdir(path.join(root, 'public/optimized'))).includes('sobra-320.webp'));
+    assert.match(await readFile(path.join(root, 'src/styles/generated-media.css'), 'utf8'), /--gtap-bg-src-assets-fundo-webp/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

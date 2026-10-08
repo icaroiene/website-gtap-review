@@ -135,9 +135,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Generated optimized media; regenerated before build/dev
-public/optimized/
-public/optimized-video/
-src/data/generated-media.json
-src/data/generated-video.json
-src/styles/generated-media.css
+# Mídia otimizada (public/optimized*, public/galeria-otimizada, manifestos gerados)
+# é versionada: o build reaproveita e só baixa/converte o que for novo.
