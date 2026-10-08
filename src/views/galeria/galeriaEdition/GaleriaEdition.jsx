@@ -3,14 +3,14 @@ import { Navbar } from "../../../components/Navbar/Navbar";
 import { Footer } from "../../../components/Footer/Footer";
 import AsNavFor from "../../../components/Slider/Slider";
 
-export const GaleriaEdition = ({ editionText, images, logo }) => {
+export const GaleriaEdition = ({ editionText, images, logo, logoWidth, logoHeight }) => {
 
     return (
         <>
             <Navbar />
             <section className="container-edition-galeria">
                 <div className="edition-galeria-left">
-                    <img src={logo} alt={`${editionText} logo`} data-enter />
+                    <img src={logo} alt={`${editionText} logo`} width={logoWidth} height={logoHeight} data-enter />
                     <hr data-enter="line" />
                     <p data-enter>Reviva os <b>melhores momentos</b> do maior congresso de Gestão Tributária na Administração Pública.</p>
                 </div>

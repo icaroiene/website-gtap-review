@@ -139,5 +139,6 @@ dist
 public/optimized/
 public/optimized-video/
 src/data/generated-media.json
+src/data/generated-gallery.json
 src/data/generated-video.json
 src/styles/generated-media.css

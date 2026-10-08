@@ -58,7 +58,7 @@ export async function download(source, { fetchImpl = fetch, maxBytes = MAX_BYTES
   throw new Error(`${source}: ${lastError.message}`);
 }
 
-export async function optimizeImage(input, { outputDirectory, urlPrefix = '/optimized' }) {
+export async function optimizeImage(input, { outputDirectory, urlPrefix = '/optimized', sizes = [320, 640, 960, 1440], formats = ['webp', 'avif'] }) {
   if (input.length > MAX_BYTES) throw new Error('Image exceeds byte limit');
   const metadata = await sharp(input, { limitInputPixels: 40_000_000 }).metadata();
   if (metadata.pages > 1) throw new Error('Animated media requires an explicit optimization policy');
@@ -66,12 +66,13 @@ export async function optimizeImage(input, { outputDirectory, urlPrefix = '/opti
   const width = rotated ? metadata.height : metadata.width;
   const height = rotated ? metadata.width : metadata.height;
   if (!width || !height) throw new Error('Image dimensions unavailable');
-  const widths = [...new Set([320, 640, 960, 1440].filter((size) => size < width).concat(Math.min(width, 1440)))];
+  const largest = Math.max(...sizes);
+  const widths = [...new Set(sizes.filter((size) => size < width).concat(Math.min(width, largest)))];
   const digest = hash(Buffer.concat([Buffer.from('gtap-media-v1-webp78-avif48-'), input])).slice(0, 20);
   await mkdir(outputDirectory, { recursive: true });
-  const variants = { webp: [], avif: [] };
+  const variants = Object.fromEntries(formats.map((format) => [format, []]));
   for (const size of widths) {
-    for (const format of ['webp', 'avif']) {
+    for (const format of formats) {
       const filename = `${digest}-${size}.${format}`;
       const destination = path.join(outputDirectory, filename);
       if (!(await exists(destination))) {
@@ -90,7 +91,7 @@ export async function optimizeImage(input, { outputDirectory, urlPrefix = '/opti
   return {
     src: variants.webp.at(-1).src,
     srcSet: variants.webp.map((variant) => `${variant.src} ${variant.width}w`).join(', '),
-    avifSrcSet: variants.avif.map((variant) => `${variant.src} ${variant.width}w`).join(', '),
+    ...(variants.avif && { avifSrcSet: variants.avif.map((variant) => `${variant.src} ${variant.width}w`).join(', ') }),
     width,
     height,
   };
@@ -111,6 +112,62 @@ export function backgroundStyles(manifest) {
 async function writeIfChanged(target, serialized) {
   await mkdir(path.dirname(target), { recursive: true });
   if (!(await exists(target)) || await readFile(target, 'utf8') !== serialized) await writeFile(target, serialized);
+}
+
+async function readSource(source, { root, cache, refresh }) {
+  if (!source.startsWith('https://')) return readFile(path.join(root, source.startsWith('/') ? `public${source}` : source));
+  const cached = path.join(cache, hash(source));
+  const input = !refresh && await exists(cached) ? await readFile(cached) : await download(source);
+  if (refresh || !(await exists(cached))) await writeFile(cached, input);
+  return input;
+}
+
+async function runPool(items, task, concurrency) {
+  let cursor = 0;
+  const failures = [];
+  async function worker() {
+    while (cursor < items.length) {
+      const item = items[cursor++];
+      try {
+        await task(item);
+      } catch (error) {
+        failures.push(`${item}: ${error.message}`);
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: concurrency }, worker));
+  return failures;
+}
+
+export async function collectGallerySources(root = ROOT) {
+  const directory = path.join(root, 'public/api/galerias');
+  const sources = new Set();
+  for (const filename of (await readdir(directory)).filter((name) => name.endsWith('.json')).sort()) {
+    for (const row of JSON.parse(await readFile(path.join(directory, filename), 'utf8'))) {
+      if (row.url && RASTER.test(new URL(row.url).pathname)) sources.add(row.url);
+    }
+  }
+  return [...sources].sort();
+}
+
+// Fotos dos álbuns: antes iam em tamanho original do gtap.com.br, inclusive nas
+// miniaturas. Agora o slider recebe 480/960 px e as miniaturas 240 px (WebP).
+export async function buildGallery({ root = ROOT, refresh = false } = {}) {
+  const start = Date.now();
+  const sources = await collectGallerySources(root);
+  const cache = path.join(root, '.cache/gtap-media');
+  const outputDirectory = path.join(root, 'public/optimized/galeria');
+  await mkdir(cache, { recursive: true });
+  const manifest = {};
+  const failures = await runPool(sources, async (source) => {
+    const input = await readSource(source, { root, cache, refresh });
+    manifest[source] = await optimizeImage(input, { outputDirectory, urlPrefix: '/optimized/galeria', sizes: [240, 480, 960], formats: ['webp'] });
+  }, 4);
+  if (failures.length) throw new Error(`Gallery images failed (${failures.length}):\n${failures.join('\n')}`);
+  const ordered = Object.fromEntries(sources.map((source) => [source, manifest[source]]));
+  await writeIfChanged(path.join(root, 'src/data/generated-gallery.json'), `${JSON.stringify(ordered, null, 2)}\n`);
+  console.log(`Optimized ${sources.length} gallery photos; ${((Date.now() - start) / 1000).toFixed(1)}s.`);
+  return ordered;
 }
 
 export async function buildMedia({ root = ROOT, refresh = false } = {}) {
@@ -154,7 +211,8 @@ export async function buildMedia({ root = ROOT, refresh = false } = {}) {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  buildMedia({ refresh: process.argv.includes('--refresh') }).catch((error) => {
+  const refresh = process.argv.includes('--refresh');
+  buildMedia({ refresh }).then(() => buildGallery({ refresh })).catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
   });

@@ -56,7 +56,10 @@ for (const route of routes) {
   }
   if (route.endsWith(' GTAP')) {
     assert.match(html, /\/assets\/logos\//);
-    assert.match(html, /<img[^>]+src="https:\/\/gtap\.com\.br\/midias\//);
+    // Fotos otimizadas no build (240/480/960 px); a primeira (LCP) com prioridade alta.
+    assert.match(html, /<img[^>]+srcSet="\/optimized\/galeria\/[^"]+ 240w/);
+    assert.match(html, /<img[^>]+fetchPriority="high"[^>]+src="\/optimized\/galeria\//i);
+    assert.doesNotMatch(html, /<img[^>]+src="https:\/\/gtap\.com\.br\/midias\//);
   }
   // data-href: lista de CSS embutido (experimental.inlineCss), separada por espaço.
   for (const match of html.matchAll(/\s(?:src|href|data-href)="([^"]+)"/g)) {
@@ -80,6 +83,12 @@ for (const image of Object.values(media)) {
   for (const srcSet of [image.srcSet, image.avifSrcSet]) {
     for (const item of srcSet.split(', ')) await access(`out${item.split(' ')[0]}`);
   }
+}
+const gallery = JSON.parse(await readFile('src/data/generated-gallery.json', 'utf8'));
+assert.ok(Object.keys(gallery).length > 0);
+for (const image of Object.values(gallery)) {
+  assert.ok(image.width > 0 && image.height > 0);
+  for (const item of image.srcSet.split(', ')) await access(`out${item.split(' ')[0]}`);
 }
 const video = JSON.parse(await readFile('src/data/generated-video.json', 'utf8'));
 assert.ok(video.optimizedBytes < video.originalBytes);

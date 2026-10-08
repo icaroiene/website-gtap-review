@@ -54,10 +54,13 @@ Mesmo protocolo (Lighthouse 13.0.1, preview gzip, 3 execuções, mediana). Resum
 | Home | Mobile | 94 → 94 | 3.144 → 3.073 ms | igual (`section.section-atuacao`) | 0,0032 → 0 |
 | Galeria | Desktop | 100 → 100 | 545 → 566 ms | igual | 0 |
 | Galeria | Mobile | 98 → 98 | 2.392 → 2.470 ms | igual | 0 |
-| Álbum I | Desktop / Mobile | 83 / 75 → 83–77 / 75 | 3,15 / 19,4 s → 3,2–3,9 / 14,8–16,2 s | igual (1ª foto) | 0 |
+| Álbum I | Desktop | 83 → 100 | 3,15 s → 0,68 s | igual (1ª foto) | 0 |
+| Álbum I | Mobile | 75 → 90–92 | 19,4 s → 3,3–3,6 s | igual (1ª foto) | 0 |
+| Álbum VIII | Desktop | 75 → 100 | 9,97 s → 0,66 s | igual (1ª foto) | 0 |
+| Álbum VIII | Mobile | 75 → 93–94 | 64,5 s → 3,1–3,3 s | igual (1ª foto) | 0 |
 
 - A variante 1 manteve LCP/CLS/TBT dentro das metas, mas a home mobile caiu de 94 para 93 (+4,4 KB de CSS bloqueante). A variante 2 embute o CSS no HTML e recupera a nota.
 - `non-composited-animations`: 0 itens em todas as execuções. TBT ≤ 10 ms mobile.
 - O chunk do Lenis (~5,5 KB gz) só é baixado no desktop após load/idle; nunca no mobile nem na 404.
-- Álbuns dependem de fotos remotas de `gtap.com.br`; a variação do LCP ali é de rede, não das animações.
+- Álbuns: as 454 fotos eram servidas em tamanho original do `gtap.com.br` (~1 MB cada), inclusive nas miniaturas. Agora o build gera WebP de 240/480/960 px (`public/optimized/galeria/`, ~7/22/67 KB em média); a primeira foto tem `fetchPriority="high"` e o logo da edição tem dimensões reservadas (fim do layout shift intermitente). Peso da página: 2,7–52 MB → ~450 KB.
 - QA no navegador: sem conteúdo invisível sem JS ou com movimento reduzido, âncoras abaixo do header fixo, trava de rolagem no menu/modal, sem overflow horizontal (320–1920 px), sem erros de console.

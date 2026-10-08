@@ -112,6 +112,7 @@ const AsNavFor = ({ images = [] }) => {
                 src={img.url}
                 alt={`Imagem ${index + 1} do álbum`}
                 loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : undefined}
                 sizes="(max-width: 768px) 100vw, 550px"
               />
             </div>
