@@ -43,6 +43,13 @@ export const SectionLocal = ({ data }) => {
   return (
     <section className="section-localizacao" id="localizacao" ref={sectionRef}>
       {/* Camadas do fundo: a ativa entra por cima (crossfade) e só existem perto da tela. */}
+      {/* Sem JavaScript o observer nunca roda: mostra a primeira imagem, sem rotação.
+          Com JavaScript o navegador ignora o noscript (a imagem não é baixada). */}
+      <noscript>
+        <div className="section-localizacao-fundo" aria-hidden="true">
+          <div className="section-localizacao-fundo-camada is-active" style={{ backgroundImage: `url(${fundos[0]})` }} />
+        </div>
+      </noscript>
       {nearViewport && (
         <div className="section-localizacao-fundo" aria-hidden="true">
           {fundos.map((src, i) => (i === index || (rotates && i === proxima)) && (

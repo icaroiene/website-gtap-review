@@ -41,7 +41,6 @@ const handleSubmit = async (e) => {
     if (!response.ok) {
       // Se o status HTTP não for 200-299
       setFeedback("error");
-      console.log('erro ao enviar informações', response.status)
       return;
     } else {
       setFeedback("success");
@@ -49,9 +48,8 @@ const handleSubmit = async (e) => {
       form.reset();
     }
 
-  } catch (error) {
-    console.error("❌ Erro ao processar:", error);
-    setFeedback("error"); //falha de rede também avisa o usuário
+  } catch {
+    setFeedback("error"); //falha de rede também avisa o usuário (a mensagem já explica)
   } finally {
     isSetSend(false);
   }
