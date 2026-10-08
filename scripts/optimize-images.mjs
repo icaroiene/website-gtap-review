@@ -58,7 +58,7 @@ export async function download(source, { fetchImpl = fetch, maxBytes = MAX_BYTES
   throw new Error(`${source}: ${lastError.message}`);
 }
 
-export async function optimizeImage(input, { outputDirectory, urlPrefix = '/optimized', sizes = [320, 640, 960, 1440], formats = ['webp', 'avif'] }) {
+export async function optimizeImage(input, { outputDirectory, urlPrefix = '/optimized', sizes = [320, 640, 960, 1440], formats = ['webp', 'avif'], name }) {
   if (input.length > MAX_BYTES) throw new Error('Image exceeds byte limit');
   const metadata = await sharp(input, { limitInputPixels: 40_000_000 }).metadata();
   if (metadata.pages > 1) throw new Error('Animated media requires an explicit optimization policy');
@@ -68,7 +68,7 @@ export async function optimizeImage(input, { outputDirectory, urlPrefix = '/opti
   if (!width || !height) throw new Error('Image dimensions unavailable');
   const largest = Math.max(...sizes);
   const widths = [...new Set(sizes.filter((size) => size < width).concat(Math.min(width, largest)))];
-  const digest = hash(Buffer.concat([Buffer.from('gtap-media-v1-webp78-avif48-'), input])).slice(0, 20);
+  const digest = name ?? hash(Buffer.concat([Buffer.from('gtap-media-v1-webp78-avif48-'), input])).slice(0, 20);
   await mkdir(outputDirectory, { recursive: true });
   const variants = Object.fromEntries(formats.map((format) => [format, []]));
   for (const size of widths) {
@@ -114,10 +114,10 @@ async function writeIfChanged(target, serialized) {
   if (!(await exists(target)) || await readFile(target, 'utf8') !== serialized) await writeFile(target, serialized);
 }
 
-async function readSource(source, { root, cache, refresh }) {
+async function readSource(source, { root, cache, refresh, fetchImpl }) {
   if (!source.startsWith('https://')) return readFile(path.join(root, source.startsWith('/') ? `public${source}` : source));
   const cached = path.join(cache, hash(source));
-  const input = !refresh && await exists(cached) ? await readFile(cached) : await download(source);
+  const input = !refresh && await exists(cached) ? await readFile(cached) : await download(source, { fetchImpl });
   if (refresh || !(await exists(cached))) await writeFile(cached, input);
   return input;
 }
@@ -150,23 +150,50 @@ export async function collectGallerySources(root = ROOT) {
   return [...sources].sort();
 }
 
-// Fotos dos álbuns: antes iam em tamanho original do gtap.com.br, inclusive nas
-// miniaturas. Agora o slider recebe 480/960 px e as miniaturas 240 px (WebP).
-export async function buildGallery({ root = ROOT, refresh = false } = {}) {
+// Fotos dos álbuns: o gtap.com.br serve originais de ~1 MB (eram usados até nas
+// miniaturas). As versões otimizadas (WebP 240/960 px) ficam versionadas em
+// public/galeria-otimizada/ com o manifesto src/data/gallery-media.json, e o nome
+// de cada arquivo vem da URL. Assim o build não baixa nada: só fotos novas (ou
+// --refresh) são baixadas e convertidas, em paralelo.
+export const GALLERY = {
+  manifest: 'src/data/gallery-media.json',
+  directory: 'public/galeria-otimizada',
+  urlPrefix: '/galeria-otimizada',
+  sizes: [240, 960],
+};
+const galleryName = (source) => hash(`gallery-v1|${source}`).slice(0, 16);
+const variantFiles = (image) => image.srcSet.split(', ').map((item) => path.basename(item.split(' ')[0]));
+
+export async function buildGallery({ root = ROOT, refresh = false, fetchImpl = fetch } = {}) {
   const start = Date.now();
   const sources = await collectGallerySources(root);
   const cache = path.join(root, '.cache/gtap-media');
-  const outputDirectory = path.join(root, 'public/optimized/galeria');
-  await mkdir(cache, { recursive: true });
+  const outputDirectory = path.join(root, GALLERY.directory);
+  const manifestPath = path.join(root, GALLERY.manifest);
+  const previous = await exists(manifestPath) ? JSON.parse(await readFile(manifestPath, 'utf8')) : {};
+  await mkdir(outputDirectory, { recursive: true });
   const manifest = {};
-  const failures = await runPool(sources, async (source) => {
-    const input = await readSource(source, { root, cache, refresh });
-    manifest[source] = await optimizeImage(input, { outputDirectory, urlPrefix: '/optimized/galeria', sizes: [240, 480, 960], formats: ['webp'] });
-  }, 4);
+  const pending = [];
+  for (const source of sources) {
+    const image = previous[source];
+    const complete = image && (await Promise.all(variantFiles(image).map((file) => exists(path.join(outputDirectory, file))))).every(Boolean);
+    if (complete && !refresh) manifest[source] = image;
+    else pending.push(source);
+  }
+  if (pending.length) await mkdir(cache, { recursive: true });
+  const failures = await runPool(pending, async (source) => {
+    const name = galleryName(source);
+    const input = await readSource(source, { root, cache, refresh, fetchImpl });
+    await Promise.all(GALLERY.sizes.map((size) => rm(path.join(outputDirectory, `${name}-${size}.webp`), { force: true })));
+    manifest[source] = await optimizeImage(input, { outputDirectory, urlPrefix: GALLERY.urlPrefix, sizes: GALLERY.sizes, formats: ['webp'], name });
+  }, 12);
   if (failures.length) throw new Error(`Gallery images failed (${failures.length}):\n${failures.join('\n')}`);
   const ordered = Object.fromEntries(sources.map((source) => [source, manifest[source]]));
-  await writeIfChanged(path.join(root, 'src/data/generated-gallery.json'), `${JSON.stringify(ordered, null, 2)}\n`);
-  console.log(`Optimized ${sources.length} gallery photos; ${((Date.now() - start) / 1000).toFixed(1)}s.`);
+  // Remove variantes de fotos que saíram dos álbuns.
+  const used = new Set(Object.values(ordered).flatMap(variantFiles));
+  for (const file of await readdir(outputDirectory)) if (!used.has(file)) await rm(path.join(outputDirectory, file));
+  await writeIfChanged(manifestPath, `${JSON.stringify(ordered, null, 2)}\n`);
+  console.log(`Gallery: ${sources.length} photos, ${pending.length} downloaded/converted; ${((Date.now() - start) / 1000).toFixed(1)}s.`);
   return ordered;
 }
 

@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { editions } from '../../src/data/editions';
 import { GaleriaEdition } from '../../src/views/galeria/galeriaEdition/GaleriaEdition';
 import { sharedOpenGraph } from '../../src/data/metadata';
-import gallery from '../../src/data/generated-gallery.json';
+import gallery from '../../src/data/gallery-media.json';
 
 export const dynamicParams = false;
 export function generateStaticParams() {

@@ -1,10 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readdir, stat, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, readdir, readFile, stat, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import sharp from 'sharp';
-import { backgroundStyles, download, optimizeImage } from './optimize-images.mjs';
+import { backgroundStyles, buildGallery, download, GALLERY, optimizeImage } from './optimize-images.mjs';
 
 test('background tokens select largest formats deterministically and omit remote media', () => {
   const image = { src: '/optimized/hash-640.webp', avifSrcSet: '/optimized/hash-320.avif 320w, /optimized/hash-640.avif 640w' };
@@ -65,4 +65,38 @@ test('download limits origin, size and retries before surfacing failure', async 
     },
   });
   assert.equal(output.toString(), 'ok');
+});
+
+test('gallery reuses versioned photos without network and only fetches new ones', async () => {
+  const root = await mkdtemp(path.join(tmpdir(), 'gtap-gallery-'));
+  try {
+    const photo = await sharp({ create: { width: 1200, height: 800, channels: 3, background: '#123456' } }).jpeg().toBuffer();
+    const first = 'https://gtap.com.br/midias/I%20GTAP/a.jpg';
+    const second = 'https://gtap.com.br/midias/I%20GTAP/b.jpg';
+    await mkdir(path.join(root, 'public/api/galerias'), { recursive: true });
+    const album = path.join(root, 'public/api/galerias/i-gtap.json');
+    await writeFile(album, JSON.stringify([{ url: first }]));
+    let fetches = 0;
+    const fetchImpl = async () => { fetches++; return new Response(photo); };
+    const initial = await buildGallery({ root, fetchImpl });
+    assert.equal(fetches, 1);
+    assert.match(initial[first].srcSet, new RegExp(`^${GALLERY.urlPrefix}/[a-f0-9]{16}-240\\.webp 240w, `));
+
+    // Máquina nova: sem .cache, só com o que está versionado. Nenhum download.
+    await rm(path.join(root, '.cache'), { recursive: true, force: true });
+    const offline = async () => { throw new Error('network not allowed'); };
+    assert.deepEqual(await buildGallery({ root, fetchImpl: offline }), initial);
+
+    // Foto nova: só ela é baixada; foto removida tem as variantes apagadas.
+    await writeFile(album, JSON.stringify([{ url: second }]));
+    fetches = 0;
+    const next = await buildGallery({ root, fetchImpl });
+    assert.equal(fetches, 1);
+    assert.deepEqual(Object.keys(next), [second]);
+    const files = await readdir(path.join(root, GALLERY.directory));
+    assert.equal(files.length, 2);
+    assert.ok(JSON.parse(await readFile(path.join(root, GALLERY.manifest), 'utf8'))[second]);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
 });
